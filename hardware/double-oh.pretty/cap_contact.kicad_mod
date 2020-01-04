@@ -1,0 +1,9 @@
+(module cap_contact (layer F.Cu) (tedit 5E05D9D4)
+  (fp_text reference REF** (at 0 0.5) (layer F.SilkS) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value cap_contact (at 0 -0.5) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (pad 1 smd circle (at 0 0) (size 10 10) (layers F.Cu F.Mask))
+)

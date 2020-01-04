@@ -1,0 +1,13 @@
+*.pro filter=kicad_project
+*.sch filter=kicad_sch
+*.kicad_mod text=auto
+*.pack  binary
+*.png   binary
+*.step  binary
+*.stp   binary
+*.STEP  binary
+*.STP   binary
+*.wings binary
+*.svg   binary
+*.pdf   binary
+*.pyc   binary
