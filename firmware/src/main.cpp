@@ -174,6 +174,7 @@ String scriptFile(byte networkType, byte ip1, byte ip2, String ssid, String devi
 }
 
 void handleRoot() {
+  Serial.println("\nRoot handled\n");
   String page = "";
   page += mostOfHead;
   page += scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
@@ -185,24 +186,68 @@ void handleRoot() {
 void handleSettingsPost() {
   // Get arguments and values
   // Check args that changed value
-  Serial.print("Network type: ");
-  Serial.print(server.arg("networkType"));
+  byte newNetworkType = (byte)server.arg("networkType").toInt();
+  byte newIpAddr1 = (byte)server.arg("ipAddr1").toInt();
+  byte newIpAddr2 = (byte)server.arg("ipAddr2").toInt();
+  String newSsid = server.arg("networkSSID");
+  String newPsk = server.arg("networkPSK");
+  String newDeviceName = server.arg("deviceName");
+  bool changed = false;
 
-  // How do I go from string to int?
+  // If any of the non-password values changed, update EEPROM and eeprom** variables
+  if ((newNetworkType != eepromWifiType) ||
+  (newIpAddr1 != eepromIp1) || 
+  (newIpAddr2 != eepromIp2) || 
+  (newDeviceName != eepromDeviceName)) {
+    changed = true;
+    eepromIp1 = newIpAddr1;
+    EEPROM.put(eepromIp1Pos, newIpAddr1);
+    eepromIp2 = newIpAddr2;
+    EEPROM.put(eepromIp2Pos, newIpAddr2);
+    eepromDeviceName = newDeviceName;
+    EEPROM.put(eepromDeviceNamePos, newDeviceName);
+  }
 
-  // Update in EEPROM and in the eeprom*** variables
+  // If either SSID or PSK changed, update both PSK and SSID
+  if ((newSsid != eepromSsid) ||
+  (newPsk != eepromPsk && newPsk != "" && newPsk != NULL)) {
+    changed = true;
+    eepromSsid = newSsid;
+    EEPROM.put(eepromSsidPos, newSsid);
+    eepromPsk = newPsk;
+    EEPROM.put(eepromPskPos, newPsk);
+  }
 
-// https://tttapa.github.io/ESP8266/Chap10%20-%20Simple%20Web%20Server.html
+  if (changed) {
+    Serial.println(EEPROM.commit()?"New data written" :"EEPROM error");
+    Serial.print("Wifi type: \"");
+    Serial.print(eepromWifiType, HEX);
+    Serial.println("\",");
+    
+    Serial.print("IP part 1: \"");
+    Serial.print(eepromIp1, HEX);
+    Serial.println("\",");
 
-//   URI: /settings
-// Method: POST
-// Arguments: 6
-//  networkType: 0
-//  ipAddr1: 0
-//  ipAddr2: 35
-//  networkSSID: 
-//  networkPSK: 
-//  plain: ipAddr1=0&ipAddr2=35&networkSSID=&networkPSK=
+    Serial.print("IP part 2: \"");
+    Serial.print(eepromIp2, HEX);
+    Serial.println("\",");
+    
+    Serial.print("Wifi SSID: \"");
+    Serial.print(eepromSsid);
+    Serial.println("\",");
+    
+    Serial.print("Wifi PSK: \"");
+    Serial.print(eepromPsk);
+    Serial.println("\",");
+    
+    Serial.print("Wifi name: \"");
+    Serial.print(eepromDeviceName);
+    Serial.println("\"");
+  }
+  
+  // Great but now which page to render
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
 }
 
 void handleNotFound(){

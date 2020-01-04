@@ -13,7 +13,7 @@ static const char* pageBody PROGMEM = R"rawliteral(
       <hr/>
       <div class="form-group">
         <b>Custom device name:</b><br/>
-        <input id="customDeviceName" type="text" value="doubleoh"/>
+        <input id="customDeviceName" name="deviceName" type="text" value="doubleoh"/>
       </div>
       <hr/>
       <div class="form-group">
