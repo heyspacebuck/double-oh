@@ -5,7 +5,12 @@
 #include <ESP8266mDNS.h>
 #include <DNSServer.h>
 
+// From the /lib/ folder
 #include <ESP_EEPROM.h>
+
+// From the /include/ folder
+#include <mostOfHead.h>
+#include <pageBody.h>
 
 // Static IP address configuration
 IPAddress staticIP(192, 168, 0, 35);
@@ -19,6 +24,10 @@ DNSServer dnsServer;
 #define DNS_PORT 53
 
 ESP8266WebServer server(80);
+
+// Number of connection attempts to make before reverting to AP mode
+int connectionAttempts = 0;
+#define maxConnectionAttempts 60
 
 // EEPROM constants and variables
 #define eepromSize 83
@@ -43,13 +52,16 @@ void startEEPROM() {
   // Turn on EEPROM, read data
   EEPROM.begin(eepromSize);
 
-  // EEPROM.put(eepromWifiTypePos, 0x00);
-  // EEPROM.put(eepromIp1Pos, 0x01);
-  // EEPROM.put(eepromIp2Pos, 0x20);
-  // EEPROM.put(eepromSsidPos, deviceName);
-  // EEPROM.put(eepromPskPos, deviceName);
-  // EEPROM.put(eepromDeviceNamePos, deviceName);
-  // Serial.println(EEPROM.commit() ? "New data written to EEPROM" : "EEPROM write error");
+  // If this is the first use of the EEPROM, initialize with default values
+  if (EEPROM.percentUsed() == 0) {
+    EEPROM.put(eepromWifiTypePos, 0x00);
+    EEPROM.put(eepromIp1Pos, 0x01);
+    EEPROM.put(eepromIp2Pos, 0x23);
+    EEPROM.put(eepromSsidPos, deviceName);
+    EEPROM.put(eepromPskPos, deviceName);
+    EEPROM.put(eepromDeviceNamePos, deviceName);
+    Serial.println(EEPROM.commit() ? "New data written to EEPROM" : "EEPROM write error");
+  }
 
   // Load EEPROM byte 0 (Wi-Fi connection type byte)
   EEPROM.get(eepromWifiTypePos, eepromWifiType);
@@ -88,39 +100,6 @@ void startEEPROM() {
   Serial.println("\"");
 }
 
-void startStation() {
-  // Device name, SSID, PSK, static IP address were retrieved from EEPROM
-  WiFi.disconnect();
-  WiFi.hostname(eepromDeviceName);
-  // Only set the static IP address if the user has configured it
-  if (eepromIp1 != 0x00 || eepromIp2 != 0x00) {
-    IPAddress staticIP(192, 168, eepromIp1, eepromIp2);
-    IPAddress gateway(192, 168, 4, 1); // Probably wrong but unnecessary
-    IPAddress subnet(255, 255, 255, 0);
-    IPAddress dns(8, 8, 8, 8);
-    WiFi.config(staticIP, subnet, gateway, dns);
-  }
-  WiFi.begin(eepromSsid, eepromPsk);
-  WiFi.mode(WIFI_STA);
-  // Wait for connection
-  Serial.println("");
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(eepromSsid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  if (MDNS.begin(eepromDeviceName)) {
-    Serial.print("MDNS responder started at ");
-    Serial.print(eepromDeviceName);
-    Serial.println(".local");
-  }
-}
-
 void startSoftAP() {
   IPAddress subnet(255, 255, 255, 0);
 
@@ -137,8 +116,93 @@ void startSoftAP() {
   dnsServer.start(DNS_PORT, "*", WiFi.softAPIP());
 }
 
+void startStation() {
+  // Device name, SSID, PSK, static IP address were retrieved from EEPROM
+  WiFi.disconnect();
+  WiFi.hostname(eepromDeviceName);
+  // Only set the static IP address if the user has configured it
+  if (eepromIp1 != 0x00 || eepromIp2 != 0x00) {
+    IPAddress staticIP(192, 168, eepromIp1, eepromIp2);
+    IPAddress gateway(192, 168, 4, 1); // Probably wrong but unnecessary
+    IPAddress subnet(255, 255, 255, 0);
+    IPAddress dns(8, 8, 8, 8);
+    WiFi.config(staticIP, subnet, gateway, dns);
+  }
+  WiFi.begin(eepromSsid, eepromPsk);
+  WiFi.mode(WIFI_STA);
+  // Wait for connection
+  Serial.println("");
+  while (WiFi.status() != WL_CONNECTED && connectionAttempts <= maxConnectionAttempts) {
+    connectionAttempts++;
+    delay(500);
+    Serial.print(".");
+  }
+
+  // If too many unsuccessful connection attempts are made, start a soft access point instead
+  if (connectionAttempts <= maxConnectionAttempts) {
+    Serial.println("");
+    Serial.print("Connected to ");
+    Serial.println(eepromSsid);
+    Serial.print("IP address: ");
+    Serial.println(WiFi.localIP());
+
+    if (MDNS.begin(eepromDeviceName)) {
+      Serial.print("MDNS responder started at ");
+      Serial.print(eepromDeviceName);
+      Serial.println(".local");
+    }
+  } else {
+    startSoftAP();
+  }
+}
+
+String scriptFile(byte networkType, byte ip1, byte ip2, String ssid, String deviceName) {
+  String message = "<script>";
+  message += "const networkType = ";
+  message += (uint8_t)networkType;
+  message += ";\n";
+  message += "const ip1 = ";
+  message += (uint8_t)ip1;
+  message += ";\n";
+  message += "const ip2 = ";
+  message += (uint8_t)ip2;
+  message += ";\n";
+  message += "const ssid = \"" + ssid + "\";\n";
+  message += "const deviceName = \"" + deviceName + "\";\n";
+  message += "</script>";
+  return message;
+}
+
 void handleRoot() {
-  server.send(200, "text/plain", "hello from esp8266!");
+  String page = "";
+  page += mostOfHead;
+  page += scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
+  page += "\n</head>";
+  page += pageBody;
+  server.send(200, "text/html", page);
+}
+
+void handleSettingsPost() {
+  // Get arguments and values
+  // Check args that changed value
+  Serial.print("Network type: ");
+  Serial.print(server.arg("networkType"));
+
+  // How do I go from string to int?
+
+  // Update in EEPROM and in the eeprom*** variables
+
+// https://tttapa.github.io/ESP8266/Chap10%20-%20Simple%20Web%20Server.html
+
+//   URI: /settings
+// Method: POST
+// Arguments: 6
+//  networkType: 0
+//  ipAddr1: 0
+//  ipAddr2: 35
+//  networkSSID: 
+//  networkPSK: 
+//  plain: ipAddr1=0&ipAddr2=35&networkSSID=&networkPSK=
 }
 
 void handleNotFound(){
@@ -173,10 +237,7 @@ void setup(void){
 
 
   server.on("/", handleRoot);
-
-  server.on("/inline", [](){
-    server.send(200, "text/plain", "this works as well");
-  });
+  server.on("/settings", HTTP_POST, handleSettingsPost);
 
   server.onNotFound(handleNotFound);
 

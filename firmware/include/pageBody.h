@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Double-Oh control panel</title>
-  <style>
-#ip-form .number {
-  width: 3em;
-}
-  </style>
-</head>
+#include <Arduino.h>
+
+static const char* pageBody PROGMEM = R"rawliteral(
 <body>
   <h1 id="outputTitle">Power Output</h1>
   <div id="outputTab" style="display: none">
@@ -96,3 +88,4 @@ if (networkType === 0) {
 </script>
 </body>
 </html>
+)rawliteral";
