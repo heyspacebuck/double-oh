@@ -1,0 +1,3 @@
+[submodule "firmware/lib/ESP_EEPROM"]
+	path = firmware/lib/ESP_EEPROM
+	url = https://github.com/jwrw/ESP_EEPROM
