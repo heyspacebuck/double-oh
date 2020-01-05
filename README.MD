@@ -8,6 +8,8 @@ The star of the show is the ESP8285, which is like the ESP8266 but has 1MB Flash
 
 Hardware developed in KiCad 5.1; firmware developed in VSCode with the PlatformIO extension.
 
+![](assembly.gif)
+
 ## To do:
 
 * Lots of stuff on the firmware side
