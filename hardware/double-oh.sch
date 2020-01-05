@@ -270,13 +270,11 @@ Wire Wire Line
 Text GLabel 9925 5625 0    50   Input ~ 0
 batt_out
 Text GLabel 6725 5400 0    50   Input ~ 0
-digipot_sclk
+i2c_sda
 Text GLabel 7400 5900 3    50   Input ~ 0
-digipot_u~d
-Text GLabel 1275 4425 0    50   Input ~ 0
-digipot_u~d
+i2c_scl
 Text GLabel 1275 4525 0    50   Input ~ 0
-digipot_sclk
+i2c_sda
 Text GLabel 4950 1300 2    50   Input ~ 0
 3.3V
 Text GLabel 5825 4925 0    50   Input ~ 0
@@ -964,4 +962,6 @@ Wire Wire Line
 Wire Wire Line
 	1725 5225 2425 5225
 Connection ~ 7600 4200
+Text GLabel 1275 4425 0    50   Input ~ 0
+i2c_scl
 $EndSCHEMATC
