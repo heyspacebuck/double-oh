@@ -4,6 +4,7 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <DNSServer.h>
+#include <Wire.h>
 
 // From the /lib/ folder
 #include <ESP_EEPROM.h>
@@ -11,6 +12,13 @@
 // From the /include/ folder
 #include <mostOfHead.h>
 #include <pageBody.h>
+
+// Hardware pins
+// For the WL model: the output is GPIO15(!!!), I2C SDA is GPIO16, I2C SCL is GPIO14
+// For the finished model: output is GPIO10, I2C SDA is GPIO16, I2C SCL is GPIO14
+#define OUTPUT_PIN 15
+#define I2C_SCL 14
+#define I2C_SDA 16
 
 // Static IP address configuration
 IPAddress staticIP(192, 168, 0, 35);
@@ -152,6 +160,7 @@ void startStation() {
       Serial.println(".local");
     }
   } else {
+    Serial.println("\nUnsuccessful connecting to Wi-Fi. Starting Access Point...\n");
     startSoftAP();
   }
 }
@@ -174,7 +183,6 @@ String scriptFile(byte networkType, byte ip1, byte ip2, String ssid, String devi
 }
 
 void handleRoot() {
-  Serial.println("\nRoot handled\n");
   String page = "";
   page += mostOfHead;
   page += scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
@@ -194,12 +202,16 @@ void handleSettingsPost() {
   String newDeviceName = server.arg("deviceName");
   bool changed = false;
 
+  // TODO: check that all values are valid; disregard invalid ones or change them to closest valid ones
+
   // If any of the non-password values changed, update EEPROM and eeprom** variables
   if ((newNetworkType != eepromWifiType) ||
   (newIpAddr1 != eepromIp1) || 
   (newIpAddr2 != eepromIp2) || 
   (newDeviceName != eepromDeviceName)) {
     changed = true;
+    eepromWifiType = newNetworkType;
+    EEPROM.put(eepromWifiTypePos, newNetworkType);
     eepromIp1 = newIpAddr1;
     EEPROM.put(eepromIp1Pos, newIpAddr1);
     eepromIp2 = newIpAddr2;
@@ -266,6 +278,10 @@ void handleNotFound(){
 }
 
 void setup(void){
+  // Set output HIGH (i.e. turn output off)
+  digitalWrite(OUTPUT_PIN, HIGH);
+
+  // Begin serial link at 9600 baud (default rate in PlatformIO)
   Serial.begin(9600);
   
   // Turn on EEPROM, read data
@@ -281,10 +297,18 @@ void setup(void){
   }
 
 
-  server.on("/", handleRoot);
-  server.on("/settings", HTTP_POST, handleSettingsPost);
+  // On a GET request to /, serve the control panel
+  server.on("/", HTTP_GET, handleRoot);
 
-  server.onNotFound(handleNotFound);
+  // On POST request to /settings, change the Wi-Fi configuration
+  server.on("/settings", HTTP_POST, handleSettingsPost);
+  
+  // On POST request to /reset, reboot the ESP
+  server.on("/reset", HTTP_POST, [](){ESP.restart();});
+
+  // On any other type of request, serve the control panel
+  server.onNotFound(handleRoot);
+  // server.onNotFound(handleNotFound);
 
   server.begin();
   Serial.println("HTTP server started");
