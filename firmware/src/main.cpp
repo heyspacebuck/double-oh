@@ -26,7 +26,7 @@ IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(8, 8, 8, 8);
 
-String deviceName = "doubleoh"; // Useful for finding device on router page
+char deviceName[16] = "doubleoh"; // Useful for finding device on router page
 
 DNSServer dnsServer;
 #define DNS_PORT 53
@@ -47,13 +47,13 @@ byte eepromIp1, eepromIp2;
 #define eepromIp1Pos 1
 #define eepromIp2Pos 2
 // Bytes 3-34: SSID String
-String eepromSsid;
+char eepromSsid[31];
 #define eepromSsidPos 3
 // Bytes 35-66: PSK String
-String eepromPsk;
+char eepromPsk[31];
 #define eepromPskPos 35
 // Bytes 67-82: Soft AP host name String
-String eepromDeviceName;
+char eepromDeviceName[16];
 #define eepromDeviceNamePos 67
 
 void startEEPROM() {
@@ -63,7 +63,7 @@ void startEEPROM() {
   // If this is the first use of the EEPROM, initialize with default values
   if (EEPROM.percentUsed() == 0) {
     EEPROM.put(eepromWifiTypePos, 0x00);
-    EEPROM.put(eepromIp1Pos, 0x01);
+    EEPROM.put(eepromIp1Pos, 0x00);
     EEPROM.put(eepromIp2Pos, 0x23);
     EEPROM.put(eepromSsidPos, deviceName);
     EEPROM.put(eepromPskPos, deviceName);
@@ -165,7 +165,7 @@ void startStation() {
   }
 }
 
-String scriptFile(byte networkType, byte ip1, byte ip2, String ssid, String deviceName) {
+String scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char deviceName[16]) {
   String message = "<script>";
   message += "const networkType = ";
   message += (uint8_t)networkType;
@@ -176,8 +176,12 @@ String scriptFile(byte networkType, byte ip1, byte ip2, String ssid, String devi
   message += "const ip2 = ";
   message += (uint8_t)ip2;
   message += ";\n";
-  message += "const ssid = \"" + ssid + "\";\n";
-  message += "const deviceName = \"" + deviceName + "\";\n";
+  message += "const ssid = \"";
+  message += ssid;
+  message += "\";\n";
+  message += "const deviceName = \"";
+  message += deviceName;
+  message += "\";\n";
   message += "</script>";
   return message;
 }
@@ -197,9 +201,12 @@ void handleSettingsPost() {
   byte newNetworkType = (byte)server.arg("networkType").toInt();
   byte newIpAddr1 = (byte)server.arg("ipAddr1").toInt();
   byte newIpAddr2 = (byte)server.arg("ipAddr2").toInt();
-  String newSsid = server.arg("networkSSID");
-  String newPsk = server.arg("networkPSK");
-  String newDeviceName = server.arg("deviceName");
+  char newSsid[31];
+  server.arg("networkSSID").toCharArray(newSsid, 31);
+  char newPsk[31];
+  server.arg("networkPSK").toCharArray(newPsk, 31);
+  char newDeviceName[16];
+  server.arg("deviceName").toCharArray(newDeviceName, 16);
   bool changed = false;
 
   // TODO: check that all values are valid; disregard invalid ones or change them to closest valid ones
@@ -216,31 +223,34 @@ void handleSettingsPost() {
     EEPROM.put(eepromIp1Pos, newIpAddr1);
     eepromIp2 = newIpAddr2;
     EEPROM.put(eepromIp2Pos, newIpAddr2);
-    eepromDeviceName = newDeviceName;
+    // eepromDeviceName = newDeviceName;
+    strncpy(eepromDeviceName, newDeviceName, 16);
     EEPROM.put(eepromDeviceNamePos, newDeviceName);
   }
 
   // If either SSID or PSK changed, update both PSK and SSID
   if ((newSsid != eepromSsid) ||
-  (newPsk != eepromPsk && newPsk != "" && newPsk != NULL)) {
+  (newPsk != eepromPsk && newPsk[0] != 0x00 && newPsk != NULL)) {
     changed = true;
-    eepromSsid = newSsid;
+    // eepromSsid = newSsid;
+    strncpy(eepromSsid, newSsid, 31);
     EEPROM.put(eepromSsidPos, newSsid);
-    eepromPsk = newPsk;
+    // eepromPsk = newPsk;
+    strncpy(eepromPsk, newPsk, 31);
     EEPROM.put(eepromPskPos, newPsk);
   }
 
   if (changed) {
     Serial.println(EEPROM.commit()?"New data written" :"EEPROM error");
-    Serial.print("Wifi type: \"");
+    Serial.print("Wifi type: \"0x");
     Serial.print(eepromWifiType, HEX);
     Serial.println("\",");
     
-    Serial.print("IP part 1: \"");
+    Serial.print("IP part 1: \"0x");
     Serial.print(eepromIp1, HEX);
     Serial.println("\",");
 
-    Serial.print("IP part 2: \"");
+    Serial.print("IP part 2: \"0x");
     Serial.print(eepromIp2, HEX);
     Serial.println("\",");
     
