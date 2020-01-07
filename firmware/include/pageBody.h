@@ -22,7 +22,7 @@ static const char* pageBody PROGMEM = R"rawliteral(
         <label for="networkType1">Access Point: You connect to the Double-Oh's Wi-Fi network, and any webpage you try to view will show the control panel.</label>
         <br/>
         <input type="radio" id="networkType2" name="networkType" value="1"/>
-        <label for="networkType2">Station: The Double-Oh connects to your Wi-Fi network and you access the control panel from a specific URL.
+        <label for="networkType2">Station: The Double-Oh connects to your Wi-Fi network and you access the control panel from a specific URL.</label>
       </div>
       <hr/>
       <div class="form-group" id="ip-form">
@@ -48,6 +48,9 @@ static const char* pageBody PROGMEM = R"rawliteral(
     <p>In normal operation, the Double-Oh is limited to a max output of 1.5 VDC. In this section you can change the max output voltage.</p>
     <input type="number" min="1.0" max="3.3" step="0.1"/>
   </div>
+  <form action="/reset" method="POST">
+    <button>Software restart</button>
+  </form>
   <script type="text/javascript">
 document.getElementById("customDeviceName").value = deviceName;
 document.getElementById("ipAddr1").value = ip1;
