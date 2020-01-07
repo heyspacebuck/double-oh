@@ -146,17 +146,6 @@ Wire Wire Line
 Text Notes 1000 825  0    50   ~ 0
 USB LiPo Charging circuit
 $Comp
-L Device:Crystal_Small Y1
-U 1 1 5CE12A59
-P 7850 3825
-F 0 "Y1" H 7850 3925 50  0000 C CNN
-F 1 "26MHz" H 7850 3725 50  0000 C CNN
-F 2 "Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm" H 7850 3825 50  0001 C CNN
-F 3 "~" H 7850 3825 50  0001 C CNN
-	1    7850 3825
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C_Small C6
 U 1 1 5CE15BCA
 P 5700 5375
@@ -396,12 +385,12 @@ Wire Wire Line
 $Comp
 L Device:C_Small C4
 U 1 1 5D582245
-P 7700 3675
-F 0 "C4" H 7825 3700 50  0000 C CNN
-F 1 "5.6pF" H 7875 3625 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 7700 3675 50  0001 C CNN
-F 3 "~" H 7700 3675 50  0001 C CNN
-	1    7700 3675
+P 7700 3550
+F 0 "C4" H 7825 3575 50  0000 C CNN
+F 1 "5.6pF" H 7875 3500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 7700 3550 50  0001 C CNN
+F 3 "~" H 7700 3550 50  0001 C CNN
+	1    7700 3550
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
@@ -409,34 +398,20 @@ Wire Wire Line
 Wire Wire Line
 	7900 4200 7900 4000
 Wire Wire Line
-	8000 4000 8000 3825
-Wire Wire Line
-	8000 3825 7950 3825
-Wire Wire Line
 	7900 4000 8000 4000
 Wire Wire Line
-	7700 4000 7700 3825
-Wire Wire Line
-	7700 3825 7750 3825
-Wire Wire Line
 	7700 4000 7800 4000
-Wire Wire Line
-	7700 3775 7700 3825
-Connection ~ 7700 3825
 $Comp
 L Device:C_Small C5
 U 1 1 5D591733
-P 8000 3675
-F 0 "C5" H 7875 3700 50  0000 C CNN
-F 1 "5.6pF" H 7825 3625 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 8000 3675 50  0001 C CNN
-F 3 "~" H 8000 3675 50  0001 C CNN
-	1    8000 3675
+P 8000 3550
+F 0 "C5" H 7875 3575 50  0000 C CNN
+F 1 "5.6pF" H 7825 3500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 8000 3550 50  0001 C CNN
+F 3 "~" H 8000 3550 50  0001 C CNN
+	1    8000 3550
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	8000 3775 8000 3825
-Connection ~ 8000 3825
 Text GLabel 7850 3350 1    50   Input ~ 0
 0V
 Wire Wire Line
@@ -444,11 +419,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 3400 7700 3400
 Wire Wire Line
-	7700 3400 7700 3575
-Wire Wire Line
 	7850 3400 8000 3400
-Wire Wire Line
-	8000 3400 8000 3575
 Connection ~ 7850 3400
 $Comp
 L Device:R_Small_US R7
@@ -987,4 +958,38 @@ Wire Wire Line
 	7700 6100 7800 6100
 Wire Wire Line
 	7800 6100 7800 5900
+$Comp
+L Device:Crystal_GND24 Y1
+U 1 1 5E17705A
+P 7850 3725
+F 0 "Y1" H 8050 3800 50  0000 L CNN
+F 1 "Crystal_GND24" H 8050 3700 50  0000 L CNN
+F 2 "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" H 7850 3725 50  0001 C CNN
+F 3 "~" H 7850 3725 50  0001 C CNN
+	1    7850 3725
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 3400 7700 3450
+Wire Wire Line
+	8000 3400 8000 3450
+Wire Wire Line
+	8000 3650 8000 3725
+Wire Wire Line
+	7700 3725 7700 3650
+Wire Wire Line
+	7700 3725 7700 4000
+Connection ~ 7700 3725
+Wire Wire Line
+	8000 3725 8000 4000
+Connection ~ 8000 3725
+Wire Wire Line
+	7850 3525 7850 3400
+Wire Wire Line
+	7850 3925 8175 3925
+Wire Wire Line
+	8175 3925 8175 3400
+Wire Wire Line
+	8175 3400 8000 3400
+Connection ~ 8000 3400
 $EndSCHEMATC
