@@ -14,11 +14,13 @@
 #include <pageBody.h>
 
 // Hardware pins
-// For the WL model: the output is GPIO15(!!!), I2C SDA is GPIO16, I2C SCL is GPIO14
-// For the finished model: output is GPIO10, I2C SDA is GPIO16, I2C SCL is GPIO14
+// For the WL model: the output is GPIO15(!!!), I2C SDA is GPIO16, I2C SCL is GPIO14, factory reset is GPIO12 and GPIO13
+// For the finished model: output is GPIO10, I2C SDA is GPIO16, I2C SCL is GPIO14, factory reset is GPIO13 and GPIO15
 #define OUTPUT_PIN 15
 #define I2C_SCL 14
 #define I2C_SDA 16
+#define FACTORY_RESET_1 12
+#define FACTORY_RESET_2 13
 
 // Static IP address configuration
 IPAddress staticIP(192, 168, 0, 35);
@@ -295,14 +297,14 @@ void setup(void){
   // Check if the factory-reset pads are shorted:
   // Set GPIO13 (pin 12) to input_pullup
   // Set GPIO15 (pin 13) to output, LOW
-  pinMode(13, INPUT_PULLUP);
-  pinMode(15, OUTPUT);
-  digitalWrite(15, LOW);
+  pinMode(FACTORY_RESET_1, INPUT_PULLUP);
+  pinMode(FACTORY_RESET_2, OUTPUT);
+  digitalWrite(FACTORY_RESET_2, LOW);
   bool factoryReset = false;
-  if (!digitalRead(12)) {
+  if (!digitalRead(FACTORY_RESET_1)) {
     factoryReset = true;
   }
-  digitalWrite(15, HIGH);
+  digitalWrite(FACTORY_RESET_2, HIGH);
 
   // Begin serial link at 9600 baud (default rate in PlatformIO)
   Serial.begin(9600);
@@ -327,7 +329,11 @@ void setup(void){
   server.on("/settings", HTTP_POST, handleSettingsPost);
   
   // On POST request to /reset, reboot the ESP
-  server.on("/reset", HTTP_POST, [](){ESP.restart();});
+  server.on("/reset", HTTP_POST, [](){
+    server.sendHeader("Location", "/", true);
+    server.send(302, "text/plain", "");
+    ESP.restart();
+  });
 
   // On any other type of request, serve the control panel
   server.onNotFound(handleRoot);
