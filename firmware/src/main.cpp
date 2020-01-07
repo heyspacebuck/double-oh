@@ -295,14 +295,14 @@ void setup(void){
   // Check if the factory-reset pads are shorted:
   // Set GPIO13 (pin 12) to input_pullup
   // Set GPIO15 (pin 13) to output, LOW
-  pinMode(12, INPUT_PULLUP);
-  pinMode(13, OUTPUT);
-  digitalWrite(13, LOW);
+  pinMode(13, INPUT_PULLUP);
+  pinMode(15, OUTPUT);
+  digitalWrite(15, LOW);
   bool factoryReset = false;
   if (!digitalRead(12)) {
     factoryReset = true;
   }
-  digitalWrite(13, HIGH);
+  digitalWrite(15, HIGH);
 
   // Begin serial link at 9600 baud (default rate in PlatformIO)
   Serial.begin(9600);
