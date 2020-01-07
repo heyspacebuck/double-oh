@@ -496,7 +496,7 @@ Text GLabel 8600 4700 2    50   Input ~ 0
 0V
 Text GLabel 5650 6125 2    50   Input ~ 0
 0V
-Text GLabel 7600 5900 3    50   Input ~ 0
+Text GLabel 7600 6200 3    50   Input ~ 0
 3.3V
 Text GLabel 8000 5900 3    50   Input ~ 0
 GPIO0
@@ -964,4 +964,28 @@ Wire Wire Line
 Connection ~ 7600 4200
 Text GLabel 1275 4425 0    50   Input ~ 0
 i2c_scl
+Wire Wire Line
+	7600 6200 7600 6100
+$Comp
+L Device:R_Small_US R11
+U 1 1 5E156774
+P 7700 6000
+F 0 "R11" V 7625 6050 50  0000 R CNN
+F 1 "1GΩ" V 7775 6075 50  0000 R CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 7700 6000 50  0001 C CNN
+F 3 "~" H 7700 6000 50  0001 C CNN
+	1    7700 6000
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 6100 7600 6100
+Connection ~ 7600 6100
+Wire Wire Line
+	7600 6100 7600 5900
+Text Notes 7700 6375 0    50   ~ 0
+DO NOT POPULATE THIS FOOTPRINT\nShorting the pads causes a factory reset
+Wire Notes Line
+	7875 6225 7875 6050
+Wire Notes Line
+	7875 6050 7800 6050
 $EndSCHEMATC
