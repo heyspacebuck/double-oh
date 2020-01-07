@@ -964,8 +964,6 @@ Wire Wire Line
 Connection ~ 7600 4200
 Text GLabel 1275 4425 0    50   Input ~ 0
 i2c_scl
-Wire Wire Line
-	7600 6200 7600 6100
 $Comp
 L Device:R_Small_US R11
 U 1 1 5E156774
@@ -977,15 +975,16 @@ F 3 "~" H 7700 6000 50  0001 C CNN
 	1    7700 6000
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	7700 6100 7600 6100
-Connection ~ 7600 6100
-Wire Wire Line
-	7600 6100 7600 5900
 Text Notes 7700 6375 0    50   ~ 0
 DO NOT POPULATE THIS FOOTPRINT\nShorting the pads causes a factory reset
 Wire Notes Line
 	7875 6225 7875 6050
 Wire Notes Line
 	7875 6050 7800 6050
+Wire Wire Line
+	7600 5900 7600 6200
+Wire Wire Line
+	7700 6100 7800 6100
+Wire Wire Line
+	7800 6100 7800 5900
 $EndSCHEMATC

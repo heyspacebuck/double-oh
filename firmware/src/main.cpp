@@ -56,12 +56,12 @@ char eepromPsk[31];
 char eepromDeviceName[16];
 #define eepromDeviceNamePos 67
 
-void startEEPROM() {
+void startEEPROM(bool doAReset=false) {
   // Turn on EEPROM, read data
   EEPROM.begin(eepromSize);
 
   // If this is the first use of the EEPROM, initialize with default values
-  if (EEPROM.percentUsed() == 0) {
+  if (EEPROM.percentUsed() == 0 || doAReset) {
     EEPROM.put(eepromWifiTypePos, 0x00);
     EEPROM.put(eepromIp1Pos, 0x00);
     EEPROM.put(eepromIp2Pos, 0x23);
@@ -288,14 +288,27 @@ void handleNotFound(){
 }
 
 void setup(void){
-  // Set output HIGH (i.e. turn output off)
+  // Set the FET output HIGH (i.e. turn output off)
+  pinMode(OUTPUT_PIN, OUTPUT);
   digitalWrite(OUTPUT_PIN, HIGH);
+
+  // Check if the factory-reset pads are shorted:
+  // Set GPIO13 (pin 12) to input_pullup
+  // Set GPIO15 (pin 13) to output, LOW
+  pinMode(12, INPUT_PULLUP);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, LOW);
+  bool factoryReset = false;
+  if (!digitalRead(12)) {
+    factoryReset = true;
+  }
+  digitalWrite(13, HIGH);
 
   // Begin serial link at 9600 baud (default rate in PlatformIO)
   Serial.begin(9600);
   
   // Turn on EEPROM, read data
-  startEEPROM();
+  startEEPROM(factoryReset);
 
   // If byte 0 is 0x00, set up a soft AP; else set up station
   if (eepromWifiType == 0x00) {
