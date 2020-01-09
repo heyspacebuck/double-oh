@@ -182,15 +182,15 @@ Wire Wire Line
 	2600 1750 3100 1750
 Wire Wire Line
 	2600 1300 3100 1300
-Text GLabel 5075 1275 2    50   Input ~ 0
+Text GLabel 5500 4025 2    50   Input ~ 0
 digipot1
-Text GLabel 5075 1375 2    50   Input ~ 0
+Text GLabel 5500 4125 2    50   Input ~ 0
 digipot2
 Wire Wire Line
-	4875 1275 5075 1275
+	5300 4025 5500 4025
 Wire Wire Line
-	5075 1375 4875 1375
-Text GLabel 4250 1775 0    50   Input ~ 0
+	5500 4125 5300 4125
+Text GLabel 4675 4525 0    50   Input ~ 0
 0V
 Wire Wire Line
 	10500 4525 10500 4900
@@ -200,14 +200,14 @@ Text GLabel 7300 5300 0    50   Input ~ 0
 i2c_sda
 Text GLabel 7975 5800 3    50   Input ~ 0
 i2c_scl
-Text GLabel 4075 1575 0    50   Input ~ 0
+Text GLabel 4500 4325 0    50   Input ~ 0
 i2c_sda
 Text GLabel 6700 5100 0    50   Input ~ 0
 3.3V
-Text GLabel 4250 1075 0    50   Input ~ 0
+Text GLabel 4675 3825 0    50   Input ~ 0
 3.3V
 Wire Wire Line
-	4250 1075 4375 1075
+	4675 3825 4800 3825
 $Comp
 L double-oh:ESP8285 U4
 U 1 1 5D4DC172
@@ -249,7 +249,7 @@ Wire Wire Line
 Wire Wire Line
 	3100 1875 3100 1750
 Wire Wire Line
-	4250 1775 4375 1775
+	4675 4525 4800 4525
 $Comp
 L Device:R_Small_US R8
 U 1 1 5D570C7A
@@ -359,23 +359,23 @@ GPIO0
 $Comp
 L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
 U 1 1 5DFF9476
-P 6650 1125
-F 0 "Q1" H 6850 1175 50  0000 L CNN
-F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 6850 1125 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 6850 1225 50  0001 C CNN
-F 3 "~" H 6650 1125 50  0001 C CNN
-	1    6650 1125
+P 4625 1225
+F 0 "Q1" H 4825 1275 50  0000 L CNN
+F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 4825 1225 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4825 1325 50  0001 C CNN
+F 3 "~" H 4625 1225 50  0001 C CNN
+	1    4625 1225
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
 U 2 1 5DFF9AE1
-P 6650 1825
-F 0 "Q1" H 6850 1750 50  0000 L CNN
-F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 6850 1850 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 6850 1925 50  0001 C CNN
-F 3 "~" H 6650 1825 50  0001 C CNN
-	2    6650 1825
+P 4625 1925
+F 0 "Q1" H 4825 1850 50  0000 L CNN
+F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 4825 1950 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4825 2025 50  0001 C CNN
+F 3 "~" H 4625 1925 50  0001 C CNN
+	2    4625 1925
 	1    0    0    1   
 $EndComp
 Text GLabel 3675 6300 2    50   Input ~ 0
@@ -386,36 +386,36 @@ Text GLabel 3675 6600 2    50   Input ~ 0
 RTS
 Text GLabel 3675 6000 2    50   Input ~ 0
 DTR
-Text GLabel 6750 2250 3    50   Input ~ 0
+Text GLabel 4725 2350 3    50   Input ~ 0
 GPIO0
-Text GLabel 6750 800  1    50   Input ~ 0
+Text GLabel 4725 900  1    50   Input ~ 0
 EN
 Wire Wire Line
-	6750 800  6750 925 
-Text GLabel 6175 1825 0    50   Input ~ 0
+	4725 900  4725 1025
+Text GLabel 4150 1925 0    50   Input ~ 0
 RTS
-Text GLabel 6175 1125 0    50   Input ~ 0
+Text GLabel 4150 1225 0    50   Input ~ 0
 DTR
 Wire Wire Line
-	6175 1125 6250 1125
+	4150 1225 4225 1225
 Wire Wire Line
-	6450 1825 6350 1825
+	4425 1925 4325 1925
 Wire Wire Line
-	6750 1625 6250 1625
+	4725 1725 4225 1725
 Wire Wire Line
-	6250 1625 6250 1125
-Connection ~ 6250 1125
+	4225 1725 4225 1225
+Connection ~ 4225 1225
 Wire Wire Line
-	6250 1125 6450 1125
+	4225 1225 4425 1225
 Wire Wire Line
-	6750 1325 6350 1325
+	4725 1425 4325 1425
 Wire Wire Line
-	6350 1325 6350 1825
-Connection ~ 6350 1825
+	4325 1425 4325 1925
+Connection ~ 4325 1925
 Wire Wire Line
-	6350 1825 6175 1825
+	4325 1925 4150 1925
 Wire Wire Line
-	6750 2025 6750 2250
+	4725 2125 4725 2350
 Wire Wire Line
 	3225 6300 3675 6300
 Wire Wire Line
@@ -615,34 +615,34 @@ Text GLabel 6575 4575 0    50   Input ~ 0
 0V
 Wire Wire Line
 	6575 4575 6650 4575
-Text Notes 6950 2050 0    50   ~ 0
+Text Notes 4925 2150 0    50   ~ 0
 ON Semi FFB2222A
 Wire Wire Line
 	7300 5300 7475 5300
-Text GLabel 9450 1625 2    50   Input ~ 0
+Text GLabel 9450 1750 2    50   Input ~ 0
 LIPO_ANODE
-Text GLabel 9450 1500 2    50   Input ~ 0
+Text GLabel 9450 1625 2    50   Input ~ 0
 LIPO_CATHODE
 $Comp
 L Connector_Generic:Conn_01x01 J6
 U 1 1 5E063625
-P 9250 1625
-F 0 "J6" H 9350 1625 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 1475 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1625 50  0001 C CNN
-F 3 "~" H 9250 1625 50  0001 C CNN
-	1    9250 1625
+P 9250 1750
+F 0 "J6" H 9350 1750 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 1600 50  0001 C CNN
+F 2 "powerplay:cap_board_solder_mount" H 9250 1750 50  0001 C CNN
+F 3 "~" H 9250 1750 50  0001 C CNN
+	1    9250 1750
 	-1   0    0    1   
 $EndComp
 $Comp
 L Connector_Generic:Conn_01x01 J5
 U 1 1 5E063D72
-P 9250 1500
-F 0 "J5" H 9350 1500 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 1350 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1500 50  0001 C CNN
-F 3 "~" H 9250 1500 50  0001 C CNN
-	1    9250 1500
+P 9250 1625
+F 0 "J5" H 9350 1625 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 1475 50  0001 C CNN
+F 2 "powerplay:cap_board_solder_mount" H 9250 1625 50  0001 C CNN
+F 3 "~" H 9250 1625 50  0001 C CNN
+	1    9250 1625
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -667,28 +667,28 @@ F 3 "~" H 9250 1200 50  0001 C CNN
 	1    9250 1200
 	-1   0    0    1   
 $EndComp
-Text GLabel 9450 1750 2    50   Input ~ 0
+Text GLabel 9450 1875 2    50   Input ~ 0
 TOP_CAP
 $Comp
 L Connector_Generic:Conn_01x01 J8
 U 1 1 5E094155
-P 9250 2050
-F 0 "J8" H 9350 2050 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 1900 50  0001 C CNN
-F 2 "powerplay:cap_contact" H 9250 2050 50  0001 C CNN
-F 3 "~" H 9250 2050 50  0001 C CNN
-	1    9250 2050
+P 9250 2300
+F 0 "J8" H 9350 2300 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 2150 50  0001 C CNN
+F 2 "powerplay:cap_contact" H 9250 2300 50  0001 C CNN
+F 3 "~" H 9250 2300 50  0001 C CNN
+	1    9250 2300
 	-1   0    0    1   
 $EndComp
 $Comp
 L Connector_Generic:Conn_01x01 J7
 U 1 1 5E09415F
-P 9250 1750
-F 0 "J7" H 9350 1750 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 1600 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1750 50  0001 C CNN
-F 3 "~" H 9250 1750 50  0001 C CNN
-	1    9250 1750
+P 9250 1875
+F 0 "J7" H 9350 1875 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 1725 50  0001 C CNN
+F 2 "powerplay:cap_board_solder_mount" H 9250 1875 50  0001 C CNN
+F 3 "~" H 9250 1875 50  0001 C CNN
+	1    9250 1875
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -704,7 +704,7 @@ F 3 "~" H 9250 950 50  0001 C CNN
 $EndComp
 Text Notes 9125 875  0    50   ~ 0
 Solder connections on main board:
-Text Notes 9125 1425 0    50   ~ 0
+Text Notes 9125 1550 0    50   ~ 0
 Solder connections on cap boards:
 Text GLabel 9450 1200 2    50   Input ~ 0
 0V
@@ -712,60 +712,60 @@ Text GLabel 9450 1075 2    50   Input ~ 0
 LIPO_V
 Text GLabel 9450 950  2    50   Input ~ 0
 to_top_cap
-Text Notes 9125 1975 0    50   ~ 0
+Text Notes 9125 2225 0    50   ~ 0
 Contacts on cap boards:
-Text GLabel 9450 2175 2    50   Input ~ 0
+Text GLabel 9450 2425 2    50   Input ~ 0
 LIPO_ANODE
 $Comp
 L Connector_Generic:Conn_01x01 J9
 U 1 1 5E11106A
-P 9250 2175
-F 0 "J9" H 9350 2175 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 2025 50  0001 C CNN
-F 2 "powerplay:lipo_contact" H 9250 2175 50  0001 C CNN
-F 3 "~" H 9250 2175 50  0001 C CNN
-	1    9250 2175
+P 9250 2425
+F 0 "J9" H 9350 2425 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 2275 50  0001 C CNN
+F 2 "powerplay:lipo_contact" H 9250 2425 50  0001 C CNN
+F 3 "~" H 9250 2425 50  0001 C CNN
+	1    9250 2425
 	-1   0    0    1   
 $EndComp
-Text GLabel 9450 2050 2    50   Input ~ 0
-LIPO_ANODE
-Text GLabel 9450 2425 2    50   Input ~ 0
-TOP_CAP
 Text GLabel 9450 2300 2    50   Input ~ 0
+LIPO_ANODE
+Text GLabel 9450 2675 2    50   Input ~ 0
+TOP_CAP
+Text GLabel 9450 2550 2    50   Input ~ 0
 LIPO_CATHODE
 $Comp
 L Connector_Generic:Conn_01x01 J11
 U 1 1 5E11873D
-P 9250 2425
-F 0 "J11" H 9350 2425 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 2275 50  0001 C CNN
-F 2 "powerplay:cap_contact" H 9250 2425 50  0001 C CNN
-F 3 "~" H 9250 2425 50  0001 C CNN
-	1    9250 2425
+P 9250 2675
+F 0 "J11" H 9350 2675 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 2525 50  0001 C CNN
+F 2 "powerplay:cap_contact" H 9250 2675 50  0001 C CNN
+F 3 "~" H 9250 2675 50  0001 C CNN
+	1    9250 2675
 	-1   0    0    1   
 $EndComp
 $Comp
 L Connector_Generic:Conn_01x01 J10
 U 1 1 5E118743
-P 9250 2300
-F 0 "J10" H 9350 2300 50  0000 C CNN
-F 1 "Conn_01x01" H 9125 2150 50  0001 C CNN
-F 2 "powerplay:lipo_contact" H 9250 2300 50  0001 C CNN
-F 3 "~" H 9250 2300 50  0001 C CNN
-	1    9250 2300
+P 9250 2550
+F 0 "J10" H 9350 2550 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 2400 50  0001 C CNN
+F 2 "powerplay:lipo_contact" H 9250 2550 50  0001 C CNN
+F 3 "~" H 9250 2550 50  0001 C CNN
+	1    9250 2550
 	-1   0    0    1   
 $EndComp
-Text Notes 4450 1125 0    50   ~ 0
+Text Notes 4875 3875 0    50   ~ 0
 Actually MCP4017T-104E
 $Comp
 L double-oh:MCP4017-xxxx U3
 U 1 1 5E17759F
-P 4475 1475
-F 0 "U3" H 4500 2100 50  0000 C CNN
-F 1 "MCP4017-xxxx" H 4500 2000 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4525 1225 50  0001 L CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/22147a.pdf" H 4525 925 50  0001 L CNN
-	1    4475 1475
+P 4900 4225
+F 0 "U3" H 4925 4850 50  0000 C CNN
+F 1 "MCP4017-xxxx" H 4925 4750 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4950 3975 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/22147a.pdf" H 4950 3675 50  0001 L CNN
+	1    4900 4225
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -812,7 +812,7 @@ Wire Wire Line
 Wire Wire Line
 	1825 5500 2325 5500
 Connection ~ 8175 4100
-Text GLabel 4075 1475 0    50   Input ~ 0
+Text GLabel 4500 4225 0    50   Input ~ 0
 i2c_scl
 $Comp
 L Device:R_Small_US R6
@@ -1100,4 +1100,53 @@ Wire Wire Line
 Wire Wire Line
 	3275 4350 2800 4350
 Connection ~ 2800 4350
+Text Notes 1300 2650 0    50   ~ 0
+3.3VDC fixed power supply\n1.2-3.3VDC variable power supply
+Text Notes 1975 5375 0    50   ~ 0
+CP2105 USB-to-UART bridge\n
+Text GLabel 8350 950  0    50   Input ~ 0
+to_top_cap
+Text GLabel 8350 1250 0    50   Input ~ 0
+0V
+$Comp
+L Device:D_ALT D2
+U 1 1 5E31A252
+P 8525 1100
+F 0 "D2" V 8575 975 50  0000 R CNN
+F 1 "D_ALT" V 8525 975 50  0000 R CNN
+F 2 "Diode_SMD:D_0402_1005Metric" H 8525 1100 50  0001 C CNN
+F 3 "~" H 8525 1100 50  0001 C CNN
+	1    8525 1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8350 1250 8525 1250
+Wire Wire Line
+	8525 950  8350 950 
+Text Notes 8150 825  0    50   ~ 0
+Flyback diode
+$Comp
+L Connector_Generic:Conn_01x01 J12
+U 1 1 5E3380EF
+P 9250 1325
+F 0 "J12" H 9350 1325 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 1175 50  0001 C CNN
+F 2 "powerplay:main_board_solder_mount" H 9250 1325 50  0001 C CNN
+F 3 "~" H 9250 1325 50  0001 C CNN
+	1    9250 1325
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 J13
+U 1 1 5E34DCF2
+P 9250 2000
+F 0 "J13" H 9350 2000 50  0000 C CNN
+F 1 "Conn_01x01" H 9125 1850 50  0001 C CNN
+F 2 "powerplay:cap_board_solder_mount" H 9250 2000 50  0001 C CNN
+F 3 "~" H 9250 2000 50  0001 C CNN
+	1    9250 2000
+	-1   0    0    1   
+$EndComp
+NoConn ~ 9450 1325
+NoConn ~ 9450 2000
 $EndSCHEMATC
