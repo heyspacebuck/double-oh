@@ -438,7 +438,7 @@ U 1 1 5E0056A1
 P 925 6300
 F 0 "J1" H 1000 6825 50  0000 C CNN
 F 1 "USB_B_Micro" H 1000 6725 50  0000 C CNN
-F 2 "powerplay:microusb_PCB_socket" H 1075 6250 50  0001 C CNN
+F 2 "double-oh:microusb_PCB_socket" H 1075 6250 50  0001 C CNN
 F 3 "~" H 1075 6250 50  0001 C CNN
 	1    925  6300
 	1    0    0    -1  
@@ -629,7 +629,7 @@ U 1 1 5E063625
 P 9250 1750
 F 0 "J6" H 9350 1750 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1600 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1750 50  0001 C CNN
+F 2 "double-oh:cap_board_solder_mount" H 9250 1750 50  0001 C CNN
 F 3 "~" H 9250 1750 50  0001 C CNN
 	1    9250 1750
 	-1   0    0    1   
@@ -640,7 +640,7 @@ U 1 1 5E063D72
 P 9250 1625
 F 0 "J5" H 9350 1625 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1475 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1625 50  0001 C CNN
+F 2 "double-oh:cap_board_solder_mount" H 9250 1625 50  0001 C CNN
 F 3 "~" H 9250 1625 50  0001 C CNN
 	1    9250 1625
 	-1   0    0    1   
@@ -651,7 +651,7 @@ U 1 1 5E074F51
 P 9250 1075
 F 0 "J3" H 9350 1075 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 925 50  0001 C CNN
-F 2 "powerplay:main_board_solder_mount" H 9250 1075 50  0001 C CNN
+F 2 "double-oh:main_board_solder_mount" H 9250 1075 50  0001 C CNN
 F 3 "~" H 9250 1075 50  0001 C CNN
 	1    9250 1075
 	-1   0    0    1   
@@ -662,7 +662,7 @@ U 1 1 5E074F5B
 P 9250 1200
 F 0 "J4" H 9350 1200 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1050 50  0001 C CNN
-F 2 "powerplay:main_board_solder_mount" H 9250 1200 50  0001 C CNN
+F 2 "double-oh:main_board_solder_mount" H 9250 1200 50  0001 C CNN
 F 3 "~" H 9250 1200 50  0001 C CNN
 	1    9250 1200
 	-1   0    0    1   
@@ -675,7 +675,7 @@ U 1 1 5E094155
 P 9250 2300
 F 0 "J8" H 9350 2300 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 2150 50  0001 C CNN
-F 2 "powerplay:cap_contact" H 9250 2300 50  0001 C CNN
+F 2 "double-oh:cap_contact" H 9250 2300 50  0001 C CNN
 F 3 "~" H 9250 2300 50  0001 C CNN
 	1    9250 2300
 	-1   0    0    1   
@@ -686,7 +686,7 @@ U 1 1 5E09415F
 P 9250 1875
 F 0 "J7" H 9350 1875 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1725 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 1875 50  0001 C CNN
+F 2 "double-oh:cap_board_solder_mount" H 9250 1875 50  0001 C CNN
 F 3 "~" H 9250 1875 50  0001 C CNN
 	1    9250 1875
 	-1   0    0    1   
@@ -697,7 +697,7 @@ U 1 1 5E09C65E
 P 9250 950
 F 0 "J2" H 9350 950 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 800 50  0001 C CNN
-F 2 "powerplay:main_board_solder_mount" H 9250 950 50  0001 C CNN
+F 2 "double-oh:main_board_solder_mount" H 9250 950 50  0001 C CNN
 F 3 "~" H 9250 950 50  0001 C CNN
 	1    9250 950 
 	-1   0    0    1   
@@ -722,7 +722,7 @@ U 1 1 5E11106A
 P 9250 2425
 F 0 "J9" H 9350 2425 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 2275 50  0001 C CNN
-F 2 "powerplay:lipo_contact" H 9250 2425 50  0001 C CNN
+F 2 "double-oh:lipo_contact" H 9250 2425 50  0001 C CNN
 F 3 "~" H 9250 2425 50  0001 C CNN
 	1    9250 2425
 	-1   0    0    1   
@@ -739,7 +739,7 @@ U 1 1 5E11873D
 P 9250 2675
 F 0 "J11" H 9350 2675 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 2525 50  0001 C CNN
-F 2 "powerplay:cap_contact" H 9250 2675 50  0001 C CNN
+F 2 "double-oh:cap_contact" H 9250 2675 50  0001 C CNN
 F 3 "~" H 9250 2675 50  0001 C CNN
 	1    9250 2675
 	-1   0    0    1   
@@ -750,7 +750,7 @@ U 1 1 5E118743
 P 9250 2550
 F 0 "J10" H 9350 2550 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 2400 50  0001 C CNN
-F 2 "powerplay:lipo_contact" H 9250 2550 50  0001 C CNN
+F 2 "double-oh:lipo_contact" H 9250 2550 50  0001 C CNN
 F 3 "~" H 9250 2550 50  0001 C CNN
 	1    9250 2550
 	-1   0    0    1   
@@ -1131,7 +1131,7 @@ U 1 1 5E3380EF
 P 9250 1325
 F 0 "J12" H 9350 1325 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1175 50  0001 C CNN
-F 2 "powerplay:main_board_solder_mount" H 9250 1325 50  0001 C CNN
+F 2 "double-oh:main_board_solder_mount" H 9250 1325 50  0001 C CNN
 F 3 "~" H 9250 1325 50  0001 C CNN
 	1    9250 1325
 	-1   0    0    1   
@@ -1142,7 +1142,7 @@ U 1 1 5E34DCF2
 P 9250 2000
 F 0 "J13" H 9350 2000 50  0000 C CNN
 F 1 "Conn_01x01" H 9125 1850 50  0001 C CNN
-F 2 "powerplay:cap_board_solder_mount" H 9250 2000 50  0001 C CNN
+F 2 "double-oh:cap_board_solder_mount" H 9250 2000 50  0001 C CNN
 F 3 "~" H 9250 2000 50  0001 C CNN
 	1    9250 2000
 	-1   0    0    1   
