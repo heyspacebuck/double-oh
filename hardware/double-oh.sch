@@ -40,7 +40,7 @@ L Device:R_Small_US R2
 U 1 1 5CDD2A78
 P 1450 1625
 F 0 "R2" H 1350 1550 50  0000 R CNN
-F 1 "2kΩ" H 1350 1650 50  0000 R CNN
+F 1 "3kΩ" H 1350 1650 50  0000 R CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 1450 1625 50  0001 C CNN
 F 3 "~" H 1450 1625 50  0001 C CNN
 	1    1450 1625
@@ -196,9 +196,9 @@ Wire Wire Line
 	10500 4525 10500 4900
 Text GLabel 10500 5525 0    50   Input ~ 0
 batt_out
-Text GLabel 7300 5300 0    50   Input ~ 0
+Text GLabel 8075 5800 3    50   Input ~ 0
 i2c_sda
-Text GLabel 7975 5800 3    50   Input ~ 0
+Text GLabel 8275 5800 3    50   Input ~ 0
 i2c_scl
 Text GLabel 4500 4325 0    50   Input ~ 0
 i2c_sda
@@ -208,17 +208,6 @@ Text GLabel 4675 3825 0    50   Input ~ 0
 3.3V
 Wire Wire Line
 	4675 3825 4800 3825
-$Comp
-L double-oh:ESP8285 U4
-U 1 1 5D4DC172
-P 8325 4950
-F 0 "U4" H 8325 5000 50  0000 C CNN
-F 1 "ESP8285" H 8325 4900 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" H 8325 3650 50  0001 C CNN
-F 3 "" H 8425 3650 50  0001 C CNN
-	1    8325 4950
-	1    0    0    -1  
-$EndComp
 Text GLabel 7300 4600 0    50   Input ~ 0
 3.3V
 Wire Wire Line
@@ -233,7 +222,6 @@ Text GLabel 7300 4900 0    50   Input ~ 0
 3.3V
 Wire Wire Line
 	7300 4900 7475 4900
-NoConn ~ 8075 5800
 NoConn ~ 9175 4700
 NoConn ~ 9175 4800
 NoConn ~ 9175 4900
@@ -352,9 +340,9 @@ Text GLabel 9175 4600 2    50   Input ~ 0
 0V
 Text GLabel 6525 6300 2    50   Input ~ 0
 0V
-Text GLabel 8175 6100 3    50   Input ~ 0
+Text GLabel 8175 6175 3    50   Input ~ 0
 3.3V
-Text GLabel 8575 5800 3    50   Input ~ 0
+Text GLabel 8650 5925 2    50   Input ~ 0
 GPIO0
 $Comp
 L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
@@ -391,7 +379,7 @@ GPIO0
 Text GLabel 4725 900  1    50   Input ~ 0
 EN
 Wire Wire Line
-	4725 900  4725 1025
+	4725 900  4725 975 
 Text GLabel 4150 1925 0    50   Input ~ 0
 RTS
 Text GLabel 4150 1225 0    50   Input ~ 0
@@ -617,8 +605,6 @@ Wire Wire Line
 	6575 4575 6650 4575
 Text Notes 4925 2150 0    50   ~ 0
 ON Semi FFB2222A
-Wire Wire Line
-	7300 5300 7475 5300
 Text GLabel 9450 1750 2    50   Input ~ 0
 LIPO_ANODE
 Text GLabel 9450 1625 2    50   Input ~ 0
@@ -817,26 +803,18 @@ i2c_scl
 $Comp
 L Device:R_Small_US R6
 U 1 1 5E156774
-P 8275 5900
-F 0 "R6" V 8200 5950 50  0000 R CNN
-F 1 "1GΩ" V 8350 5975 50  0000 R CNN
-F 2 "Resistor_SMD:R_0201_0603Metric" H 8275 5900 50  0001 C CNN
-F 3 "~" H 8275 5900 50  0001 C CNN
-	1    8275 5900
+P 7475 5525
+F 0 "R6" V 7400 5575 50  0000 R CNN
+F 1 "1GΩ" V 7550 5600 50  0000 R CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 7475 5525 50  0001 C CNN
+F 3 "~" H 7475 5525 50  0001 C CNN
+	1    7475 5525
 	-1   0    0    -1  
 $EndComp
-Text Notes 8275 6275 0    50   ~ 0
+Text Notes 6825 6475 0    50   ~ 0
 DO NOT POPULATE THIS FOOTPRINT\nShorting the pads causes a factory reset
 Wire Notes Line
-	8450 6125 8450 5950
-Wire Notes Line
-	8450 5950 8375 5950
-Wire Wire Line
-	8175 5800 8175 6100
-Wire Wire Line
-	8275 6000 8375 6000
-Wire Wire Line
-	8375 6000 8375 5800
+	7275 5525 7350 5525
 $Comp
 L Device:Crystal_GND24 Y1
 U 1 1 5E17705A
@@ -1149,4 +1127,71 @@ F 3 "~" H 9250 2000 50  0001 C CNN
 $EndComp
 NoConn ~ 9450 1325
 NoConn ~ 9450 2000
+$Comp
+L double-oh:ESP8285 U4
+U 1 1 5D4DC172
+P 8325 4950
+F 0 "U4" H 8325 5000 50  0000 C CNN
+F 1 "ESP8285" H 8325 4900 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm" H 8325 3650 50  0001 C CNN
+F 3 "" H 8425 3650 50  0001 C CNN
+	1    8325 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7475 5300 7475 5425
+Wire Wire Line
+	7475 5625 7475 5800
+Wire Wire Line
+	7475 5800 7975 5800
+Wire Notes Line
+	7275 5525 7275 6300
+Text GLabel 8375 5800 3    50   Input ~ 0
+0V
+Wire Wire Line
+	8175 6175 8175 6150
+$Comp
+L Device:R_Small_US R12
+U 1 1 5E249777
+P 8475 6050
+F 0 "R12" V 8400 6100 50  0000 R CNN
+F 1 "20kΩ" V 8550 6125 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 8475 6050 50  0001 C CNN
+F 3 "~" H 8475 6050 50  0001 C CNN
+	1    8475 6050
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	8475 5950 8475 5800
+Wire Wire Line
+	8475 6150 8175 6150
+Connection ~ 8175 6150
+Wire Wire Line
+	8175 6150 8175 5800
+Wire Wire Line
+	8650 5925 8575 5925
+Wire Wire Line
+	8575 5925 8575 5800
+$Comp
+L Device:R_Small_US R13
+U 1 1 5E2690F2
+P 4950 975
+F 0 "R13" V 4875 1025 50  0000 R CNN
+F 1 "20kΩ" V 5025 1050 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 4950 975 50  0001 C CNN
+F 3 "~" H 4950 975 50  0001 C CNN
+	1    4950 975 
+	0    1    -1   0   
+$EndComp
+Text GLabel 5200 900  1    50   Input ~ 0
+3.3V
+Wire Wire Line
+	5200 900  5200 975 
+Wire Wire Line
+	5200 975  5050 975 
+Wire Wire Line
+	4850 975  4725 975 
+Connection ~ 4725 975 
+Wire Wire Line
+	4725 975  4725 1025
 $EndSCHEMATC
