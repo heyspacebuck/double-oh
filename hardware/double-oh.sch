@@ -1095,7 +1095,7 @@ F 1 "D_ALT" V 8525 975 50  0000 R CNN
 F 2 "Diode_SMD:D_0402_1005Metric" H 8525 1100 50  0001 C CNN
 F 3 "~" H 8525 1100 50  0001 C CNN
 	1    8525 1100
-	0    -1   -1   0   
+	0    1    1    0   
 $EndComp
 Wire Wire Line
 	8350 1250 8525 1250
