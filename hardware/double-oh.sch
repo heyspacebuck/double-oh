@@ -57,10 +57,10 @@ Wire Wire Line
 Wire Wire Line
 	1275 1050 1900 1050
 $Comp
-L power:GNDREF #PWR?
+L power:GNDREF #PWR01
 U 1 1 5CDD38B8
 P 1650 1750
-F 0 "#PWR?" H 1650 1500 50  0001 C CNN
+F 0 "#PWR01" H 1650 1500 50  0001 C CNN
 F 1 "GNDREF" H 1700 1525 50  0000 C CNN
 F 2 "" H 1650 1750 50  0001 C CNN
 F 3 "" H 1650 1750 50  0001 C CNN
@@ -209,10 +209,8 @@ Text GLabel 3675 6000 2    50   Input ~ 0
 DTR
 Text GLabel 4725 2350 3    50   Input ~ 0
 GPIO0
-Text GLabel 4725 900  1    50   Input ~ 0
+Text GLabel 4725 725  1    50   Input ~ 0
 EN
-Wire Wire Line
-	4725 900  4725 975 
 Text GLabel 4150 1925 0    50   Input ~ 0
 RTS
 Text GLabel 4150 1225 0    50   Input ~ 0
@@ -1037,4 +1035,25 @@ Wire Wire Line
 	1675 6350 1675 6300
 Wire Wire Line
 	1675 6300 1825 6300
+Wire Wire Line
+	4725 725  4725 975 
+$Comp
+L Device:C_Small C5
+U 1 1 5E1EA531
+P 4525 975
+F 0 "C5" V 4625 1025 50  0000 R CNN
+F 1 "0.1μF" V 4400 1075 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4525 975 50  0001 C CNN
+F 3 "~" H 4525 975 50  0001 C CNN
+	1    4525 975 
+	0    1    1    0   
+$EndComp
+Text GLabel 4300 900  1    50   Input ~ 0
+0V
+Wire Wire Line
+	4300 900  4300 975 
+Wire Wire Line
+	4300 975  4425 975 
+Wire Wire Line
+	4625 975  4725 975 
 $EndSCHEMATC
