@@ -71,11 +71,17 @@ void startEEPROM(bool doAReset=false) {
   eepromIp1 = prefs.getChar("IP1", 0x00);
   eepromIp2 = prefs.getChar("IP2", 0x23);
   prefs.getBytes("SSID", eepromSsid, 31);
-  // TODO: If eepromSsid is blank, use default
+  if (eepromSsid[0] == 0x00) {
+    strncpy(eepromSsid, deviceName, 31);
+  }
   prefs.getBytes("PSK", eepromPsk, 31);
-  // TODO: If eepromPsk is blank, use default
+  if (eepromPsk[0] == 0x00) {
+    strncpy(eepromPsk, deviceName, 31);
+  }
   prefs.getBytes("deviceName", eepromDeviceName, 16);
-  // TODO: If eepromDeviceName is blank, use default
+  if (eepromDeviceName[0] == 0x00) {
+    strncpy(eepromDeviceName, deviceName, 16);
+  }
 
   prefs.end();
 
@@ -109,9 +115,9 @@ void startSoftAP() {
 
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
-  WiFi.setHostname("doubleoh");
+  WiFi.setHostname(eepromDeviceName);
   WiFi.mode(WIFI_AP);
-  WiFi.softAP("doubleoh");
+  WiFi.softAP(eepromDeviceName);
 
   // Set up DNS server to redirect any page to the local IP address
   dnsServer.setErrorReplyCode(DNSReplyCode::ServerFailure);
@@ -123,7 +129,7 @@ void startSoftAP() {
 void startStation() {
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
-  WiFi.setHostname("doubleoh");
+  WiFi.setHostname(eepromDeviceName);
   // Only set the static IP address if the user has configured it
   if (eepromIp1 != 0x00 || eepromIp2 != 0x00) {
     IPAddress staticIP(192, 168, eepromIp1, eepromIp2);
