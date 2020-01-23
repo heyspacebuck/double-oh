@@ -140,32 +140,14 @@ Wire Wire Line
 	2600 1750 3100 1750
 Wire Wire Line
 	2600 1300 3100 1300
-Text GLabel 5500 4025 2    50   Input ~ 0
-digipot1
-Text GLabel 5500 4125 2    50   Input ~ 0
-digipot2
-Wire Wire Line
-	5300 4025 5500 4025
-Wire Wire Line
-	5500 4125 5300 4125
-Text GLabel 4675 4525 0    50   Input ~ 0
-0V
 Wire Wire Line
 	10300 4275 10300 4650
 Text GLabel 10300 5275 0    50   Input ~ 0
 batt_out
-Text GLabel 4500 4325 0    50   Input ~ 0
-i2c_sda
-Text GLabel 4675 3825 0    50   Input ~ 0
-3.3V
-Wire Wire Line
-	4675 3825 4800 3825
 Wire Wire Line
 	3100 1100 3100 1300
 Wire Wire Line
 	3100 1875 3100 1750
-Wire Wire Line
-	4675 4525 4800 4525
 $Comp
 L Device:R_Small_US R8
 U 1 1 5D570C7A
@@ -547,19 +529,6 @@ F 3 "~" H 9700 2425 50  0001 C CNN
 	1    9700 2425
 	-1   0    0    1   
 $EndComp
-Text Notes 4875 3875 0    50   ~ 0
-Actually MCP4017T-104E
-$Comp
-L double-oh:MCP4017-xxxx U3
-U 1 1 5E17759F
-P 4900 4225
-F 0 "U3" H 4925 4850 50  0000 C CNN
-F 1 "MCP4017-xxxx" H 4925 4750 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4950 3975 50  0001 L CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/22147a.pdf" H 4950 3675 50  0001 L CNN
-	1    4900 4225
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10300 5050 10300 5275
 Text GLabel 10300 4275 0    50   Input ~ 0
@@ -601,8 +570,6 @@ Wire Wire Line
 Connection ~ 9475 4850
 Wire Wire Line
 	9475 4850 8975 4850
-Text GLabel 4500 4225 0    50   Input ~ 0
-i2c_scl
 Text Notes 7050 5000 1    50   ~ 0
 DO NOT POPULATE THIS FOOTPRINT\nShorting the pads causes a factory reset
 Wire Notes Line
@@ -693,16 +660,12 @@ L Device:R_Small_US R11
 U 1 1 5E20F539
 P 2950 3950
 F 0 "R11" V 2800 3950 50  0000 C CNN
-F 1 "100 kΩ" V 2875 3950 50  0000 C CNN
+F 1 "300 kΩ" V 2875 3950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 2950 3950 50  0001 C CNN
 F 3 "~" H 2950 3950 50  0001 C CNN
 	1    2950 3950
 	0    -1   1    0   
 $EndComp
-Text GLabel 2800 4275 2    50   Input ~ 0
-digipot1
-Text GLabel 2800 4150 2    50   Input ~ 0
-digipot2
 Connection ~ 2300 4350
 $Comp
 L Device:L_Small L3
@@ -780,17 +743,6 @@ Text GLabel 3125 3150 2    50   Input ~ 0
 0V
 Wire Wire Line
 	3125 3150 3025 3150
-Wire Wire Line
-	2750 3950 2800 3950
-Wire Wire Line
-	2800 4150 2800 3950
-Connection ~ 2800 3950
-Wire Wire Line
-	2800 3950 2850 3950
-Wire Wire Line
-	2800 4275 2800 4350
-Wire Wire Line
-	2300 4350 2800 4350
 $Comp
 L Device:C_Small C10
 U 1 1 5E287200
@@ -830,9 +782,6 @@ Wire Wire Line
 	3275 3750 3375 3750
 Wire Wire Line
 	3275 4250 3275 4350
-Wire Wire Line
-	3275 4350 2800 4350
-Connection ~ 2800 4350
 Text Notes 1300 2650 0    50   ~ 0
 3.3VDC fixed power supply\n1.2-3.3VDC variable power supply
 Text Notes 1975 5375 0    50   ~ 0
@@ -1007,10 +956,6 @@ Wire Wire Line
 	7325 4050 7325 4125
 Text GLabel 8975 3750 2    50   Input ~ 0
 GPIO4
-Text GLabel 8975 5050 2    50   Input ~ 0
-i2c_scl
-Text GLabel 8975 5150 2    50   Input ~ 0
-i2c_sda
 Text GLabel 8975 5350 2    50   Input ~ 0
 EN
 Text GLabel 8975 5850 2    50   Input ~ 0
@@ -1056,4 +1001,50 @@ Wire Wire Line
 	4300 975  4425 975 
 Wire Wire Line
 	4625 975  4725 975 
+Wire Wire Line
+	2750 3950 2800 3950
+Wire Wire Line
+	2300 4350 2800 4350
+$Comp
+L Device:R_Small_US R6
+U 1 1 5E2A3E0B
+P 2800 4150
+F 0 "R6" V 2950 4150 50  0000 C CNN
+F 1 "120 kΩ" V 2875 4150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 2800 4150 50  0001 C CNN
+F 3 "~" H 2800 4150 50  0001 C CNN
+	1    2800 4150
+	-1   0    0    -1  
+$EndComp
+Connection ~ 2800 3950
+Wire Wire Line
+	2800 3950 2850 3950
+Wire Wire Line
+	2800 4250 2800 4350
+Connection ~ 2800 4350
+Wire Wire Line
+	2800 4350 3275 4350
+Wire Wire Line
+	2800 4050 2800 3950
+Wire Wire Line
+	2800 3950 2975 4125
+Text GLabel 2975 4125 2    50   Input ~ 0
+DAC
+Text GLabel 9400 5050 2    50   Input ~ 0
+DAC
+$Comp
+L Device:R_Small_US R12
+U 1 1 5E2FE184
+P 9175 5050
+F 0 "R12" V 9325 5050 50  0000 C CNN
+F 1 "120 kΩ" V 9250 5050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9175 5050 50  0001 C CNN
+F 3 "~" H 9175 5050 50  0001 C CNN
+	1    9175 5050
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	9075 5050 8975 5050
+Wire Wire Line
+	9275 5050 9400 5050
 $EndSCHEMATC
