@@ -2,7 +2,7 @@
 
   (general
     (thickness 0.6)
-    (drawings 62)
+    (drawings 61)
     (tracks 450)
     (zones 0)
     (modules 47)
@@ -1873,7 +1873,6 @@
   (gr_arc (start 146.8 101.7) (end 146.8 102.5) (angle 90) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 123.65 103.3) (end 124.175 103.3) (layer Edge.Cuts) (width 0.05) (tstamp 5E032275))
   (gr_circle (center 123.15 103.7) (end 123.25 103.7) (layer F.SilkS) (width 0.2) (tstamp 5E1727C3))
-  (gr_circle (center 111 104.2) (end 111.1 104.2) (layer F.SilkS) (width 0.2) (tstamp 5E172983))
   (gr_text "Double-Oh v2.1 // Jan. 2020" (at 119.2 108) (layer B.SilkS)
     (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror))
   )
