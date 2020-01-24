@@ -1041,15 +1041,9 @@ Connection ~ 7225 1500
 Wire Wire Line
 	7225 1500 7225 1550
 Text GLabel 7575 1500 2    50   Input ~ 0
-GPIO21
-Text GLabel 9225 4375 2    50   Input ~ 0
-GPIO21
-Wire Wire Line
-	9225 4375 9100 4375
-Wire Wire Line
-	9100 4375 9100 4750
-Wire Wire Line
-	9100 4750 8975 4750
+GPIO26
+Text GLabel 9400 5150 2    50   Input ~ 0
+GPIO26
 $Comp
 L Device:Q_PMOS_GSD Q3
 U 1 1 5E32DC15
@@ -1111,4 +1105,6 @@ USB_VIN
 Wire Wire Line
 	1075 2625 1275 2625
 Connection ~ 1275 2625
+Wire Wire Line
+	9400 5150 8975 5150
 $EndSCHEMATC
