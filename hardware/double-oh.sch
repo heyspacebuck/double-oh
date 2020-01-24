@@ -674,7 +674,7 @@ F 3 "~" H 2925 3150 50  0001 C CNN
 	1    2925 3150
 	0    1    1    0   
 $EndComp
-Text GLabel 1950 2825 0    50   Input ~ 0
+Text GLabel 1775 2325 0    50   Input ~ 0
 LIPO_V
 Wire Wire Line
 	1950 2825 1950 3150
@@ -687,10 +687,8 @@ Connection ~ 1650 3150
 Wire Wire Line
 	2825 3150 2750 3150
 Connection ~ 2750 3150
-Text GLabel 1300 3150 0    50   Input ~ 0
+Text GLabel 1075 3150 0    50   Input ~ 0
 0V
-Wire Wire Line
-	1300 3150 1375 3150
 Text GLabel 3125 3150 2    50   Input ~ 0
 0V
 Wire Wire Line
@@ -734,7 +732,7 @@ Wire Wire Line
 	3275 3750 3375 3750
 Wire Wire Line
 	3275 4250 3275 4350
-Text Notes 1300 2650 0    50   ~ 0
+Text Notes 2300 2700 0    50   ~ 0
 3.3VDC fixed power supply\n1.2-3.3VDC variable power supply
 Text Notes 1975 5375 0    50   ~ 0
 CP2104 USB-to-UART bridge\n
@@ -1052,4 +1050,65 @@ Wire Wire Line
 	9100 4375 9100 4750
 Wire Wire Line
 	9100 4750 8975 4750
+$Comp
+L Device:Q_PMOS_GSD Q3
+U 1 1 5E32DC15
+P 1850 2625
+F 0 "Q3" H 2055 2671 50  0000 L CNN
+F 1 "Q_PMOS_GSD" H 2055 2580 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 2050 2725 50  0001 C CNN
+F 3 "~" H 1850 2625 50  0001 C CNN
+	1    1850 2625
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky D3
+U 1 1 5E32F864
+P 1800 2825
+F 0 "D3" H 1800 2609 50  0000 C CNN
+F 1 "D_Schottky" H 1800 2700 50  0000 C CNN
+F 2 "Diode_SMD:D_0402_1005Metric" H 1800 2825 50  0001 C CNN
+F 3 "~" H 1800 2825 50  0001 C CNN
+	1    1800 2825
+	-1   0    0    1   
+$EndComp
+Connection ~ 1950 2825
+Wire Wire Line
+	1775 2325 1950 2325
+Wire Wire Line
+	1950 2325 1950 2425
+Wire Wire Line
+	1650 2825 1575 2825
+Wire Wire Line
+	1575 2825 1575 2625
+Wire Wire Line
+	1575 2625 1650 2625
+Wire Wire Line
+	1075 3150 1275 3150
+$Comp
+L Device:R_Small_US R14
+U 1 1 5E363F6E
+P 1275 2925
+F 0 "R14" V 1125 2925 50  0000 C CNN
+F 1 "100 kΩ" V 1200 2925 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 1275 2925 50  0001 C CNN
+F 3 "~" H 1275 2925 50  0001 C CNN
+	1    1275 2925
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	1275 3025 1275 3150
+Connection ~ 1275 3150
+Wire Wire Line
+	1275 3150 1375 3150
+Wire Wire Line
+	1275 2825 1275 2625
+Wire Wire Line
+	1275 2625 1575 2625
+Connection ~ 1575 2625
+Text GLabel 1075 2625 0    50   Input ~ 0
+USB_VIN
+Wire Wire Line
+	1075 2625 1275 2625
+Connection ~ 1275 2625
 $EndSCHEMATC
