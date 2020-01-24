@@ -1,13 +1,11 @@
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
+#include <WebServer.h>
+#include <ESPmDNS.h>
 #include <DNSServer.h>
 #include <Wire.h>
-
-// From the /lib/ folder
-#include <ESP_EEPROM.h>
+#include <Preferences.h>
 
 // From the /include/ folder
 #include <mostOfHead.h>
@@ -28,62 +26,64 @@ IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(8, 8, 8, 8);
 
+// Preferences (ESP32 EEPROM library) initialization
+Preferences prefs;
+
 char deviceName[16] = "doubleoh"; // Useful for finding device on router page
 
 DNSServer dnsServer;
 #define DNS_PORT 53
 
-ESP8266WebServer server(80);
+WebServer server(80);
 
 // Number of connection attempts to make before reverting to AP mode
 int connectionAttempts = 0;
 #define maxConnectionAttempts 60
 
 // EEPROM constants and variables
-#define eepromSize 83
-// Byte 0: Wi-Fi connection type byte
+// Wi-Fi connection type byte
 byte eepromWifiType;
-#define eepromWifiTypePos 0
-// Bytes 1, 2: Station fixed IP
+// Station fixed IP
 byte eepromIp1, eepromIp2;
-#define eepromIp1Pos 1
-#define eepromIp2Pos 2
-// Bytes 3-34: SSID String
+// SSID String
 char eepromSsid[31];
-#define eepromSsidPos 3
-// Bytes 35-66: PSK String
+// PSK String
 char eepromPsk[31];
-#define eepromPskPos 35
-// Bytes 67-82: Soft AP host name String
+// Soft AP host name String
 char eepromDeviceName[16];
-#define eepromDeviceNamePos 67
 
 void startEEPROM(bool doAReset=false) {
-  // Turn on EEPROM, read data
-  EEPROM.begin(eepromSize);
+  // Turn on EEPROM, read+write mode
+  prefs.begin("doubleoh", false);
 
-  // If this is the first use of the EEPROM, initialize with default values
-  if (EEPROM.percentUsed() == 0 || doAReset) {
-    EEPROM.put(eepromWifiTypePos, 0x00);
-    EEPROM.put(eepromIp1Pos, 0x00);
-    EEPROM.put(eepromIp2Pos, 0x23);
-    EEPROM.put(eepromSsidPos, deviceName);
-    EEPROM.put(eepromPskPos, deviceName);
-    EEPROM.put(eepromDeviceNamePos, deviceName);
-    Serial.println(EEPROM.commit() ? "New data written to EEPROM" : "EEPROM write error");
+  // If factory-reset is called, remove entries
+  if (doAReset) {
+    prefs.remove("wifiType");
+    prefs.remove("IP1");
+    prefs.remove("IP2");
+    prefs.remove("SSID");
+    prefs.remove("PSK");
+    prefs.remove("deviceName");
   }
 
-  // Load EEPROM byte 0 (Wi-Fi connection type byte)
-  EEPROM.get(eepromWifiTypePos, eepromWifiType);
-  // Load EEPROM bytes 1-2 (Station fixed IP)
-  EEPROM.get(eepromIp1Pos, eepromIp1);
-  EEPROM.get(eepromIp2Pos, eepromIp2);
-  // Load EEPROM bytes 3-34 (SSID)
-  EEPROM.get(eepromSsidPos, eepromSsid);
-  // Load EEPROM bytes 35-66 (PSK)
-  EEPROM.get(eepromPskPos, eepromPsk);
-  // Load EEPROM bytes 67-82 (Device name and soft AP host name)
-  EEPROM.get(eepromDeviceNamePos, eepromDeviceName);
+  // Read values; if no value given, use the defaults
+  eepromWifiType = prefs.getChar("wifiType", 0x00);
+  eepromIp1 = prefs.getChar("IP1", 0x00);
+  eepromIp2 = prefs.getChar("IP2", 0x23);
+  prefs.getBytes("SSID", eepromSsid, 31);
+  if (eepromSsid[0] == 0x00) {
+    strncpy(eepromSsid, deviceName, 31);
+  }
+  prefs.getBytes("PSK", eepromPsk, 31);
+  if (eepromPsk[0] == 0x00) {
+    strncpy(eepromPsk, deviceName, 31);
+  }
+  prefs.getBytes("deviceName", eepromDeviceName, 16);
+  if (eepromDeviceName[0] == 0x00) {
+    strncpy(eepromDeviceName, deviceName, 16);
+  }
+
+  prefs.end();
 
   Serial.print("Wifi type: \"");
   Serial.print(eepromWifiType, HEX);
@@ -115,7 +115,7 @@ void startSoftAP() {
 
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
-  WiFi.hostname(eepromDeviceName);
+  WiFi.setHostname(eepromDeviceName);
   WiFi.mode(WIFI_AP);
   WiFi.softAP(eepromDeviceName);
 
@@ -129,7 +129,7 @@ void startSoftAP() {
 void startStation() {
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
-  WiFi.hostname(eepromDeviceName);
+  WiFi.setHostname(eepromDeviceName);
   // Only set the static IP address if the user has configured it
   if (eepromIp1 != 0x00 || eepromIp2 != 0x00) {
     IPAddress staticIP(192, 168, eepromIp1, eepromIp2);
@@ -219,31 +219,40 @@ void handleSettingsPost() {
   (newIpAddr2 != eepromIp2) || 
   (newDeviceName != eepromDeviceName)) {
     changed = true;
+
+    prefs.begin("doubleoh", false);
+
     eepromWifiType = newNetworkType;
-    EEPROM.put(eepromWifiTypePos, newNetworkType);
+    prefs.putChar("wifiType", newNetworkType);
     eepromIp1 = newIpAddr1;
-    EEPROM.put(eepromIp1Pos, newIpAddr1);
+    prefs.putChar("IP1", newIpAddr1);
     eepromIp2 = newIpAddr2;
-    EEPROM.put(eepromIp2Pos, newIpAddr2);
+    prefs.putChar("IP2", newIpAddr2);
     // eepromDeviceName = newDeviceName;
     strncpy(eepromDeviceName, newDeviceName, 16);
-    EEPROM.put(eepromDeviceNamePos, newDeviceName);
+    prefs.putBytes("deviceName", newDeviceName, 16);
+
+    prefs.end();
   }
 
   // If either SSID or PSK changed, update both PSK and SSID
   if ((newSsid != eepromSsid) ||
   (newPsk != eepromPsk && newPsk[0] != 0x00 && newPsk != NULL)) {
     changed = true;
+
+    prefs.begin("doubleoh", false);
+
     // eepromSsid = newSsid;
     strncpy(eepromSsid, newSsid, 31);
-    EEPROM.put(eepromSsidPos, newSsid);
+    prefs.putBytes("SSID", newSsid, 31);
     // eepromPsk = newPsk;
     strncpy(eepromPsk, newPsk, 31);
-    EEPROM.put(eepromPskPos, newPsk);
+    prefs.putBytes("PSK", newPsk, 31);
+
+    prefs.end();
   }
 
   if (changed) {
-    Serial.println(EEPROM.commit()?"New data written" :"EEPROM error");
     Serial.print("Wifi type: \"0x");
     Serial.print(eepromWifiType, HEX);
     Serial.println("\",");
@@ -306,8 +315,8 @@ void setup(void){
   }
   digitalWrite(FACTORY_RESET_2, HIGH);
 
-  // Begin serial link at 9600 baud (default rate in PlatformIO)
-  Serial.begin(9600);
+  // Begin serial link at 115200 baud
+  Serial.begin(115200);
   
   // Turn on EEPROM, read data
   startEEPROM(factoryReset);
