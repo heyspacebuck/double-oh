@@ -273,6 +273,11 @@
       (net 20 "Net-(AE1-Pad2)"))
     (pad 1 smd rect (at 0 1.7) (size 1.6 0.8) (layers F.Cu F.Paste F.Mask)
       (net 1 "Net-(AE1-Pad1)"))
+    (model ${KISYS3DMOD}/Capacitor_SMD.3dshapes/C_1206_3216Metric.step
+      (offset (xyz 0 0.1 0))
+      (scale (xyz 1.3 1 0.7))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module Resistor_SMD:R_0402_1005Metric (layer F.Cu) (tedit 5B301BBD) (tstamp 5E29BDC3)
