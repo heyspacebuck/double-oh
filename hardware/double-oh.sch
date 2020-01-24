@@ -198,20 +198,16 @@ RTS
 Text GLabel 4150 1225 0    50   Input ~ 0
 DTR
 Wire Wire Line
-	4150 1225 4225 1225
+	4150 1225 4325 1225
 Wire Wire Line
 	4425 1925 4325 1925
 Wire Wire Line
-	4725 1725 4225 1725
+	4725 1725 4325 1225
+Connection ~ 4325 1225
 Wire Wire Line
-	4225 1725 4225 1225
-Connection ~ 4225 1225
+	4325 1225 4425 1225
 Wire Wire Line
-	4225 1225 4425 1225
-Wire Wire Line
-	4725 1425 4325 1425
-Wire Wire Line
-	4325 1425 4325 1925
+	4725 1425 4325 1925
 Connection ~ 4325 1925
 Wire Wire Line
 	4325 1925 4150 1925
@@ -241,11 +237,6 @@ Wire Wire Line
 NoConn ~ 1225 6500
 Wire Wire Line
 	1825 5800 1825 5500
-Text GLabel 1725 5500 0    50   Input ~ 0
-3.3V
-Wire Wire Line
-	1725 5500 1825 5500
-Connection ~ 1825 5500
 $Comp
 L Device:C_Small C3
 U 1 1 5E037330
@@ -288,45 +279,12 @@ Wire Wire Line
 	4450 5775 4450 6225
 Text GLabel 4275 6975 2    50   Input ~ 0
 0V
-$Comp
-L Device:R_Small_US R1
-U 1 1 5E03CE80
-P 1400 6100
-F 0 "R1" V 1325 6100 50  0000 C CNN
-F 1 "24kΩ" V 1250 6100 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 1400 6100 50  0001 C CNN
-F 3 "~" H 1400 6100 50  0001 C CNN
-	1    1400 6100
-	0    -1   1    0   
-$EndComp
-$Comp
-L Device:R_Small_US R3
-U 1 1 5E03EDAD
-P 1575 5825
-F 0 "R3" V 1500 5825 50  0000 C CNN
-F 1 "47kΩ" V 1425 5825 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 1575 5825 50  0001 C CNN
-F 3 "~" H 1575 5825 50  0001 C CNN
-	1    1575 5825
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	1225 6100 1250 6100
-Wire Wire Line
-	1500 6100 1575 6100
 Wire Wire Line
 	1575 6100 1575 6000
 Wire Wire Line
 	1575 6000 1825 6000
-Connection ~ 1575 6000
-Wire Wire Line
-	1575 6000 1575 5925
-Text GLabel 1450 5675 0    50   Input ~ 0
-0V
-Wire Wire Line
-	1450 5675 1575 5675
-Wire Wire Line
-	1575 5675 1575 5725
 Text GLabel 2325 7475 0    50   Input ~ 0
 0V
 Wire Wire Line
@@ -339,15 +297,9 @@ Wire Wire Line
 Text GLabel 925  6700 3    50   Input ~ 0
 0V
 NoConn ~ 825  6700
-Text GLabel 1125 5600 0    50   Input ~ 0
+Text GLabel 1125 5500 0    50   Input ~ 0
 USB_VIN
-Wire Wire Line
-	1125 5600 1250 5600
-Wire Wire Line
-	1250 5600 1250 6100
 Connection ~ 1250 6100
-Wire Wire Line
-	1250 6100 1300 6100
 $Comp
 L Device:Antenna_Chip AE1
 U 1 1 5E0A67E0
@@ -864,11 +816,6 @@ F 3 "https://www.silabs.com/documents/public/data-sheets/cp2104.pdf" H 1975 7650
 	1    2525 6400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1825 5500 2325 5500
-Wire Wire Line
-	2325 5500 2525 5500
-Connection ~ 2325 5500
 Text GLabel 3675 6200 2    50   Input ~ 0
 RX_ESP
 Wire Wire Line
@@ -967,19 +914,11 @@ Wire Notes Line
 Wire Wire Line
 	1225 6300 1425 6300
 Wire Wire Line
-	1425 6300 1425 6400
+	1425 6300 1475 6400
 Wire Wire Line
-	1425 6400 1825 6400
+	1475 6400 1825 6400
 Wire Wire Line
-	1225 6400 1325 6400
-Wire Wire Line
-	1325 6400 1325 6350
-Wire Wire Line
-	1325 6350 1675 6350
-Wire Wire Line
-	1675 6350 1675 6300
-Wire Wire Line
-	1675 6300 1825 6300
+	1425 6400 1475 6300
 Wire Wire Line
 	4725 725  4725 975 
 $Comp
@@ -1047,4 +986,70 @@ Wire Wire Line
 	9075 5050 8975 5050
 Wire Wire Line
 	9275 5050 9400 5050
+Wire Wire Line
+	1225 6400 1425 6400
+Wire Wire Line
+	1475 6300 1825 6300
+Wire Wire Line
+	1250 5500 1125 5500
+Wire Wire Line
+	1250 5500 1250 6100
+Wire Wire Line
+	1250 5500 1825 5500
+Connection ~ 1250 5500
+Wire Wire Line
+	2325 5500 2325 5425
+Wire Wire Line
+	2325 5425 2525 5425
+Wire Wire Line
+	2525 5425 2525 5500
+$Comp
+L Device:R_Small_US R1
+U 1 1 5E03CE80
+P 7225 1300
+F 0 "R1" V 7150 1300 50  0000 C CNN
+F 1 "100kΩ" V 7075 1300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 7225 1300 50  0001 C CNN
+F 3 "~" H 7225 1300 50  0001 C CNN
+	1    7225 1300
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R3
+U 1 1 5E03EDAD
+P 7225 1650
+F 0 "R3" H 7150 1650 50  0000 C CNN
+F 1 "100kΩ" V 7075 1650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 7225 1650 50  0001 C CNN
+F 3 "~" H 7225 1650 50  0001 C CNN
+	1    7225 1650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 6100 1575 6100
+Text GLabel 7225 1050 1    50   Input ~ 0
+LIPO_V
+Wire Wire Line
+	7225 1050 7225 1200
+Wire Wire Line
+	7225 1400 7225 1500
+Text GLabel 7225 1875 3    50   Input ~ 0
+0V
+Wire Wire Line
+	7225 1875 7225 1750
+Wire Wire Line
+	7225 1500 7575 1500
+Connection ~ 7225 1500
+Wire Wire Line
+	7225 1500 7225 1550
+Text GLabel 7575 1500 2    50   Input ~ 0
+GPIO21
+Text GLabel 9225 4375 2    50   Input ~ 0
+GPIO21
+Wire Wire Line
+	9225 4375 9100 4375
+Wire Wire Line
+	9100 4375 9100 4750
+Wire Wire Line
+	9100 4750 8975 4750
 $EndSCHEMATC
