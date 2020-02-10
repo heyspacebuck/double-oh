@@ -6,6 +6,7 @@
 #include <DNSServer.h>
 #include <Wire.h>
 #include <Preferences.h>
+#include <SPIFFS.h>
 
 // From the /include/ folder
 #include <mostOfHead.h>
@@ -168,7 +169,8 @@ void startStation() {
 }
 
 String scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char deviceName[16]) {
-  String message = "<script>";
+  File file = SPIFFS.open("/esp32.js", FILE_WRITE);
+  String message = "";
   message += "const networkType = ";
   message += (uint8_t)networkType;
   message += ";\n";
@@ -184,17 +186,16 @@ String scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char devi
   message += "const deviceName = \"";
   message += deviceName;
   message += "\";\n";
-  message += "</script>";
-  return message;
+  file.print(message);
+  file.close();
 }
 
 void handleRoot() {
   String page = "";
-  page += mostOfHead;
-  page += scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
-  page += "\n</head>";
-  page += pageBody;
-  server.send(200, "text/html", page);
+  scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
+  File file = SPIFFS.open("/index.html", FILE_READ);
+  server.streamFile(file, "text/html");
+  file.close();
 }
 
 void handleSettingsPost() {
@@ -317,6 +318,9 @@ void setup(void){
 
   // Begin serial link at 115200 baud
   Serial.begin(115200);
+
+  // Turn on file system
+  SPIFFS.begin();
   
   // Turn on EEPROM, read data
   startEEPROM(factoryReset);
@@ -344,9 +348,20 @@ void setup(void){
     ESP.restart();
   });
 
+  server.on("/configure.js", HTTP_GET, []() {
+    File file = SPIFFS.open("/configure.js", "r");
+    server.streamFile(file, "text/javascript");
+    file.close();
+  });
+  server.on("/esp32.js", HTTP_GET, []() {
+    File file = SPIFFS.open("/esp32.js", "r");
+    server.streamFile(file, "text/javascript");
+    file.close();
+  });
+
   // On any other type of request, serve the control panel
-  server.onNotFound(handleRoot);
-  // server.onNotFound(handleNotFound);
+  // server.onNotFound(handleRoot);
+  server.onNotFound(handleNotFound);
 
   server.begin();
   Serial.println("HTTP server started");

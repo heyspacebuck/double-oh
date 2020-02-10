@@ -1,6 +1,15 @@
-#include <Arduino.h>
-
-static const char* pageBody PROGMEM = R"rawliteral(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Double-Oh control panel</title>
+  <style>
+#ip-form .number {
+  width: 3em;
+}
+  </style>
+  <script type="text/javascript" src="esp32.js"></script>
+</head>
 <body>
   <h1 id="outputTitle">Power Output</h1>
   <div id="outputTab" style="display: none">
@@ -46,49 +55,11 @@ static const char* pageBody PROGMEM = R"rawliteral(
   <h1 id="dangerTitle">Danger Zone</h1>
   <div id="dangerTab" style="display: none">
     <p>In normal operation, the Double-Oh is limited to a max output of 1.5 VDC. In this section you can change the max output voltage.</p>
-    <input type="number" min="1.0" max="3.3" step="0.1"/>
+    <input type="number" min="1.0" max="3.6" step="0.1"/>
   </div>
   <form action="/reset" method="POST">
     <button>Software restart</button>
   </form>
-  <script type="text/javascript">
-document.getElementById("customDeviceName").value = deviceName;
-document.getElementById("ipAddr1").value = ip1;
-document.getElementById("ipAddr2").value = ip2;
-document.getElementById("networkSSID").value = ssid;
-
-$outputTitle = document.getElementById("outputTitle");
-$outputTab = document.getElementById("outputTab");
-$settingsTitle = document.getElementById("settingsTitle");
-$settingsTab = document.getElementById("settingsTab");
-$dangerTitle = document.getElementById("dangerTitle");
-$dangerTab = document.getElementById("dangerTab");
-
-$outputTitle.onclick = e => {
-  $outputTab.style = "display: block;";
-  $settingsTab.style = "display: none;";
-  $dangerTab.style = "display: none;";
-};
-$settingsTitle.onclick = e => {
-  $outputTab.style = "display: none;";
-  $settingsTab.style = "display: block;";
-  $dangerTab.style = "display: none;";
-};
-$dangerTitle.onclick = e => {
-  $outputTab.style = "display: none;";
-  $settingsTab.style = "display: none;";
-  $dangerTab.style = "display: block;";
-};
-
-$descNetwork = document.getElementById("descNetwork");
-if (networkType === 0) {
-  document.getElementById("networkType1").checked = true;
-  $descNetwork.innerHTML = `Your device is currently set up as an Access Point. Connect to the Wi-Fi network named <i>${deviceName}</i> and open any web browser to see the control panel.`;
-} else {
-  document.getElementById("networkType2").checked = true;
-  $descNetwork.innerHTML = `Your device is currently set up as a Station. It will attempt to connect to the network named <i>${ssid}</i>. You can access the control panel from the URL <i>${deviceName}.local</i> or <i>192.168.${ip1}.${ip2}</i>.`;
-}
-</script>
+  <script type="text/javascript" src="configure.js"></script>
 </body>
 </html>
-)rawliteral";
