@@ -9,8 +9,7 @@
 #include <SPIFFS.h>
 
 // From the /include/ folder
-#include <mostOfHead.h>
-#include <pageBody.h>
+#include "softAP.hpp"
 
 // Hardware pins
 // For the WL model: the output is GPIO15(!!!), I2C SDA is GPIO16, I2C SCL is GPIO14, factory reset is GPIO12 and GPIO13
@@ -111,22 +110,6 @@ void startEEPROM(bool doAReset=false) {
   Serial.println("\"");
 }
 
-void startSoftAP() {
-  IPAddress subnet(255, 255, 255, 0);
-
-  // Device name, SSID, PSK, static IP address were retrieved from EEPROM
-  WiFi.disconnect();
-  WiFi.setHostname(eepromDeviceName);
-  WiFi.mode(WIFI_AP);
-  WiFi.softAP(eepromDeviceName);
-
-  // Set up DNS server to redirect any page to the local IP address
-  dnsServer.setErrorReplyCode(DNSReplyCode::ServerFailure);
-  Serial.print("Soft AP IP is ");
-  Serial.println(WiFi.softAPIP());
-  dnsServer.start(DNS_PORT, "*", WiFi.softAPIP());
-}
-
 void startStation() {
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
@@ -164,11 +147,12 @@ void startStation() {
     }
   } else {
     Serial.println("\nUnsuccessful connecting to Wi-Fi. Starting Access Point...\n");
-    startSoftAP();
+    // startSoftAP();
+    startSoftAP(eepromDeviceName, dnsServer, DNS_PORT);
   }
 }
 
-String scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char deviceName[16]) {
+void scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char deviceName[16]) {
   File file = SPIFFS.open("/esp32.js", FILE_WRITE);
   String message = "";
   message += "const networkType = ";
@@ -328,7 +312,8 @@ void setup(void){
   // If byte 0 is 0x00, set up a soft AP; else set up station
   if (eepromWifiType == 0x00) {
     Serial.println("Starting Soft AP");
-    startSoftAP();
+    // startSoftAP();
+    startSoftAP(eepromDeviceName, dnsServer, DNS_PORT);
   } else {
     Serial.println("Connecting to Wi-Fi");
     startStation();
