@@ -8,7 +8,7 @@ This is the spiritual successor to the [SMOL](https://github.com/heyspacebuck/SM
 
 The star of the show is the ESP32-PICO-32, a 7mm-by-7mm powerhouse. It handles the wireless networking and various GPIOs.
 
-Hardware developed in KiCad 5.1; firmware developed in VSCode with the PlatformIO extension.
+Hardware developed in KiCad 5.1; firmware developed in VSCode with the PlatformIO extension. Licensed/Licenced with the [CERN OHL](https://www.ohwr.org/project/cernohl/wikis/home).
 
 ![](assembly.gif)
 
