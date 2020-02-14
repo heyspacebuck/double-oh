@@ -9,7 +9,9 @@
 #include <SPIFFS.h>
 
 // From the /include/ folder
-#include "softAP.hpp"
+#include "eepromMethods.hpp"
+
+#include "station.hpp"
 
 // Hardware pins
 // For the WL model: the output is GPIO15(!!!), I2C SDA is GPIO16, I2C SCL is GPIO14, factory reset is GPIO12 and GPIO13
@@ -36,21 +38,8 @@ DNSServer dnsServer;
 
 WebServer server(80);
 
-// Number of connection attempts to make before reverting to AP mode
-int connectionAttempts = 0;
-#define maxConnectionAttempts 60
-
 // EEPROM constants and variables
-// Wi-Fi connection type byte
-byte eepromWifiType;
-// Station fixed IP
-byte eepromIp1, eepromIp2;
-// SSID String
-char eepromSsid[31];
-// PSK String
-char eepromPsk[31];
-// Soft AP host name String
-char eepromDeviceName[16];
+eepromStruct eeprom;
 
 void startEEPROM(bool doAReset=false) {
   // Turn on EEPROM, read+write mode
@@ -67,108 +56,44 @@ void startEEPROM(bool doAReset=false) {
   }
 
   // Read values; if no value given, use the defaults
-  eepromWifiType = prefs.getChar("wifiType", 0x00);
-  eepromIp1 = prefs.getChar("IP1", 0x00);
-  eepromIp2 = prefs.getChar("IP2", 0x23);
-  prefs.getBytes("SSID", eepromSsid, 31);
-  if (eepromSsid[0] == 0x00) {
-    strncpy(eepromSsid, deviceName, 31);
+  eeprom.wifiType = prefs.getChar("wifiType", 0x00);
+  eeprom.ip1 = prefs.getChar("IP1", 0x00);
+  eeprom.ip2 = prefs.getChar("IP2", 0x23);
+  prefs.getBytes("SSID", eeprom.ssid, 31);
+  if (eeprom.ssid[0] == 0x00) {
+    strncpy(eeprom.ssid, deviceName, 31);
   }
-  prefs.getBytes("PSK", eepromPsk, 31);
-  if (eepromPsk[0] == 0x00) {
-    strncpy(eepromPsk, deviceName, 31);
+  prefs.getBytes("PSK", eeprom.psk, 31);
+  if (eeprom.psk[0] == 0x00) {
+    strncpy(eeprom.psk, deviceName, 31);
   }
-  prefs.getBytes("deviceName", eepromDeviceName, 16);
-  if (eepromDeviceName[0] == 0x00) {
-    strncpy(eepromDeviceName, deviceName, 16);
+  prefs.getBytes("deviceName", eeprom.deviceName, 16);
+  if (eeprom.deviceName[0] == 0x00) {
+    strncpy(eeprom.deviceName, deviceName, 16);
   }
 
   prefs.end();
 
-  Serial.print("Wifi type: \"");
-  Serial.print(eepromWifiType, HEX);
-  Serial.println("\",");
-  
-  Serial.print("IP part 1: \"");
-  Serial.print(eepromIp1, HEX);
-  Serial.println("\",");
-
-  Serial.print("IP part 2: \"");
-  Serial.print(eepromIp2, HEX);
-  Serial.println("\",");
-  
-  Serial.print("Wifi SSID: \"");
-  Serial.print(eepromSsid);
-  Serial.println("\",");
-  
-  Serial.print("Wifi PSK: \"");
-  Serial.print(eepromPsk);
-  Serial.println("\",");
-  
-  Serial.print("Wifi name: \"");
-  Serial.print(eepromDeviceName);
-  Serial.println("\"");
+  printStatus(eeprom);
 }
 
-void startStation() {
-  // Device name, SSID, PSK, static IP address were retrieved from EEPROM
-  WiFi.disconnect();
-  WiFi.setHostname(eepromDeviceName);
-  // Only set the static IP address if the user has configured it
-  if (eepromIp1 != 0x00 || eepromIp2 != 0x00) {
-    IPAddress staticIP(192, 168, eepromIp1, eepromIp2);
-    IPAddress gateway(192, 168, 4, 1); // Probably wrong but unnecessary
-    IPAddress subnet(255, 255, 255, 0);
-    IPAddress dns(8, 8, 8, 8);
-    WiFi.config(staticIP, subnet, gateway, dns);
-  }
-  WiFi.begin(eepromSsid, eepromPsk);
-  WiFi.mode(WIFI_STA);
-  // Wait for connection
-  Serial.println("");
-  while (WiFi.status() != WL_CONNECTED && connectionAttempts <= maxConnectionAttempts) {
-    connectionAttempts++;
-    delay(500);
-    Serial.print(".");
-  }
-
-  // If too many unsuccessful connection attempts are made, start a soft access point instead
-  if (connectionAttempts <= maxConnectionAttempts) {
-    Serial.println("");
-    Serial.print("Connected to ");
-    Serial.println(eepromSsid);
-    Serial.print("IP address: ");
-    Serial.println(WiFi.localIP());
-
-    if (MDNS.begin(eepromDeviceName)) {
-      Serial.print("MDNS responder started at ");
-      Serial.print(eepromDeviceName);
-      Serial.println(".local");
-    }
-  } else {
-    Serial.println("\nUnsuccessful connecting to Wi-Fi. Starting Access Point...\n");
-    // startSoftAP();
-    startSoftAP(eepromDeviceName, dnsServer, DNS_PORT);
-  }
-}
-
-void scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char deviceName[16]) {
+void scriptFile(eepromStruct eeprom) {
   File file = SPIFFS.open("/esp32.js", FILE_WRITE);
   String message = "";
   message += "const networkType = ";
-  message += (uint8_t)networkType;
+  message += (uint8_t)eeprom.wifiType;
   message += ";\n";
   message += "const ip1 = ";
-  message += (uint8_t)ip1;
+  message += (uint8_t)eeprom.ip1;
   message += ";\n";
   message += "const ip2 = ";
-  message += (uint8_t)ip2;
+  message += (uint8_t)eeprom.ip2;
   message += ";\n";
   message += "const ssid = \"";
-  message += ssid;
+  message += eeprom.ssid;
   message += "\";\n";
   message += "const deviceName = \"";
-  message += deviceName;
+  message += eeprom.deviceName;
   message += "\";\n";
   file.print(message);
   file.close();
@@ -176,7 +101,7 @@ void scriptFile(byte networkType, byte ip1, byte ip2, char ssid[31], char device
 
 void handleRoot() {
   String page = "";
-  scriptFile(eepromWifiType, eepromIp1, eepromIp2, eepromSsid, eepromDeviceName);
+  scriptFile(eeprom);
   File file = SPIFFS.open("/index.html", FILE_READ);
   server.streamFile(file, "text/html");
   file.close();
@@ -199,68 +124,46 @@ void handleSettingsPost() {
   // TODO: check that all values are valid; disregard invalid ones or change them to closest valid ones
 
   // If any of the non-password values changed, update EEPROM and eeprom** variables
-  if ((newNetworkType != eepromWifiType) ||
-  (newIpAddr1 != eepromIp1) || 
-  (newIpAddr2 != eepromIp2) || 
-  (newDeviceName != eepromDeviceName)) {
+  if ((newNetworkType != eeprom.wifiType) ||
+  (newIpAddr1 != eeprom.ip1) || 
+  (newIpAddr2 != eeprom.ip2) || 
+  (newDeviceName != eeprom.deviceName)) {
     changed = true;
 
     prefs.begin("doubleoh", false);
 
-    eepromWifiType = newNetworkType;
+    eeprom.wifiType = newNetworkType;
     prefs.putChar("wifiType", newNetworkType);
-    eepromIp1 = newIpAddr1;
+    eeprom.ip1 = newIpAddr1;
     prefs.putChar("IP1", newIpAddr1);
-    eepromIp2 = newIpAddr2;
+    eeprom.ip2 = newIpAddr2;
     prefs.putChar("IP2", newIpAddr2);
     // eepromDeviceName = newDeviceName;
-    strncpy(eepromDeviceName, newDeviceName, 16);
+    strncpy(eeprom.deviceName, newDeviceName, 16);
     prefs.putBytes("deviceName", newDeviceName, 16);
 
     prefs.end();
   }
 
   // If either SSID or PSK changed, update both PSK and SSID
-  if ((newSsid != eepromSsid) ||
-  (newPsk != eepromPsk && newPsk[0] != 0x00 && newPsk != NULL)) {
+  if ((newSsid != eeprom.ssid) ||
+  (newPsk != eeprom.psk && newPsk[0] != 0x00 && newPsk != NULL)) {
     changed = true;
 
     prefs.begin("doubleoh", false);
 
     // eepromSsid = newSsid;
-    strncpy(eepromSsid, newSsid, 31);
+    strncpy(eeprom.ssid, newSsid, 31);
     prefs.putBytes("SSID", newSsid, 31);
     // eepromPsk = newPsk;
-    strncpy(eepromPsk, newPsk, 31);
+    strncpy(eeprom.psk, newPsk, 31);
     prefs.putBytes("PSK", newPsk, 31);
 
     prefs.end();
   }
 
   if (changed) {
-    Serial.print("Wifi type: \"0x");
-    Serial.print(eepromWifiType, HEX);
-    Serial.println("\",");
-    
-    Serial.print("IP part 1: \"0x");
-    Serial.print(eepromIp1, HEX);
-    Serial.println("\",");
-
-    Serial.print("IP part 2: \"0x");
-    Serial.print(eepromIp2, HEX);
-    Serial.println("\",");
-    
-    Serial.print("Wifi SSID: \"");
-    Serial.print(eepromSsid);
-    Serial.println("\",");
-    
-    Serial.print("Wifi PSK: \"");
-    Serial.print(eepromPsk);
-    Serial.println("\",");
-    
-    Serial.print("Wifi name: \"");
-    Serial.print(eepromDeviceName);
-    Serial.println("\"");
+    printStatus(eeprom);
   }
   
   // Great but now which page to render
@@ -310,13 +213,13 @@ void setup(void){
   startEEPROM(factoryReset);
 
   // If byte 0 is 0x00, set up a soft AP; else set up station
-  if (eepromWifiType == 0x00) {
+  if (eeprom.wifiType == 0x00) {
     Serial.println("Starting Soft AP");
     // startSoftAP();
-    startSoftAP(eepromDeviceName, dnsServer, DNS_PORT);
+    startSoftAP(eeprom.deviceName, dnsServer, DNS_PORT);
   } else {
     Serial.println("Connecting to Wi-Fi");
-    startStation();
+    startStation(eeprom, dnsServer, DNS_PORT);
   }
 
 
