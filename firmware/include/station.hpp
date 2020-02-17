@@ -6,31 +6,24 @@
 #include <DNSServer.h>
 #include <ESPmDNS.h>
 
-#include "eepromMethods.hpp"
+#include "eepromInit.hpp"
 
-// Number of connection attempts to make before reverting to AP mode
-int connectionAttempts = 0;
-#define maxConnectionAttempts 60
-
-
-void startSoftAP(char deviceName[16], DNSServer dnsServer, byte dnsPort) {
-  IPAddress subnet(255, 255, 255, 0);
-
+void startSoftAP() {
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
-  WiFi.setHostname(deviceName);
+  WiFi.setHostname(eeprom.deviceName);
   WiFi.mode(WIFI_AP);
-  WiFi.softAP(deviceName);
+  WiFi.softAP(eeprom.deviceName);
 
   // Set up DNS server to redirect any page to the local IP address
   dnsServer.setErrorReplyCode(DNSReplyCode::ServerFailure);
   Serial.print("Soft AP IP is ");
   Serial.println(WiFi.softAPIP());
-  dnsServer.start(dnsPort, "*", WiFi.softAPIP());
+  dnsServer.start(DNS_PORT, "*", WiFi.softAPIP());
 }
 
 
-void startStation(eepromStruct eeprom, DNSServer dnsServer, int DNS_PORT) {
+void startStation() {
   // Device name, SSID, PSK, static IP address were retrieved from EEPROM
   WiFi.disconnect();
   WiFi.setHostname(eeprom.deviceName);
@@ -68,7 +61,7 @@ void startStation(eepromStruct eeprom, DNSServer dnsServer, int DNS_PORT) {
   } else {
     Serial.println("\nUnsuccessful connecting to Wi-Fi. Starting Access Point...\n");
     // startSoftAP();
-    startSoftAP(eeprom.deviceName, dnsServer, DNS_PORT);
+    startSoftAP();
   }
 }
 
