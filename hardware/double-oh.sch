@@ -806,8 +806,6 @@ Text GLabel 8975 3750 2    50   Input ~ 0
 GPIO4
 Text GLabel 8975 5350 2    50   Input ~ 0
 EN
-Text GLabel 8975 5850 2    50   Input ~ 0
-3.3V
 Text GLabel 8175 6150 3    50   Input ~ 0
 0V
 Wire Notes Line
@@ -1110,4 +1108,5 @@ Wire Wire Line
 Connection ~ 2675 4450
 Wire Wire Line
 	2675 4450 2950 4450
+NoConn ~ 8975 5850
 $EndSCHEMATC
