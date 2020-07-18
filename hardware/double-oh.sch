@@ -237,48 +237,6 @@ Wire Wire Line
 NoConn ~ 1225 6500
 Wire Wire Line
 	1825 5800 1825 5500
-$Comp
-L Device:C_Small C3
-U 1 1 5E037330
-P 4325 6225
-F 0 "C3" H 4450 6250 50  0000 C CNN
-F 1 "0.1μF" H 4500 6175 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 4325 6225 50  0001 C CNN
-F 3 "~" H 4325 6225 50  0001 C CNN
-	1    4325 6225
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C_Small C4
-U 1 1 5E037336
-P 4325 6600
-F 0 "C4" H 4450 6625 50  0000 C CNN
-F 1 "4.7μF" H 4500 6550 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 4325 6600 50  0001 C CNN
-F 3 "~" H 4325 6600 50  0001 C CNN
-	1    4325 6600
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4275 6975 4225 6975
-Wire Wire Line
-	4450 6225 4425 6225
-Wire Wire Line
-	4450 6225 4450 6600
-Wire Wire Line
-	4450 6600 4425 6600
-Connection ~ 4450 6225
-Text GLabel 4450 5775 0    50   Input ~ 0
-3.3V
-Wire Wire Line
-	4225 6225 4225 6600
-Connection ~ 4225 6600
-Wire Wire Line
-	4225 6600 4225 6975
-Wire Wire Line
-	4450 5775 4450 6225
-Text GLabel 4275 6975 2    50   Input ~ 0
-0V
 Wire Wire Line
 	1225 6100 1250 6100
 Wire Wire Line
