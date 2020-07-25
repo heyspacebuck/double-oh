@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Double-Oh control panel</title>
+  <style>
+#ip-form .number {
+  width: 3em;
+}
+  </style>
+  <script type="text/javascript" src="esp32.js"></script>
+</head>
+<body>
+  <h1 id="outputTitle">Power Output</h1>
+  <div id="outputTab" style="display: none">
+    <p>Stuff will go here eventually</p>
+  </div>
+  <h1 id="settingsTitle">Settings</h1>
+  <div id="settingsTab">
+    <form action="/settings" method="POST">
+      <p><span id="descNetwork"></span></p>
+      <hr/>
+      <div class="form-group">
+        <b>Custom device name:</b><br/>
+        <input id="customDeviceName" name="deviceName" type="text" value="doubleoh"/>
+      </div>
+      <hr/>
+      <div class="form-group">
+        <b>Wireless network type:</b><br/>
+        <input type="radio" id="networkType1" name="networkType" value="0"/>
+        <label for="networkType1">Access Point: You connect to the Double-Oh's Wi-Fi network, and any webpage you try to view will show the control panel.</label>
+        <br/>
+        <input type="radio" id="networkType2" name="networkType" value="1"/>
+        <label for="networkType2">Station: The Double-Oh connects to your Wi-Fi network and you access the control panel from a specific URL.</label>
+      </div>
+      <hr/>
+      <div class="form-group" id="ip-form">
+        <b>Station mode IP address:</b><br/>
+        <input type="number" class="number" value="192" disabled/>.
+        <input type="number" class="number" value="168" disabled/>.
+        <input type="number" class="number" min="0" max="255" step="1" id="ipAddr1" name="ipAddr1" value="0"/>.
+        <input type="number" class="number" min="0" max="255" step="1" id="ipAddr2" name="ipAddr2" value="0"/>
+        <i>TODO: find out range of valid IP addresses</i>
+        <br/>
+        <b>Your Wi-Fi network name:</b><br/>
+        <input type="text" id="networkSSID" name="networkSSID" value="doubleoh"/>
+        <br/>
+        <b>Your Wi-Fi network password:</b><br/>
+        <input type="password" id="networkPSK" name="networkPSK"/>
+      </div>
+      <hr/>
+      <button>Save settings</button>
+    </form>
+  </div>
+  <h1 id="dangerTitle">Danger Zone</h1>
+  <div id="dangerTab" style="display: none">
+    <p>In normal operation, the Double-Oh is limited to a max output of 1.5 VDC. In this section you can change the max output voltage.</p>
+    <input type="number" min="1.0" max="3.6" step="0.1"/>
+  </div>
+  <form action="/reset" method="POST">
+    <button>Software restart</button>
+  </form>
+  <script type="text/javascript" src="configure.js"></script>
+</body>
+</html>
