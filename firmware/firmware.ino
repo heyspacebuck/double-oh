@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
@@ -22,20 +21,26 @@ void setup(void){
   pinMode(OUTPUT_PIN, OUTPUT);
   digitalWrite(OUTPUT_PIN, HIGH);
 
+  // Begin serial link at 115200 baud
+  Serial.begin(115200);
+
   // Check if the factory-reset pads are shorted:
   // Set factory-reset pin 1 to input_pullup
   // Set factory-reset pin 2 to output, LOW
   pinMode(FACTORY_RESET_1, INPUT_PULLUP);
+  Serial.println("Pullup value of io4:");
+  Serial.println(digitalRead(FACTORY_RESET_1));
   pinMode(FACTORY_RESET_2, OUTPUT);
   digitalWrite(FACTORY_RESET_2, LOW);
   bool factoryReset = false;
   if (!digitalRead(FACTORY_RESET_1)) {
     factoryReset = true;
+    Serial.println("Factory Reset");
+  } else {
+    Serial.println("No factory reset");
   }
   digitalWrite(FACTORY_RESET_2, HIGH);
 
-  // Begin serial link at 115200 baud
-  Serial.begin(115200);
 
   // Turn on file system
   SPIFFS.begin();
