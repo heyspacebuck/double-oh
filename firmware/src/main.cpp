@@ -23,8 +23,8 @@ void setup(void){
   digitalWrite(OUTPUT_PIN, HIGH);
 
   // Check if the factory-reset pads are shorted:
-  // Set GPIO13 (pin 12) to input_pullup
-  // Set GPIO15 (pin 13) to output, LOW
+  // Set factory-reset pin 1 to input_pullup
+  // Set factory-reset pin 2 to output, LOW
   pinMode(FACTORY_RESET_1, INPUT_PULLUP);
   pinMode(FACTORY_RESET_2, OUTPUT);
   digitalWrite(FACTORY_RESET_2, LOW);
@@ -40,10 +40,10 @@ void setup(void){
   // Turn on file system
   SPIFFS.begin();
   
-  // Turn on EEPROM, read data
+  // Turn on EEPROM, read data, perform a factory reset if the factory-reset pins are shorted
   startEEPROM(factoryReset);
 
-  // If byte 0 is 0x00, set up a soft AP; else set up station
+  // If byte 0 is 0x00, set up a soft access point; else set up station
   if (eeprom.wifiType == 0x00) {
     Serial.println("Starting Soft AP");
     startSoftAP();
