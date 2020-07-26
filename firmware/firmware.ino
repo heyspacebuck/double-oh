@@ -66,6 +66,12 @@ void setup(void){
   // On a GET request to /verysecureadminpanel, serve the very secure admin panel
   server.on("/verysecureadminpanel", HTTP_GET, handleAdmin);
 
+  // On a GET request to /guestbook.js, return the modified contents of guestbook.txt
+  server.on("/guestbook.js", HTTP_GET, handleGuestbook);
+  
+  // On a POST request to /guestbook, add a new entry to the guestbook
+  server.on("/guestbook", HTTP_POST, handleGuestbookPost);
+
   // On POST request to /settings, change the Wi-Fi configuration
   server.on("/settings", HTTP_POST, handleSettingsPost);
   

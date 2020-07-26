@@ -1,3 +1,7 @@
+#include <iostream>
+#include <chrono>
+#include <ctime> 
+
 #ifndef ROUTERMETHODS_HPP
 #define ROUTERMETHODS_HPP
 void handleRoot() {
@@ -13,6 +17,52 @@ void handleAdmin() {
   File file = SPIFFS.open("/verysecureadminpanel.html", FILE_READ);
   server.streamFile(file, "text/html");
   file.close();
+}
+
+void handleGuestbook() {
+  String guestbookJS = "const guestbook = [";
+  File file = SPIFFS.open("/guestbook.txt", FILE_READ);
+  while(file.available()) {
+    guestbookJS += file.readString();
+  }
+  file.close();
+  guestbookJS += "];";
+  server.send(200, "text/javascript", guestbookJS);
+}
+
+void handleGuestbookPost() {
+  // Get arguments and values, as well as current time
+  char guestbookName[30];
+  server.arg("guestbookName").toCharArray(guestbookName, 30);
+  char guestbookComment[60];
+  server.arg("guestbookComment").toCharArray(guestbookComment, 60);
+
+  // Sanitize by removing any backticks and dollar signs
+  auto filter1 = std::remove(std::begin(guestbookName), std::end(guestbookName), '`');
+  auto filter2 = std::remove(std::begin(guestbookName), std::end(guestbookName), '{');
+  auto filter3 = std::remove(std::begin(guestbookComment), std::end(guestbookComment), '`');
+  auto filter4 = std::remove(std::begin(guestbookComment), std::end(guestbookComment), '{');
+  
+  Serial.println(guestbookName);
+  Serial.println(guestbookComment);
+  
+  // Append to the js file that generates the guestbook
+  File file = SPIFFS.open("/guestbook.txt", FILE_APPEND);
+  file.print("[`");
+  file.print(guestbookName);
+  file.print("`,`");
+  file.print(guestbookComment);
+  file.println("`],");
+  file.close();
+  
+//  file = SPIFFS.open("/guestbook.txt", FILE_READ);
+//  while(file.available()) {
+//    Serial.write(file.read());
+//  }
+//  file.close();
+
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
 }
 
 void handleSettingsPost() {

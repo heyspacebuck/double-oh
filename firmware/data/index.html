@@ -7,7 +7,18 @@
   <body>
     <h1 id="settingsTitle">Space Buck's Butt Space</h1>
     <div id="settingsTab">
-      <p>If you can read this, I am testing my server! It's not in my butt. I promise.</p>
+      <p>If you can read this, congratulations! This webpage is being served from inside my butt! Be sure to sign the guestbook so everyone knows you were a part of history.</p>
+
+      <form action="/guestbook" method="POST">
+        <div class="form-group">
+          <b>Name:</b><br/>
+          <input id="guestbookName" name="guestbookName" type="text" maxlength="30"/>
+          <b>Comment:</b><br/>
+          <input id="guestbookComment" name="guestbookComment" type="text" maxlength="60"/>
+        </div>
+        <button>Submit</button>
+      </form>
+      
       <p>TODO: put a butt guestbook right here</p>
     </div>
   </body>
