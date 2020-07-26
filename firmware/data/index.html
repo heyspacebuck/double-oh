@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Double-Oh server</title>
+    <script type="text/javascript" src="guestbook.js"></script>
+    <style>
+table {
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid gray;
+  padding: 0.5em;
+}
+    </style>
   </head>
   <body>
     <h1 id="settingsTitle">Space Buck's Butt Space</h1>
@@ -11,15 +23,33 @@
 
       <form action="/guestbook" method="POST">
         <div class="form-group">
-          <b>Name:</b><br/>
+          <label for="guestbookName"><b>Name: </b></label>
           <input id="guestbookName" name="guestbookName" type="text" maxlength="30"/>
-          <b>Comment:</b><br/>
+          <br>
+          <label for="guestbookComment"><b>Comment: </b></label>
           <input id="guestbookComment" name="guestbookComment" type="text" maxlength="60"/>
         </div>
-        <button>Submit</button>
+        <button>Sign guestbook</button>
       </form>
       
-      <p>TODO: put a butt guestbook right here</p>
+      <h2>Butt Guestbook</h2>
+      <table id="guestbook">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody id="guestbookBody">
+        </tbody>
+      </table>
     </div>
+    <script>
+      const $table = document.getElementById("guestbookBody");
+      guestbook.forEach((guest, index) => {
+        $table.innerHTML += `<tr><td>${index+1}</td><td>${guest[0]}</td><td>${guest[1]}</td></tr>`
+      });
+    </script>
   </body>
 </html>
