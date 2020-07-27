@@ -29,11 +29,13 @@ void startStation() {
   WiFi.setHostname(eeprom.deviceName);
   // Only set the static IP address if the user has configured it
   if (eeprom.ip1 != 0x00 || eeprom.ip2 != 0x00) {
-    IPAddress staticIP(192, 168, eeprom.ip1, eeprom.ip2);
-    IPAddress gateway(192, 168, 4, 1); // Probably wrong but unnecessary
+    // IPAddress staticIP(192, 168, eeprom.ip1, eeprom.ip2);
+    IPAddress staticIP(192, 168, 2, 120);
+    IPAddress gateway(192, 168, 2, 1); // Probably wrong but unnecessary
     IPAddress subnet(255, 255, 255, 0);
     IPAddress dns(8, 8, 8, 8);
-    WiFi.config(staticIP, subnet, gateway, dns);
+    // WiFi.config(staticIP, gateway, subnet, dns);
+    // WiFi.config(staticIP, gateway, subnet, dns);
   }
   WiFi.begin(eeprom.ssid, eeprom.psk);
   WiFi.mode(WIFI_STA);

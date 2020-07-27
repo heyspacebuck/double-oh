@@ -2,7 +2,6 @@
 #define ROUTERMETHODS_HPP
 void handleRoot() {
   String page = "";
-  scriptFile(eeprom);
   File file = SPIFFS.open("/index.html", FILE_READ);
   server.streamFile(file, "text/html");
   file.close();

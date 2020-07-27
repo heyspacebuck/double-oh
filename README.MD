@@ -1,6 +1,6 @@
 # Double-Oh Battery
 
-## Hardware version 2.1, Firmware version 0.5
+## Hardware version 2.4, Firmware version 0.5
 
 ![](banner.png)
 
@@ -16,10 +16,5 @@ Hardware developed in KiCad 5.1; firmware developed in VSCode with the PlatformI
 
 * Lots of stuff on the firmware side
 * Create BOM
-* Clean up silkscreen
 * Generate renders
 * If it works, get OSHW certification!
-
-## Future work
-
-One feature I'd really like to add is measuring instantaneous output current. I haven't looked into it yet, however.
