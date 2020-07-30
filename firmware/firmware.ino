@@ -27,19 +27,14 @@ void setup(void){
   // Check if the factory-reset pads are shorted:
   // Set factory-reset pin 1 to input_pullup
   // Set factory-reset pin 2 to output, LOW
-  pinMode(FACTORY_RESET_1, INPUT_PULLUP);
-  Serial.println("Pullup value of io4:");
-  Serial.println(digitalRead(FACTORY_RESET_1));
-  pinMode(FACTORY_RESET_2, OUTPUT);
-  digitalWrite(FACTORY_RESET_2, LOW);
+  pinMode(FACTORY_RESET_PIN, INPUT_PULLUP);
   bool factoryReset = false;
-  if (!digitalRead(FACTORY_RESET_1)) {
+  if (!digitalRead(FACTORY_RESET_PIN)) {
     factoryReset = true;
     Serial.println("Factory Reset");
   } else {
     Serial.println("No factory reset");
   }
-  digitalWrite(FACTORY_RESET_2, HIGH);
 
 
   // Turn on file system

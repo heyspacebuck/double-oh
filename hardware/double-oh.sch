@@ -480,10 +480,6 @@ Wire Wire Line
 Connection ~ 9475 4850
 Wire Wire Line
 	9475 4850 8975 4850
-Text Notes 7050 5000 1    50   ~ 0
-DO NOT POPULATE THIS FOOTPRINT\nShorting the pads causes a factory reset
-Wire Notes Line
-	7100 4225 7175 4225
 $Comp
 L Device:R_Small_US R9
 U 1 1 5E1E25CE
@@ -741,33 +737,10 @@ RX_ESP
 NoConn ~ 8975 3550
 Text GLabel 8975 3350 2    50   Input ~ 0
 GPIO0
-$Comp
-L Device:R_Small_US R5
-U 1 1 5E2CCDF2
-P 7325 4225
-F 0 "R5" V 7250 4275 50  0000 R CNN
-F 1 "1GΩ" V 7400 4300 50  0000 R CNN
-F 2 "Resistor_SMD:R_0201_0603Metric" H 7325 4225 50  0001 C CNN
-F 3 "~" H 7325 4225 50  0001 C CNN
-	1    7325 4225
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	7375 4550 7325 4550
-Wire Wire Line
-	7325 4550 7325 4325
-Text GLabel 7325 4050 1    50   Input ~ 0
-GPIO4
-Wire Wire Line
-	7325 4050 7325 4125
-Text GLabel 8975 3750 2    50   Input ~ 0
-GPIO4
 Text GLabel 8975 5350 2    50   Input ~ 0
 EN
 Text GLabel 8175 6150 3    50   Input ~ 0
 0V
-Wire Notes Line
-	7100 3450 7100 5000
 Wire Wire Line
 	1225 6300 1425 6300
 Wire Wire Line
@@ -1067,4 +1040,27 @@ Connection ~ 2675 4450
 Wire Wire Line
 	2675 4450 2950 4450
 NoConn ~ 8975 5850
+NoConn ~ 7375 4550
+NoConn ~ 7375 4650
+NoConn ~ 7375 4750
+NoConn ~ 7375 4850
+NoConn ~ 7375 4950
+NoConn ~ 7375 5050
+$Comp
+L Device:Jumper_NO_Small JP1
+U 1 1 5F27CDA3
+P 9225 3750
+F 0 "JP1" H 9225 3825 50  0000 C CNN
+F 1 "Jumper_NO_Small" H 9250 3875 50  0001 C CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 9225 3750 50  0001 C CNN
+F 3 "~" H 9225 3750 50  0001 C CNN
+	1    9225 3750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9125 3750 8975 3750
+Text GLabel 9425 3750 2    50   Input ~ 0
+0V
+Wire Wire Line
+	9425 3750 9325 3750
 $EndSCHEMATC
