@@ -855,9 +855,9 @@ Connection ~ 7225 1500
 Wire Wire Line
 	7225 1500 7225 1550
 Text GLabel 7575 1500 2    50   Input ~ 0
-GPIO26
-Text GLabel 9400 5150 2    50   Input ~ 0
-GPIO26
+GPIO33
+Text GLabel 9400 5450 2    50   Input ~ 0
+GPIO33
 $Comp
 L Device:Q_PMOS_GSD Q3
 U 1 1 5E32DC15
@@ -915,7 +915,7 @@ Wire Wire Line
 	975  3100 1175 3100
 Connection ~ 1175 3100
 Wire Wire Line
-	9400 5150 8975 5150
+	9400 5450 8975 5450
 $Comp
 L double-oh:TPS62400 U3
 U 1 1 5E5D3B1B
