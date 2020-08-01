@@ -35,7 +35,6 @@ void startStation() {
     IPAddress subnet(255, 255, 255, 0);
     IPAddress dns(8, 8, 8, 8);
     // WiFi.config(staticIP, gateway, subnet, dns);
-    // WiFi.config(staticIP, gateway, subnet, dns);
   }
   WiFi.begin(eeprom.ssid, eeprom.psk);
   WiFi.mode(WIFI_STA);

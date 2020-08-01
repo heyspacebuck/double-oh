@@ -3,6 +3,7 @@ document.getElementById("customDeviceName").value = deviceName;
 document.getElementById("ipAddr1").value = ip1;
 document.getElementById("ipAddr2").value = ip2;
 document.getElementById("networkSSID").value = ssid;
+document.getElementById("batteryLevel").innerText = batteryRaw;
 
 $outputTitle = document.getElementById("outputTitle");
 $outputTab = document.getElementById("outputTab");

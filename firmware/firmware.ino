@@ -10,6 +10,7 @@
 
 // From the /include/ folder (the order they're included in here matters!)
 #include "pins.hpp"
+#include "battery.hpp"
 #include "eepromInit.hpp"
 #include "globals.hpp"
 #include "startEeprom.hpp"
@@ -80,8 +81,11 @@ void setup(void) {
   server.on("/configure.js", HTTP_GET, []() {
     handleJS("/configure.js");
   });
-  server.on("/esp32.js", HTTP_GET, []() {
-    handleJS("/esp32.js");
+  server.on("/network.js", HTTP_GET, []() {
+    handleJS("/network.js");
+  });
+  server.on("/battery.js", HTTP_GET, []() {
+    handleJS("/battery.js");
   });
 
   // Serve favicon

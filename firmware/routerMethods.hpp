@@ -1,6 +1,10 @@
 #ifndef ROUTERMETHODS_HPP
 #define ROUTERMETHODS_HPP
+
+#include "battery.hpp"
+
 void handleRoot() {
+  battFile();  
   String page = "";
   File file = SPIFFS.open("/index.html", FILE_READ);
   server.streamFile(file, "text/html");
@@ -64,6 +68,7 @@ void handleSettingsPost() {
 
   if (changed) {
     printStatus(eeprom);
+    scriptFile(eeprom);
   }
   
   // Great but now which page to render
