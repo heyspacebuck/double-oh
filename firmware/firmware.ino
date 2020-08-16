@@ -39,16 +39,19 @@ void setup(void) {
   }
 
   // Set DAC voltage test for GPIO 25 (DAC channel 1)
-//  dac_output_enable(DAC_CHANNEL_1);
-//  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.69 V
-//  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.33 V
-//  dac_output_voltage(DAC_CHANNEL_1, 180); // 2.11 V
-//  dac_output_voltage(DAC_CHANNEL_1, 200); // 1.90 V
-//  dac_output_voltage(DAC_CHANNEL_1, 230); // 1.56 V
-//  dac_output_voltage(DAC_CHANNEL_1, 235); // 1.50 V
-//  dac_output_voltage(DAC_CHANNEL_1, 240); // 1.45 V
-//  dac_output_voltage(DAC_CHANNEL_1, 255); // 1.29 V
-//  sigmaDeltaWrite(0, 0);
+  // Approx 12.126 mV per bit
+  dac_output_enable(DAC_CHANNEL_1);
+  setBatteryLevel(1.50);
+//  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
+//  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
+//  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97  V
+//  dac_output_voltage(DAC_CHANNEL_1, 200); // 1.73 V
+//  dac_output_voltage(DAC_CHANNEL_1, 210); // 1.60 V
+//  dac_output_voltage(DAC_CHANNEL_1, 220); // 1.49 V
+//  dac_output_voltage(DAC_CHANNEL_1, 230); // 1.36 V
+//  dac_output_voltage(DAC_CHANNEL_1, 240); // 1.24 V
+//  dac_output_voltage(DAC_CHANNEL_1, 255); // 1.06 V
+  sigmaDeltaWrite(0, 0);
 
   // Turn on file system
   SPIFFS.begin();
@@ -73,6 +76,9 @@ void setup(void) {
 
   // On POST request to /settings, change the Wi-Fi configuration
   server.on("/settings", HTTP_POST, handleSettingsPost);
+
+  // On POST request to /power, change the output voltage
+  server.on("/power", HTTP_POST, handlePowerPost);
 
   // On POST request to /reset, reboot the ESP
   server.on("/reset", HTTP_POST, handleResetPost);
@@ -102,7 +108,4 @@ void setup(void) {
 void loop(void) {
   dnsServer.processNextRequest();
   server.handleClient();
-  
-  Serial.print("Voltage reading: ");
-  Serial.println(analogRead(ADC_PIN));
 }

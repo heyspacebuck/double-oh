@@ -76,6 +76,20 @@ void handleSettingsPost() {
   server.send(302, "text/plain", "");
 }
 
+void handlePowerPost() {
+  // Get value from form
+  float newVoltage = server.arg("desiredVoltage").toFloat();
+  
+  Serial.print("setting new voltage to ");
+  Serial.println(server.arg("desiredVoltage"));
+  Serial.print("Converted to float, it's: ");
+  Serial.println(newVoltage);
+  setBatteryLevel(newVoltage);
+  // Great but now which page to render
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
+}
+
 void handleNotFound(){
   String message = "Hello! File Not Found\n\n";
   message += "URI: ";

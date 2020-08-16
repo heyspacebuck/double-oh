@@ -15,7 +15,8 @@
   <h1 id="outputTitle">Power Output</h1>
   <div id="outputTab" style="display: none">
     <p>Stuff will go here eventually</p>
-    <p>Battery level: <span id="batteryLevel"></span></p>
+    <p>Internal battery level: <span id="batteryLevel"></span></p>
+    <p>Double-Oh output level: <span id="outputLevel"></span></p>
   </div>
   <h1 id="settingsTitle">Settings</h1>
   <div id="settingsTab">
@@ -57,8 +58,12 @@
   <h1 id="dangerTitle">Danger Zone</h1>
   <div id="dangerTab" style="display: none">
     <p>In normal operation, the Double-Oh is limited to a max output of 1.5 VDC. In this section you can change the max output voltage.</p>
-    <input type="number" min="1.0" max="3.6" step="0.1"/>
+    <form action="/power" method="POST">
+      <input type="number" id="desiredVoltage" name="desiredVoltage" min="1.06" max="2.60" step="0.01"/>
+      <button>Change voltage</button>
+    </form>
   </div>
+  <hr><hr>
   <form action="/reset" method="POST">
     <button>Software restart</button>
   </form>
