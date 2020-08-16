@@ -40,7 +40,7 @@ void printStatus(eepromStruct eeprom) {
 }
 
 void scriptFile(eepromStruct eeprom) {
-  File file = SPIFFS.open("/esp32.js", FILE_WRITE);
+  File file = SPIFFS.open("/network.js", FILE_WRITE);
   String message = "";
   message += "const networkType = ";
   message += (uint8_t)eeprom.wifiType;

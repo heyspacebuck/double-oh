@@ -6,9 +6,11 @@
 #include <Wire.h>
 #include <Preferences.h>
 #include <SPIFFS.h>
+#include <driver/dac.h>
 
 // From the /include/ folder (the order they're included in here matters!)
 #include "pins.hpp"
+#include "battery.hpp"
 #include "eepromInit.hpp"
 #include "globals.hpp"
 #include "startEeprom.hpp"
@@ -16,35 +18,44 @@
 #include "routerMethods.hpp"
 
 
-void setup(void){
+void setup(void) {
   // Set the FET output HIGH (i.e. turn output off)
-  pinMode(OUTPUT_PIN, OUTPUT);
-  digitalWrite(OUTPUT_PIN, HIGH);
+  sigmaDeltaSetup(0, 3000);
+  sigmaDeltaAttachPin(OUTPUT_PIN, 0);
+  sigmaDeltaWrite(0, 255);
 
   // Begin serial link at 115200 baud
   Serial.begin(115200);
 
   // Check if the factory-reset pads are shorted:
-  // Set factory-reset pin 1 to input_pullup
-  // Set factory-reset pin 2 to output, LOW
-  pinMode(FACTORY_RESET_1, INPUT_PULLUP);
-  Serial.println("Pullup value of io4:");
-  Serial.println(digitalRead(FACTORY_RESET_1));
-  pinMode(FACTORY_RESET_2, OUTPUT);
-  digitalWrite(FACTORY_RESET_2, LOW);
+  // Set factory-reset pin to input_pullup
+  pinMode(FACTORY_RESET_PIN, INPUT_PULLUP);
   bool factoryReset = false;
-  if (!digitalRead(FACTORY_RESET_1)) {
+  if (!digitalRead(FACTORY_RESET_PIN)) {
     factoryReset = true;
     Serial.println("Factory Reset");
   } else {
     Serial.println("No factory reset");
   }
-  digitalWrite(FACTORY_RESET_2, HIGH);
 
+  // Set DAC voltage test for GPIO 25 (DAC channel 1)
+  // Approx 12.126 mV per bit
+  dac_output_enable(DAC_CHANNEL_1);
+  setBatteryLevel(1.50);
+//  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
+//  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
+//  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97  V
+//  dac_output_voltage(DAC_CHANNEL_1, 200); // 1.73 V
+//  dac_output_voltage(DAC_CHANNEL_1, 210); // 1.60 V
+//  dac_output_voltage(DAC_CHANNEL_1, 220); // 1.49 V
+//  dac_output_voltage(DAC_CHANNEL_1, 230); // 1.36 V
+//  dac_output_voltage(DAC_CHANNEL_1, 240); // 1.24 V
+//  dac_output_voltage(DAC_CHANNEL_1, 255); // 1.06 V
+  sigmaDeltaWrite(0, 0);
 
   // Turn on file system
   SPIFFS.begin();
-  
+
   // Turn on EEPROM, read data, perform a factory reset if the factory-reset pins are shorted
   startEEPROM(factoryReset);
 
@@ -65,7 +76,10 @@ void setup(void){
 
   // On POST request to /settings, change the Wi-Fi configuration
   server.on("/settings", HTTP_POST, handleSettingsPost);
-  
+
+  // On POST request to /power, change the output voltage
+  server.on("/power", HTTP_POST, handlePowerPost);
+
   // On POST request to /reset, reboot the ESP
   server.on("/reset", HTTP_POST, handleResetPost);
 
@@ -73,8 +87,11 @@ void setup(void){
   server.on("/configure.js", HTTP_GET, []() {
     handleJS("/configure.js");
   });
-  server.on("/esp32.js", HTTP_GET, []() {
-    handleJS("/esp32.js");
+  server.on("/network.js", HTTP_GET, []() {
+    handleJS("/network.js");
+  });
+  server.on("/battery.js", HTTP_GET, []() {
+    handleJS("/battery.js");
   });
 
   // Serve favicon
@@ -88,7 +105,7 @@ void setup(void){
   Serial.println("HTTP server started");
 }
 
-void loop(void){
+void loop(void) {
   dnsServer.processNextRequest();
   server.handleClient();
 }
