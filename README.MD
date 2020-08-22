@@ -14,7 +14,10 @@ Hardware developed in KiCad 5.1; firmware built in the Arduino IDE. Licensed/Lic
 
 ## To do:
 
-* Lots of stuff on the firmware side
-* Create BOM
+* Additional safety features on the firmware side
+* Create an external BOM for easy part ordering
 * Generate renders
+* Improve installation instructions
 * If it works, get OSHW certification!
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
