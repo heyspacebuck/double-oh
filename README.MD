@@ -1,6 +1,6 @@
 # Double-Oh Battery
 
-## Hardware version 2.5, Firmware version 0.6
+## Hardware version 2.6, Firmware version 0.6
 
 ![](banner.png)
 
@@ -8,13 +8,15 @@ This is the spiritual successor to the [SMOL](https://github.com/heyspacebuck/SM
 
 The star of the show is the ESP32-PICO-32, a 7mm-by-7mm powerhouse. It handles the wireless networking and various GPIOs.
 
-Hardware developed in KiCad 5.1; firmware built in the Arduino IDE. Licensed/Licenced with the [CERN OHL](https://www.ohwr.org/project/cernohl/wikis/home).
+Hardware developed in KiCad 5.1; firmware built in the Arduino IDE. Licensed/Licenced with the [CERN OHL](https://www.ohwr.org/project/cernohl/wikis/home). Documentation covered by [Creative Commons Attribution (CC-BY) 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ![](assembly.gif)
 
 ## To do:
 
-* Lots of stuff on the firmware side
-* Create BOM
+* Add pictures to setup/assembly instructions
+* Improve the user interface
 * Generate renders
-* If it works, get OSHW certification!
+* Get OSHW certification!
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
