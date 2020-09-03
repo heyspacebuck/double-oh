@@ -12,9 +12,14 @@ Hardware developed in KiCad 5.1; firmware built in the Arduino IDE. Licensed/Lic
 
 ![](assembly.gif)
 
+## Assembly, setup, installation
+
+Bill of materials is [here](bom.md). An interactive HTML BOM is [here](/hardware/bom/ibom.html). Assembly and initial setup is covered [here](setup.md).
+
 ## To do:
 
-* Add pictures to setup/assembly instructions
+* Add pictures to [setup/assembly instructions](setup.md)
+* Improve the (non-interactive) BOM
 * Improve the user interface
 * Generate renders
 * Get OSHW certification!

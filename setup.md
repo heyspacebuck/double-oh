@@ -7,7 +7,7 @@
 ## Top side assembly
 
 Parts used:
-- 36 SMD components (see the [interactive BOM](/hardware/bom/ibom.html))
+- 36 SMD components (see the [BOM](bom.md))
 - Main PCB
 
 All but one of the Double-Oh components are placed on the top side of the PCB. When this side is assembled, we can run the device off USB power and install the Double-Oh firmware. The [interactive BOM](/hardware/bom/ibom.html) makes placing the components a lot easier.
