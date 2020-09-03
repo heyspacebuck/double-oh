@@ -27,4 +27,4 @@
 |22    |U5                      |BD48K34G                    |SOT-23              |1       |Low-battery power supervisor       |
 |23    |AE1                     |AMCA31 Chip Antenna         |1206 (3216 Metric)  |1       |                                   |
 |24    |Q1                      |BC847BS Dual NPN Transistors|SOT-363 (SC-88)     |1       |                                   |
-|25    |Q2, Q4                  |NTS4101P P-Channel MOSFET   |SOT-323 (SC-70)     |3       |                                   |
+|25    |Q2, Q4                  |NTS4101P P-Channel MOSFET   |SOT-323 (SC-70)     |2       |                                   |
