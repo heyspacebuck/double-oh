@@ -23,6 +23,11 @@
 // This one is ignored by git because it's got my personal twitter cert in it
 #include "twitterCert.hpp"
 
+// Timing variables
+int hasRunFor = 0;
+int mustRunFor = 0;
+bool isRunning = false;
+
 void setup(void) {
   // Set the FET output HIGH (i.e. turn output off)
   sigmaDeltaSetup(0, 3000);
@@ -133,9 +138,50 @@ void loop(void) {
     Serial.println(payload);
 
     // Parse payload as JSON
-    StaticJsonDocument<600> myJson;
+    StaticJsonDocument<800> myJson;
     deserializeJson(myJson, payload);
-    Serial.println(myJson["data"]["text"].as<char*>());
+
+    // Get likes+retweets
+    int retweets = myJson["data"]["public_metrics"]["retweet_count"];
+    int likes = myJson["data"]["public_metrics"]["like_count"];
+    mustRunFor = 1000 * (15*retweets + 5*likes);
+
+    // Get poll results
+    auto poll = myJson["includes"]["polls"][0];
+    auto optionA = poll["options"][0];
+    auto optionB = poll["options"][1];
+    float upvotes = 0;
+    float downvotes = 0;
+    if (optionA["position"] == 1) {
+      upvotes = optionA["votes"].as<float>();
+      downvotes = optionB["votes"].as<float>();
+    }
+    else {
+      upvotes = optionB["votes"].as<float>();
+      downvotes = optionA["votes"].as<float>();
+    }
+
+    // Use poll results to set intensity
+    if (upvotes + downvotes == 0) {downvotes++;} // This just stops us from ever dividing by zero
+    float pollResult = upvotes/(upvotes+downvotes);
+    int motorIntensity = (int)(127*(1 - pollResult)); // Min intensity: 50% (because I can't feel anything less than that on my particular vibe)
+
+    // Update time vibe has run for
+    hasRunFor += (currTime - prevTime);
+
+    // If the vibe has run for less than the proscribed time, update vibe with intensity
+    if (hasRunFor < mustRunFor) {
+      isRunning = true;
+      sigmaDeltaWrite(0, motorIntensity);
+    } else {
+      isRunning = false;
+      sigmaDeltaWrite(0, 255);
+    }
+    
+    Serial.print("intensity: ");
+    Serial.println(upvotes/(downvotes+upvotes));
+    
+//    Serial.println(myJson["data"]["text"].as<char*>());
     
     prevTime = currTime;
     http.end();
