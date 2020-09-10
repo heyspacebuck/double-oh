@@ -1,8 +1,10 @@
+#include <ArduinoJson.h>
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
 #include <DNSServer.h>
+#include <HTTPClient.h>
 #include <Wire.h>
 #include <Preferences.h>
 #include <SPIFFS.h>
@@ -17,6 +19,9 @@
 #include "station.hpp"
 #include "routerMethods.hpp"
 #include "routerPatterns.hpp"
+
+// This one is ignored by git because it's got my personal twitter cert in it
+#include "twitterCert.hpp"
 
 void setup(void) {
   // Set the FET output HIGH (i.e. turn output off)
@@ -113,12 +118,26 @@ void setup(void) {
 void loop(void) {
   dnsServer.processNextRequest();
   server.handleClient();
-  // If more than 50 milliseconds have elapsed, update the sigmaDelta value
+  // If more than 20 seconds have elapsed, check twitter
   currTime = millis();
-  if (currTime - prevTime > 50) {
-    motorIntensity = pattern(currTime/1000.0);
-    sigmaDeltaWrite(0, motorIntensity);
-    Serial.println(motorIntensity);
+  if (currTime - prevTime > 20000) {
+    HTTPClient http;
+    http.begin("https://api.twitter.com/2/tweets/1303878343570358272?expansions=attachments.poll_ids&tweet.fields=public_metrics");
+    http.addHeader("Content-Type", "application/json");
+    http.addHeader("Authorization", twitterCert);
+
+    int httpResponseCode = http.GET();
+    String payload = "{}";
+    payload = http.getString();
+    Serial.println("twitter");
+    Serial.println(payload);
+
+    // Parse payload as JSON
+    StaticJsonDocument<600> myJson;
+    deserializeJson(myJson, payload);
+    Serial.println(myJson["data"]["text"].as<char*>());
+    
     prevTime = currTime;
+    http.end();
   }
 }
