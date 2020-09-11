@@ -150,7 +150,7 @@ void loop(void) {
     // Get likes+retweets
     int retweets = myJson["data"]["public_metrics"]["retweet_count"].as<int>() + myJson["data"]["public_metrics"]["quote_count"].as<int>();
     int likes = myJson["data"]["public_metrics"]["like_count"].as<int>();
-    mustRunFor = 1000 * (15*retweets + 5*likes);
+    mustRunFor = 1000 * (30*retweets + 10*likes);
 
     // Get poll results
     auto poll = myJson["includes"]["polls"][0];
