@@ -365,12 +365,12 @@ batt_out
 $Comp
 L Device:C_Small C11
 U 1 1 5E24C7B6
-P 1850 4100
-F 0 "C11" H 1750 4025 50  0000 R CNN
-F 1 "10μF" H 1750 4125 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 1850 4100 50  0001 C CNN
-F 3 "~" H 1850 4100 50  0001 C CNN
-	1    1850 4100
+P 1650 4100
+F 0 "C11" H 1550 4025 50  0000 R CNN
+F 1 "10μF" H 1550 4125 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1650 4100 50  0001 C CNN
+F 3 "~" H 1650 4100 50  0001 C CNN
+	1    1650 4100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -384,7 +384,7 @@ F 3 "~" H 3300 4125 50  0001 C CNN
 	1    3300 4125
 	1    0    0    -1  
 $EndComp
-Text GLabel 925  2425 0    50   Input ~ 0
+Text GLabel 1625 2425 0    50   Input ~ 0
 LIPO_V
 Wire Wire Line
 	1850 3300 1850 3625
@@ -693,28 +693,12 @@ F 3 "" H 2400 3925 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1850 4450 1850 4225
-Wire Wire Line
-	1850 4450 2675 4450
-Wire Wire Line
 	2950 4450 2950 4225
-Connection ~ 1850 4450
 Wire Wire Line
 	1175 3500 1175 4450
 Wire Wire Line
-	1175 4450 1850 4450
-Wire Wire Line
 	1850 3975 1850 3875
-Wire Wire Line
-	1850 3875 1850 3625
-Connection ~ 1850 3875
 Connection ~ 1850 3625
-Wire Wire Line
-	1850 4200 1850 4225
-Connection ~ 1850 4225
-Wire Wire Line
-	1850 4000 1850 3975
-Connection ~ 1850 3975
 Connection ~ 1175 4450
 Wire Wire Line
 	3000 3725 2950 3725
@@ -1062,20 +1046,48 @@ LIPO_V
 $Comp
 L double-oh:BD48KxxG U5
 U 1 1 5F4C7229
-P 1500 2475
-F 0 "U5" H 1525 2825 50  0000 C CNN
-F 1 "BD48KxxG" H 1525 2725 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 1500 1975 50  0001 C CNN
-F 3 "https://www.onsemi.com/pub/Collateral/MC34064-D.PDF" H 1500 2475 50  0001 C CNN
-	1    1500 2475
+P 2850 2475
+F 0 "U5" H 2875 2825 50  0000 C CNN
+F 1 "BD48KxxG" H 2875 2725 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2850 1975 50  0001 C CNN
+F 3 "https://www.onsemi.com/pub/Collateral/MC34064-D.PDF" H 2850 2475 50  0001 C CNN
+	1    2850 2475
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	1850 2425 1850 2900
-Text GLabel 925  2775 0    50   Input ~ 0
+Text GLabel 2275 2775 0    50   Input ~ 0
 0V
 Wire Wire Line
-	925  2775 1500 2775
+	2275 2775 2850 2775
 Wire Wire Line
-	925  2425 1150 2425
+	1625 2425 1850 2425
+Wire Wire Line
+	1650 4225 1650 4200
+Wire Wire Line
+	1650 4000 1650 3625
+Wire Wire Line
+	1650 3625 1850 3625
+Wire Wire Line
+	2500 2425 1850 2425
+Connection ~ 1850 2425
+Text GLabel 3375 2425 2    50   Input ~ 0
+TPS_EN
+Wire Wire Line
+	3375 2425 3200 2425
+Text GLabel 1525 3875 0    50   Input ~ 0
+TPS_EN
+Wire Wire Line
+	1525 3875 1850 3875
+Connection ~ 1850 3875
+Wire Wire Line
+	1175 4450 1650 4450
+Wire Wire Line
+	1650 4225 1850 4225
+Wire Wire Line
+	1650 4450 1650 4225
+Connection ~ 1650 4450
+Wire Wire Line
+	1650 4450 2675 4450
+Connection ~ 1650 4225
 $EndSCHEMATC
