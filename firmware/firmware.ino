@@ -30,7 +30,7 @@ bool isRunning = false;
 
 void setup(void) {
   // Set the FET output HIGH (i.e. turn output off)
-  sigmaDeltaSetup(0, 3000);
+  sigmaDeltaSetup(0, 300);
   sigmaDeltaAttachPin(OUTPUT_PIN, 0);
   sigmaDeltaWrite(0, 255);
 
@@ -51,7 +51,7 @@ void setup(void) {
   // Set DAC voltage test for GPIO 25 (DAC channel 1)
   // Approx 12.126 mV per bit
   dac_output_enable(DAC_CHANNEL_1);
-  setBatteryLevel(1.50);
+  setBatteryLevel(1.80);
 //  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
 //  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
 //  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97 V
@@ -133,7 +133,7 @@ void loop(void) {
   currTime = millis();
   if (currTime - prevTime > 20000) {
     HTTPClient http;
-    http.begin("https://api.twitter.com/2/tweets/1303878343570358272?expansions=attachments.poll_ids&tweet.fields=public_metrics");
+    http.begin("https://api.twitter.com/2/tweets/1304465499644977155?expansions=attachments.poll_ids&tweet.fields=public_metrics");
     http.addHeader("Content-Type", "application/json");
     http.addHeader("Authorization", twitterCert);
 
@@ -148,8 +148,8 @@ void loop(void) {
     deserializeJson(myJson, payload);
 
     // Get likes+retweets
-    int retweets = myJson["data"]["public_metrics"]["retweet_count"].as<int>() + myJson["data"]["public_metrics"]["quote_count"].as<int>();
-    int likes = myJson["data"]["public_metrics"]["like_count"].as<int>();
+    int retweets = 1 + myJson["data"]["public_metrics"]["retweet_count"].as<int>() + myJson["data"]["public_metrics"]["quote_count"].as<int>();
+    int likes = 1 + myJson["data"]["public_metrics"]["like_count"].as<int>();
     mustRunFor = 1000 * (30*retweets + 10*likes);
 
     // Get poll results
@@ -170,10 +170,12 @@ void loop(void) {
     // Use poll results to set intensity
     if (upvotes + downvotes == 0) {downvotes++;} // This just stops us from ever dividing by zero
     float pollResult = upvotes/(upvotes+downvotes);
-    int motorIntensity = (int)(127*(1 - pollResult)); // Min intensity: 50% (because I can't feel anything less than that on my particular vibe)
+    int motorIntensity = (int)(63*(1 - pollResult)); // Min intensity: 50% (because I can't feel anything less than that on my particular vibe)
 
     // Update time vibe has run for
-    hasRunFor += (currTime - prevTime);
+    if (isRunning) {
+      hasRunFor += (currTime - prevTime);  
+    }
 
     // If the vibe has run for less than the proscribed time, update vibe with intensity
     if (hasRunFor < mustRunFor) {

@@ -6,7 +6,8 @@
 #define PI 3.14159265
 
 // Set up the pattern that the motor starts out with (do nothing)
-int currTime, prevTime = 0;
+int currTime = 0;
+int prevTime = millis();
 int motorIntensity = 255;
 std::function<int(float)> pattern = [](float t) {return (int)255;};
 
