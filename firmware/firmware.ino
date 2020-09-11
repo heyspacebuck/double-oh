@@ -121,6 +121,12 @@ void setup(void) {
 }
 
 void loop(void) {
+  float battLevel = getBatteryLevel();
+  if (battLevel < 3.4) {
+    sigmaDeltaWrite(0, 255);
+    ESP.deepSleep(0);
+    delay(10000);
+  }
   dnsServer.processNextRequest();
   server.handleClient();
   // If more than 20 seconds have elapsed, check twitter
