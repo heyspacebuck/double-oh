@@ -142,8 +142,8 @@ void loop(void) {
     deserializeJson(myJson, payload);
 
     // Get likes+retweets
-    int retweets = myJson["data"]["public_metrics"]["retweet_count"] + myJson["data"]["public_metrics"]["quote_count"];
-    int likes = myJson["data"]["public_metrics"]["like_count"];
+    int retweets = myJson["data"]["public_metrics"]["retweet_count"].as<int>() + myJson["data"]["public_metrics"]["quote_count"].as<int>();
+    int likes = myJson["data"]["public_metrics"]["like_count"].as<int>();
     mustRunFor = 1000 * (15*retweets + 5*likes);
 
     // Get poll results
