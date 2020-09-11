@@ -1090,4 +1090,19 @@ Connection ~ 1650 4450
 Wire Wire Line
 	1650 4450 2675 4450
 Connection ~ 1650 4225
+$Comp
+L Device:R_Small_US R5
+U 1 1 5F64339A
+P 1850 3750
+F 0 "R5" V 1775 3750 50  0000 C CNN
+F 1 "470kΩ" V 1925 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 1850 3750 50  0001 C CNN
+F 3 "~" H 1850 3750 50  0001 C CNN
+	1    1850 3750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 3650 1850 3625
+Wire Wire Line
+	1850 3850 1850 3875
 $EndSCHEMATC
