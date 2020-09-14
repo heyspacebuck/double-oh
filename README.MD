@@ -1,6 +1,6 @@
 # Double-Oh Battery
 
-## Hardware version 2.6, Firmware version 0.6
+## Hardware version 2.7, Firmware version 0.7
 
 ![](banner.png)
 
@@ -19,7 +19,6 @@ Bill of materials is [here](bom.md). An interactive HTML BOM is [here](/hardware
 ## To do:
 
 * Add pictures to [setup/assembly instructions](setup.md)
-* Improve the (non-interactive) BOM
 * Improve the user interface
 * Generate renders
 * Get OSHW certification!

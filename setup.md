@@ -7,10 +7,10 @@
 ## Top side assembly
 
 Parts used:
-- 36 SMD components (see the [BOM](bom.md))
+- 37 SMD components (see the [BOM](bom.md))
 - Main PCB
 
-All but two of the Double-Oh components are placed on the top side of the PCB. When this side is assembled, we can run the device off USB power and install the Double-Oh firmware. The [interactive BOM](/hardware/bom/ibom.html) makes placing the components a lot easier.
+All but one of the Double-Oh components are placed on the top side of the PCB. When this side is assembled, we can run the device off USB power and install the Double-Oh firmware. The [interactive BOM](/hardware/bom/ibom.html) makes placing the components a lot easier.
 
 ## Firmware installation
 
@@ -34,12 +34,12 @@ When the firmware is first uploaded, the board should start broadcasting its own
 ## Finishing assembly
 
 Parts used:
-- U5 and R5 (the only components on the bottom of the PCB)
+- U5 (the only component on the bottom of the PCB)
 - Cathode (red) PCB
 - Anode (black) PCB
 - A short length of stiff wire
 
-Solder parts U5 and R5, the SOT-23 voltage supervisor and pull-up resistor, on the bottom side of the PCB. This enables the device to run off a 10440 Li-ion cell. Solder a short length of stiff wire to the anode (black) PCB--this will act as a spring to keep the Li-ion cell in place. Carefully line up the main PCB in the slot of the anode (black) PCB; the antenna should be close to the black PCB and facing outward. Heartily solder the joints together. Then do the same with the cathode (red) PCB.
+Solder part U5, the SOT-23 voltage supervisor, on the bottom side of the PCB. This enables the device to run off a 10440 Li-ion cell. Solder a short length of stiff wire to the anode (black) PCB--this will act as a spring to keep the Li-ion cell in place. Carefully line up the main PCB in the slot of the anode (black) PCB; the antenna should be close to the black PCB and facing outward. Heartily solder the joints together. Then do the same with the cathode (red) PCB.
 
 ## Battery testing
 

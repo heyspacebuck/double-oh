@@ -1,5 +1,5 @@
 # Bill of Materials
-## Valid as of Hardware version 2.6
+## Valid as of Hardware version 2.7
 
 |      |References              |Value                       |Footprint           |Quantity|Notes                              |
 |------|------------------------|----------------------------|--------------------|--------|-----------------------------------|
