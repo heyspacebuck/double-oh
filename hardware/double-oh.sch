@@ -365,12 +365,12 @@ batt_out
 $Comp
 L Device:C_Small C11
 U 1 1 5E24C7B6
-P 1650 4100
-F 0 "C11" H 1550 4025 50  0000 R CNN
-F 1 "10μF" H 1550 4125 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 1650 4100 50  0001 C CNN
-F 3 "~" H 1650 4100 50  0001 C CNN
-	1    1650 4100
+P 1425 3925
+F 0 "C11" H 1325 3850 50  0000 R CNN
+F 1 "10μF" H 1325 3950 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1425 3925 50  0001 C CNN
+F 3 "~" H 1425 3925 50  0001 C CNN
+	1    1425 3925
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -413,7 +413,7 @@ F 3 "~" H 4000 4225 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Text Notes 1750 4675 0    50   ~ 0
-3.3VDC fixed power supply\n1.2-3.3VDC variable power supply
+3.3VDC fixed power supply\n1.0-3.3VDC variable power supply
 Text Notes 1975 5375 0    50   ~ 0
 CP2104 USB-to-UART bridge\n
 Text GLabel 8575 875  0    50   Input ~ 0
@@ -685,8 +685,8 @@ $Comp
 L double-oh:TPS62400 U3
 U 1 1 5E5D3B1B
 P 2400 3925
-F 0 "U3" H 2425 4550 50  0000 C CNN
-F 1 "TPS62400" H 2425 4450 50  0000 C CNN
+F 0 "U3" H 2425 4475 50  0000 C CNN
+F 1 "TPS62400" H 2425 4375 50  0000 C CNN
 F 2 "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm" H 2400 3925 50  0001 C CNN
 F 3 "" H 2400 3925 50  0001 C CNN
 	1    2400 3925
@@ -1046,63 +1046,73 @@ LIPO_V
 $Comp
 L double-oh:BD48KxxG U5
 U 1 1 5F4C7229
-P 2850 2475
-F 0 "U5" H 2875 2825 50  0000 C CNN
-F 1 "BD48KxxG" H 2875 2725 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2850 1975 50  0001 C CNN
-F 3 "https://www.onsemi.com/pub/Collateral/MC34064-D.PDF" H 2850 2475 50  0001 C CNN
-	1    2850 2475
+P 3325 2650
+F 0 "U5" H 3325 2925 50  0000 C CNN
+F 1 "BD48KxxG" H 3325 2850 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3325 2150 50  0001 C CNN
+F 3 "https://www.onsemi.com/pub/Collateral/MC34064-D.PDF" H 3325 2650 50  0001 C CNN
+	1    3325 2650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	1850 2425 1850 2900
-Text GLabel 2275 2775 0    50   Input ~ 0
+Text GLabel 3325 3025 0    50   Input ~ 0
 0V
 Wire Wire Line
-	2275 2775 2850 2775
-Wire Wire Line
 	1625 2425 1850 2425
-Wire Wire Line
-	1650 4225 1650 4200
-Wire Wire Line
-	1650 4000 1650 3625
-Wire Wire Line
-	1650 3625 1850 3625
-Wire Wire Line
-	2500 2425 1850 2425
-Connection ~ 1850 2425
-Text GLabel 3375 2425 2    50   Input ~ 0
+Text GLabel 3850 2600 2    50   Input ~ 0
+TPS_EN
+Text GLabel 1850 3875 0    50   Input ~ 0
 TPS_EN
 Wire Wire Line
-	3375 2425 3200 2425
-Text GLabel 1525 3875 0    50   Input ~ 0
-TPS_EN
+	1175 4450 1425 4450
 Wire Wire Line
-	1525 3875 1850 3875
-Connection ~ 1850 3875
-Wire Wire Line
-	1175 4450 1650 4450
-Wire Wire Line
-	1650 4225 1850 4225
-Wire Wire Line
-	1650 4450 1650 4225
-Connection ~ 1650 4450
-Wire Wire Line
-	1650 4450 2675 4450
-Connection ~ 1650 4225
+	1425 4450 1425 4225
 $Comp
 L Device:R_Small_US R5
 U 1 1 5F64339A
-P 1850 3750
-F 0 "R5" V 1775 3750 50  0000 C CNN
-F 1 "470kΩ" V 1925 3750 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 1850 3750 50  0001 C CNN
-F 3 "~" H 1850 3750 50  0001 C CNN
-	1    1850 3750
+P 3775 2425
+F 0 "R5" V 3700 2425 50  0000 C CNN
+F 1 "470kΩ" V 3850 2425 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 3775 2425 50  0001 C CNN
+F 3 "~" H 3775 2425 50  0001 C CNN
+	1    3775 2425
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	1850 3650 1850 3625
+	1850 3300 2050 3300
+Text GLabel 2050 3300 2    50   Input ~ 0
+TPS_VIN
+Text GLabel 2800 2600 0    50   Input ~ 0
+TPS_VIN
 Wire Wire Line
-	1850 3850 1850 3875
+	2800 2600 2925 2600
+Wire Wire Line
+	1425 3625 1850 3625
+Connection ~ 1425 4225
+Connection ~ 1425 4450
+Wire Wire Line
+	1425 4225 1850 4225
+Wire Wire Line
+	1425 4450 2675 4450
+Wire Wire Line
+	1425 4025 1425 4225
+Wire Wire Line
+	1425 3825 1425 3625
+Wire Wire Line
+	3325 3025 3325 2950
+Wire Wire Line
+	3675 2600 3775 2600
+Wire Wire Line
+	3775 2525 3775 2600
+Connection ~ 3775 2600
+Wire Wire Line
+	3775 2600 3850 2600
+Wire Wire Line
+	3775 2325 2925 2325
+Wire Wire Line
+	2925 2325 2925 2600
+Connection ~ 2925 2600
+Wire Wire Line
+	2925 2600 2975 2600
 $EndSCHEMATC
