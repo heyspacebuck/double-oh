@@ -114,7 +114,7 @@ void setup(void) {
 void loop(void) {
   dnsServer.processNextRequest();
   server.handleClient();
-  // If more than 50 milliseconds have elapsed, update the sigmaDelta value
+  // If more than 50 milliseconds have elapsed, update the PWM value
   currTime = millis();
   if (currTime - prevTime > 50) {
     motorIntensity = pattern(currTime/1000.0);
