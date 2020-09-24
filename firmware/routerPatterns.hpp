@@ -19,6 +19,14 @@ void handlePatternPost() {
     int PWM = (int)(255*(1-intensity));
     std::function<int(float)> newPattern = [PWM](float t) {return PWM;};
     pattern = newPattern;
+
+    File file = SPIFFS.open("/patternparams.js", FILE_WRITE);
+    String message = "";
+    message += "const activePattern = {name: 'constant', intensity: ";
+    message += intensity;
+    message += "};\n";
+    file.print(message);
+    file.close();
   }
   if (patternString=="sine") {
     float maxIntensity = server.arg("maxIntensity").toFloat();
@@ -32,6 +40,18 @@ void handlePatternPost() {
       return PWM;
     };
     pattern = newPattern;
+
+    File file = SPIFFS.open("/patternparams.js", FILE_WRITE);
+    String message = "";
+    message += "const activePattern = {name: 'sine', max: ";
+    message += maxIntensity;
+    message += ", min: ";
+    message += minIntensity;
+    message += ", period: ";
+    message += period;
+    message += "};\n";
+    file.print(message);
+    file.close();
   }
   // Great but now which page to render
   server.sendHeader("Location", "/", true);
