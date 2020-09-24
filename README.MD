@@ -1,6 +1,6 @@
 # Double-Oh Battery
 
-## Hardware version 2.7, Firmware version 0.7
+## Hardware version 2.7, Firmware version 1.0
 
 ![](banner.png)
 
