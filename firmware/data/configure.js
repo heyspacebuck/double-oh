@@ -14,17 +14,17 @@ $settingsTab = document.getElementById("settingsTab");
 $dangerTitle = document.getElementById("dangerTitle");
 $dangerTab = document.getElementById("dangerTab");
 
-$outputTitle.onclick = e => {
+$outputTitle.onclick = (e) => {
   $outputTab.style = "display: block;";
   $settingsTab.style = "display: none;";
   $dangerTab.style = "display: none;";
 };
-$settingsTitle.onclick = e => {
+$settingsTitle.onclick = (e) => {
   $outputTab.style = "display: none;";
   $settingsTab.style = "display: block;";
   $dangerTab.style = "display: none;";
 };
-$dangerTitle.onclick = e => {
+$dangerTitle.onclick = (e) => {
   $outputTab.style = "display: none;";
   $settingsTab.style = "display: none;";
   $dangerTab.style = "display: block;";

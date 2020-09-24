@@ -16,13 +16,13 @@
 #include "startEeprom.hpp"
 #include "station.hpp"
 #include "routerMethods.hpp"
-
+#include "routerPatterns.hpp"
 
 void setup(void) {
   // Set the FET output HIGH (i.e. turn output off)
-  sigmaDeltaSetup(0, 3000);
-  sigmaDeltaAttachPin(OUTPUT_PIN, 0);
-  sigmaDeltaWrite(0, 255);
+  ledcSetup(0, 1000, 8);
+  ledcAttachPin(OUTPUT_PIN, 0);
+  ledcWrite(0, 255);
 
   // Begin serial link at 115200 baud
   Serial.begin(115200);
@@ -44,14 +44,13 @@ void setup(void) {
   setBatteryLevel(1.50);
 //  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
 //  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
-//  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97  V
+//  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97 V
 //  dac_output_voltage(DAC_CHANNEL_1, 200); // 1.73 V
 //  dac_output_voltage(DAC_CHANNEL_1, 210); // 1.60 V
 //  dac_output_voltage(DAC_CHANNEL_1, 220); // 1.49 V
 //  dac_output_voltage(DAC_CHANNEL_1, 230); // 1.36 V
 //  dac_output_voltage(DAC_CHANNEL_1, 240); // 1.24 V
 //  dac_output_voltage(DAC_CHANNEL_1, 255); // 1.06 V
-  sigmaDeltaWrite(0, 0);
 
   // Turn on file system
   SPIFFS.begin();
@@ -82,6 +81,9 @@ void setup(void) {
 
   // On POST request to /reset, reboot the ESP
   server.on("/reset", HTTP_POST, handleResetPost);
+  
+  // On POST request to /runpattern, update the pattern being run on the battery
+  server.on("/runpattern", HTTP_POST, handlePatternPost);
 
   // On GET requests to .js files, serve the .js files
   server.on("/configure.js", HTTP_GET, []() {
@@ -93,6 +95,12 @@ void setup(void) {
   server.on("/battery.js", HTTP_GET, []() {
     handleJS("/battery.js");
   });
+  server.on("/pattern.js", HTTP_GET, []() {
+    handleJS("/pattern.js");
+  });
+  server.on("/patternparams.js", HTTP_GET, []() {
+    handleJS("/patternparams.js");
+  });
 
   // Serve favicon
   server.on("/favicon.ico", HTTP_GET, handleFavicon);
@@ -103,9 +111,18 @@ void setup(void) {
 
   server.begin();
   Serial.println("HTTP server started");
+  
 }
 
 void loop(void) {
   dnsServer.processNextRequest();
   server.handleClient();
+  // If more than 50 milliseconds have elapsed, update the PWM value
+  currTime = millis();
+  if (currTime - prevTime > 50) {
+    motorIntensity = pattern(currTime/1000.0);
+    ledcWrite(0, motorIntensity);
+    Serial.println(motorIntensity);
+    prevTime = currTime;
+  }
 }
