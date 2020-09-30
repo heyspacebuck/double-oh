@@ -6,7 +6,8 @@ const createRangeElements = (
   rangeLabel,
   rangeMin,
   rangeMax,
-  rangeStep = 1
+  rangeStep = 1,
+  rangeValue = undefined
 ) => {
   const $element = document.createElement("div");
   const $label = document.createElement("label");
@@ -19,7 +20,7 @@ const createRangeElements = (
   $range.min = rangeMin;
   $range.max = rangeMax;
   $range.step = rangeStep;
-  $range.value = (rangeMax + rangeMin) / 2;
+  $range.value = rangeValue ? rangeValue : (rangeMax + rangeMin) / 2;
   const $text = document.createElement("span");
   $text.innerText = `${$range.value}`;
   $text.id = `${rangeName}Txt`;
@@ -44,7 +45,8 @@ const listParams = () => {
       "Intensity:",
       0,
       1,
-      0.01
+      rangeStep = 0.01,
+      rangeValue = 0.75
     );
     $patternParams.appendChild($intensity);
     if (activePattern.name == "constant") {
@@ -60,16 +62,18 @@ const listParams = () => {
       "Max intensity:",
       0,
       1,
-      0.01
+      rangeStep = 0.01,
+      rangeValue = 1.00
     );
     const $minIntensity = createRangeElements(
       "minIntensity",
       "Min intensity:",
       0,
       1,
-      0.01
+      rangeStep = 0.01,
+      rangeValue = 0.50,
     );
-    const $period = createRangeElements("period", "Period:", 1, 30, 0.1);
+    const $period = createRangeElements("period", "Period:", 1, 30, 0.1, 5.0);
     $patternParams.appendChild($maxIntensity);
     $patternParams.appendChild($minIntensity);
     $patternParams.appendChild($period);
@@ -89,6 +93,24 @@ const listParams = () => {
       activePeriodTxt.innerText = activePattern.period;
     }
   }
+  
+  if ($patternSelector.value == "random") {
+    const $levels = createRangeElements("levels", "Number of levels:", 2, 100, 1, 4);
+    const $period = createRangeElements("period", "Period:", 1, 30, 0.1, 5.0);
+    $patternParams.appendChild($levels);
+    $patternParams.appendChild($period);
+    
+    if (activePattern.name == "random") {
+      activeLevel = document.getElementById("levels");
+      activeLevelTxt = document.getElementById("levelsTxt");
+      activeLevel.value = activePattern.levels;
+      activeLevelTxt.innerText = activePattern.levels;
+      activePeriod = document.getElementById("period");
+      activePeriodTxt = document.getElementById("periodTxt");
+      activePeriod.value = activePattern.period;
+      activePeriodTxt.innerText = activePattern.period;
+    }
+  }
 };
 
 if (activePattern.name == "constant") {
@@ -96,6 +118,9 @@ if (activePattern.name == "constant") {
 }
 if (activePattern.name == "sine") {
   $patternSelector.value = "sine";
+}
+if (activePattern.name == "random") {
+  $patternSelector.value = "random";
 }
 listParams();
 

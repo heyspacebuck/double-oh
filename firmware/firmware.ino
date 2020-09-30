@@ -120,7 +120,7 @@ void loop(void) {
   // If more than 50 milliseconds have elapsed, update the PWM value
   currTime = millis();
   if (currTime - prevTime > 50) {
-    motorIntensity = pattern(currTime/1000.0);
+    motorIntensity = pattern(currTime/1000.0, prevTime/1000.0, motorIntensity);
     ledcWrite(0, motorIntensity);
     Serial.println(motorIntensity);
     prevTime = currTime;
