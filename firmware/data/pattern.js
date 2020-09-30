@@ -111,6 +111,24 @@ const listParams = () => {
       activePeriodTxt.innerText = activePattern.period;
     }
   }
+  
+  if ($patternSelector.value == "onebuzz") {
+    const $intensity = createRangeElements("intensity", "Intensity: ", 0, 1, 0.01, 0.75);
+    const $duration = createRangeElements("duration", "Duration: ", 0.1, 30, 0.1, 0.5);
+    $patternParams.appendChild($intensity);
+    $patternParams.appendChild($duration);
+    
+    if (activePattern.name == "onebuzz") {
+      activeIntensity = document.getElementById("intensity");
+      activeIntensityTxt = document.getElementById("intensityTxt");
+      activeIntensity.value = activePattern.intensity;
+      activeIntensityTxt.innerText = activePattern.intensity;
+      activeDuration = document.getElementById("duration");
+      activeDurationTxt = document.getElementById("durationTxt");
+      activeDuration.value = activePattern.duration;
+      activeDurationTxt.innerText = activePattern.duration;
+    }
+  }
 };
 
 if (activePattern.name == "constant") {
@@ -121,6 +139,9 @@ if (activePattern.name == "sine") {
 }
 if (activePattern.name == "random") {
   $patternSelector.value = "random";
+}
+if (activePattern.name == "onebuzz") {
+  $patternSelector.value = "onebuzz";
 }
 listParams();
 

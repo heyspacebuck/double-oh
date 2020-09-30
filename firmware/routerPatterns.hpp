@@ -79,6 +79,36 @@ void handlePatternPost() {
     file.print(message);
     file.close();
   }
+
+  if (patternString=="onebuzz") {
+    float intensity = server.arg("intensity").toFloat();
+    float duration = server.arg("duration").toFloat();
+    int t0 = millis();
+    std::function<int(float, float, int)> newPattern = [intensity, duration, t0](float t, float tprev, int yprev) {
+      if (t-(t0/1000.0) < duration) {
+        int PWM = 255*(1-intensity);
+        return PWM;
+      }
+      else {
+        return 255;
+      }
+    };
+    pattern = newPattern;
+
+    File file = SPIFFS.open("/patternparams.js", FILE_WRITE);
+    String message = "";
+    message += "const activePattern = {name: 'onebuzz', intensity: ";
+    message += intensity;
+    message += ", duration: ";
+    message += duration;
+    message += "};\n";
+    file.print(message);
+    file.close();
+  }
+
+
+
+  
   // Great but now which page to render
   server.sendHeader("Location", "/", true);
   server.send(302, "text/plain", "");
