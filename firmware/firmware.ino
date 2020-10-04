@@ -85,6 +85,25 @@ void setup(void) {
   // On POST request to /runpattern, update the pattern being run on the battery
   server.on("/runpattern", HTTP_POST, handlePatternPost);
 
+  // On a GET request to /pinball, buzz for 200 ms
+  server.on("/pinball", HTTP_GET, []() {
+    float intensity = 1.00;
+    float duration = 0.20;
+    int t0 = millis();
+    std::function<int(float, float, int)> newPattern = [intensity, duration, t0](float t, float tprev, int yprev) {
+      if (t-(t0/1000.0) < duration) {
+        int PWM = 255*(1-intensity);
+        return PWM;
+      }
+      else {
+        return 255;
+      }
+    };
+    pattern = newPattern;
+    server.send(302, "text/plain", "");
+  });
+
+
   // On GET requests to .js files, serve the .js files
   server.on("/configure.js", HTTP_GET, []() {
     handleJS("/configure.js");
