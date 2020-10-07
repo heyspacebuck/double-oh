@@ -41,7 +41,7 @@ void setup(void) {
   // Set DAC voltage test for GPIO 25 (DAC channel 1)
   // Approx 12.126 mV per bit
   dac_output_enable(DAC_CHANNEL_1);
-  setBatteryLevel(1.50);
+  setBatteryLevel(1.90);
 //  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
 //  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
 //  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97 V
