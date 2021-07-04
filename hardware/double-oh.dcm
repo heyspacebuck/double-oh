@@ -1,13 +1,12 @@
 EESchema-DOCLIB  Version 2.0
 #
-$CMP BD48KxxG
-D Undervoltage Sensing Circuit, SOT-23
-K Power Supervisor
-F https://d1d2qsbl8m0m72.cloudfront.net/en/products/databook/datasheet/ic/power/voltage_detector/bd48xxg-e.pdf
-$ENDCMP
-#
 $CMP MP2109
 F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2109/document_id/394
+$ENDCMP
+#
+$CMP XC6120CxxxHR
+D Highly Accurate, Ultra Small, Low Power Consumption Voltage Detector, USP-3
+F https://www.torexsemi.com/file/xc6120/XC6120.pdf
 $ENDCMP
 #
 #End Doc Library

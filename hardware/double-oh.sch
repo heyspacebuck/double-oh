@@ -1043,17 +1043,6 @@ Wire Wire Line
 	2600 1300 3100 1300
 Text GLabel 3100 1100 1    50   Input ~ 0
 LIPO_V
-$Comp
-L double-oh:BD48KxxG U5
-U 1 1 5F4C7229
-P 3325 2650
-F 0 "U5" H 3325 2925 50  0000 C CNN
-F 1 "BD48KxxG" H 3325 2850 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 3325 2150 50  0001 C CNN
-F 3 "https://www.onsemi.com/pub/Collateral/MC34064-D.PDF" H 3325 2650 50  0001 C CNN
-	1    3325 2650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1850 2425 1850 2900
 Text GLabel 3325 3025 0    50   Input ~ 0
@@ -1068,25 +1057,12 @@ Wire Wire Line
 	1175 4450 1425 4450
 Wire Wire Line
 	1425 4450 1425 4225
-$Comp
-L Device:R_Small_US R5
-U 1 1 5F64339A
-P 3775 2425
-F 0 "R5" V 3700 2425 50  0000 C CNN
-F 1 "470kΩ" V 3850 2425 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 3775 2425 50  0001 C CNN
-F 3 "~" H 3775 2425 50  0001 C CNN
-	1    3775 2425
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	1850 3300 2050 3300
 Text GLabel 2050 3300 2    50   Input ~ 0
 TPS_VIN
 Text GLabel 2800 2600 0    50   Input ~ 0
 TPS_VIN
-Wire Wire Line
-	2800 2600 2925 2600
 Wire Wire Line
 	1425 3625 1850 3625
 Connection ~ 1425 4225
@@ -1101,18 +1077,19 @@ Wire Wire Line
 	1425 3825 1425 3625
 Wire Wire Line
 	3325 3025 3325 2950
+$Comp
+L double-oh:XC6120CxxxHR U5
+U 1 1 60C21602
+P 3325 2650
+F 0 "U5" H 3325 2967 50  0000 C CNN
+F 1 "XC6120CxxxHR" H 3325 2876 50  0000 C CNN
+F 2 "double-oh:USP-3" H 3325 2150 50  0001 C CNN
+F 3 "https://www.torexsemi.com/file/xc6120/XC6120.pdf" H 3325 2650 50  0001 C CNN
+	1    3325 2650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3675 2600 3775 2600
+	3675 2600 3850 2600
 Wire Wire Line
-	3775 2525 3775 2600
-Connection ~ 3775 2600
-Wire Wire Line
-	3775 2600 3850 2600
-Wire Wire Line
-	3775 2325 2925 2325
-Wire Wire Line
-	2925 2325 2925 2600
-Connection ~ 2925 2600
-Wire Wire Line
-	2925 2600 2975 2600
+	2800 2600 2975 2600
 $EndSCHEMATC
