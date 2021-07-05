@@ -2,22 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <title>Double-Oh control panel</title>
     <style>
+      * {
+        font-family: sans-serif;
+      }
       #ip-form .number {
-        width: 3em;
+        width: 3rem;
+      }
+      fieldset {
+        margin: 1rem 0.2rem;
+      }
+      legend {
+        font: 2rem serif;
+      }
+      div.button {
+        text-align: center;
+        padding: 0.5rem;
+      }
+      .form-group {
+        margin: 1rem 0;
       }
     </style>
     <script type="text/javascript" src="network.js"></script>
     <script type="text/javascript" src="battery.js"></script>
   </head>
   <body>
-    <h1 id="outputTitle">Power Output</h1>
-    <div id="outputTab">
-      <p>Internal battery level: <span id="batteryLevel"></span></p>
-      <p>Double-Oh output level: <span id="outputLevel"></span></p>
-      <p>Stuff will go here eventually</p>
-      <form action="/runpattern" method="POST">
+    <form action="/runpattern" method="POST" id="outputTab">
+      <fieldset>
+        <legend>Power Output</legend>
+        <p>Internal battery level: <span id="batteryLevel"></span></p>
+        <p>Double-Oh output level: <span id="outputLevel"></span></p>
+        <p>Stuff will go here eventually</p>
         <label for="patternSelector">Choose an output pattern:</label>
         <select id="patternSelector" name="pattern">
           <option value="pwm">Constant output</option>
@@ -25,88 +43,102 @@
           <option value="random">Random</option>
           <option value="onebuzz">One buzz</option>
         </select>
-        <span id="patternParams" style="display: none"></span>
-        <button>Update pattern</button>
-      </form>
-    </div>
-    <h1 id="settingsTitle">Network Settings</h1>
-    <div id="settingsTab" style="display: none">
-      <form action="/settings" method="POST">
+        <div id="patternParams" style="display: none"></div>
+        <hr />
+        <div class="button">
+          <button>Update pattern</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <form action="/settings" method="POST" id="settingsTab">
+      <fieldset>
+        <legend>Network Settings</legend>
         <p><span id="descNetwork"></span></p>
         <hr />
         <div class="form-group">
-          <b>Custom device name:</b><br />
-          <input
-            id="customDeviceName"
-            name="deviceName"
-            type="text"
-            value="doubleoh"
-          />
+          <p>
+            <label for="customDeviceName">
+              <b>Custom device name:</b><br />
+            </label>
+            <input
+              id="customDeviceName"
+              name="deviceName"
+              type="text"
+              value="doubleoh"
+            />
+          </p>
         </div>
         <hr />
         <div class="form-group">
-          <b>Wireless network type:</b><br />
+          <p><b>Wireless network type:</b></p>
           <input type="radio" id="networkType1" name="networkType" value="0" />
-          <label for="networkType1"
-            >Access Point: You connect to the Double-Oh's Wi-Fi network, and any
-            webpage you try to view will show the control panel.</label
-          >
+          <label for="networkType1">
+            Access Point: You connect to the Double-Oh's Wi-Fi network, and any
+            webpage you try to view will show the control panel.
+          </label>
           <br />
           <input type="radio" id="networkType2" name="networkType" value="1" />
-          <label for="networkType2"
-            >Station: The Double-Oh connects to your Wi-Fi network and you
-            access the control panel from a specific URL.</label
-          >
+          <label for="networkType2">
+            Station: The Double-Oh connects to your Wi-Fi network and you access
+            the control panel from a specific URL.
+          </label>
         </div>
         <hr />
         <div class="form-group" id="ip-form">
-          <b>Station mode IP address:</b><br />
-          <input type="number" class="number" value="192" disabled />.
-          <input type="number" class="number" value="168" disabled />.
-          <input
-            type="number"
-            class="number"
-            min="0"
-            max="255"
-            step="1"
-            id="ipAddr1"
-            name="ipAddr1"
-            value="0"
-          />.
-          <input
-            type="number"
-            class="number"
-            min="0"
-            max="255"
-            step="1"
-            id="ipAddr2"
-            name="ipAddr2"
-            value="0"
-          />
-          <i>TODO: find out range of valid IP addresses</i>
-          <br />
-          <b>Your Wi-Fi network name:</b><br />
-          <input
-            type="text"
-            id="networkSSID"
-            name="networkSSID"
-            value="doubleoh"
-          />
-          <br />
-          <b>Your Wi-Fi network password:</b><br />
-          <input type="password" id="networkPSK" name="networkPSK" />
+          <p>
+            <b>Station mode IP address:</b><br />
+            <input type="number" class="number" value="192" disabled />.
+            <input type="number" class="number" value="168" disabled />.
+            <input
+              type="number"
+              class="number"
+              min="0"
+              max="255"
+              step="1"
+              id="ipAddr1"
+              name="ipAddr1"
+              value="0"
+            />.
+            <input
+              type="number"
+              class="number"
+              min="0"
+              max="255"
+              step="1"
+              id="ipAddr2"
+              name="ipAddr2"
+              value="0"
+            />
+            <i>TODO: find out range of valid IP addresses</i>
+          </p>
+          <p>
+            <b>Your Wi-Fi network name:</b><br />
+            <input
+              type="text"
+              id="networkSSID"
+              name="networkSSID"
+              value="doubleoh"
+            />
+          </p>
+          <p>
+            <b>Your Wi-Fi network password:</b><br />
+            <input type="password" id="networkPSK" name="networkPSK" />
+          </p>
         </div>
         <hr />
-        <button>Save settings</button>
-      </form>
-    </div>
-    <h1 id="dangerTitle">Danger Zone</h1>
-    <div id="dangerTab" style="display: none">
-      <p>
-        In normal operation, the Double-Oh is limited to a max output of 1.5
-        VDC. In this section you can change the max output voltage.
-      </p>
-      <form action="/power" method="POST">
+        <div class="button">
+          <button>Save network settings</button>
+        </div>
+      </fieldset>
+    </form>
+    <form action="/power" method="POST" id="dangerTab">
+      <fieldset>
+        <legend>Danger Zone</legend>
+        <p>
+          In normal operation, the Double-Oh is limited to a max output of 1.5
+          VDC. In this section you can change the max output voltage.
+        </p>
         <input
           type="number"
           id="desiredVoltage"
@@ -116,12 +148,15 @@
           step="0.01"
         />
         <button>Change voltage</button>
-      </form>
-    </div>
-    <hr />
-    <hr />
+      </fieldset>
+    </form>
     <form action="/reset" method="POST">
-      <button>Software restart</button>
+      <fieldset>
+        <legend>Software restart</legend>
+        <div class="button">
+          <button>Software restart</button>
+        </div>
+      </fieldset>
     </form>
     <script type="text/javascript" src="configure.js"></script>
     <script type="text/javascript" src="patternparams.js"></script>

@@ -45,8 +45,8 @@ const listParams = () => {
       "Intensity:",
       0,
       1,
-      rangeStep = 0.01,
-      rangeValue = 0.75
+      (rangeStep = 0.01),
+      (rangeValue = 0.75)
     );
     $patternParams.appendChild($intensity);
     if (activePattern.name == "constant") {
@@ -62,22 +62,22 @@ const listParams = () => {
       "Max intensity:",
       0,
       1,
-      rangeStep = 0.01,
-      rangeValue = 1.00
+      (rangeStep = 0.01),
+      (rangeValue = 1.0)
     );
     const $minIntensity = createRangeElements(
       "minIntensity",
       "Min intensity:",
       0,
       1,
-      rangeStep = 0.01,
-      rangeValue = 0.50,
+      (rangeStep = 0.01),
+      (rangeValue = 0.5)
     );
     const $period = createRangeElements("period", "Period:", 1, 30, 0.1, 5.0);
     $patternParams.appendChild($maxIntensity);
     $patternParams.appendChild($minIntensity);
     $patternParams.appendChild($period);
-    
+
     if (activePattern.name == "sine") {
       activeMax = document.getElementById("maxIntensity");
       activeMaxTxt = document.getElementById("maxIntensityTxt");
@@ -93,13 +93,20 @@ const listParams = () => {
       activePeriodTxt.innerText = activePattern.period;
     }
   }
-  
+
   if ($patternSelector.value == "random") {
-    const $levels = createRangeElements("levels", "Number of levels:", 2, 100, 1, 4);
+    const $levels = createRangeElements(
+      "levels",
+      "Number of levels:",
+      2,
+      100,
+      1,
+      4
+    );
     const $period = createRangeElements("period", "Period:", 1, 30, 0.1, 5.0);
     $patternParams.appendChild($levels);
     $patternParams.appendChild($period);
-    
+
     if (activePattern.name == "random") {
       activeLevel = document.getElementById("levels");
       activeLevelTxt = document.getElementById("levelsTxt");
@@ -111,13 +118,27 @@ const listParams = () => {
       activePeriodTxt.innerText = activePattern.period;
     }
   }
-  
+
   if ($patternSelector.value == "onebuzz") {
-    const $intensity = createRangeElements("intensity", "Intensity: ", 0, 1, 0.01, 0.75);
-    const $duration = createRangeElements("duration", "Duration: ", 0.1, 30, 0.1, 0.5);
+    const $intensity = createRangeElements(
+      "intensity",
+      "Intensity: ",
+      0,
+      1,
+      0.01,
+      0.75
+    );
+    const $duration = createRangeElements(
+      "duration",
+      "Duration: ",
+      0.1,
+      30,
+      0.1,
+      0.5
+    );
     $patternParams.appendChild($intensity);
     $patternParams.appendChild($duration);
-    
+
     if (activePattern.name == "onebuzz") {
       activeIntensity = document.getElementById("intensity");
       activeIntensityTxt = document.getElementById("intensityTxt");
