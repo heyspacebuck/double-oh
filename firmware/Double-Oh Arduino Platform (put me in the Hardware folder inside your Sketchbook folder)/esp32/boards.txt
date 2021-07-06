@@ -1,0 +1,81 @@
+menu.UploadSpeed=Upload Speed
+menu.CPUFreq=CPU Frequency
+menu.FlashFreq=Flash Frequency
+menu.FlashMode=Flash Mode
+menu.FlashSize=Flash Size
+menu.PartitionScheme=Partition Scheme
+menu.DebugLevel=Core Debug Level
+
+##############################################################
+### Copied from Espressif's board manager because of ongoing issues with
+### their implementation https://github.com/espressif/arduino-esp32/issues/4691
+
+doubleoh.name=Double-Oh
+
+doubleoh.upload.tool=esp32:esptool_py
+doubleoh.upload.maximum_size=2097152
+doubleoh.upload.maximum_data_size=327680
+doubleoh.upload.wait_for_upload_port=true
+
+doubleoh.serial.disableDTR=true
+doubleoh.serial.disableRTS=true
+
+doubleoh.build.mcu=esp32:esp32
+doubleoh.build.core=esp32:esp32
+doubleoh.build.variant=esp32:esp32
+doubleoh.build.board=DOUBLEOH
+
+doubleoh.build.f_cpu=80000000L
+doubleoh.build.flash_size=4MB
+doubleoh.build.flash_freq=40m
+doubleoh.build.flash_mode=dio
+doubleoh.build.boot=dio
+doubleoh.build.partitions=no_ota
+doubleoh.build.defines=
+
+doubleoh.menu.CPUFreq.240=240MHz
+doubleoh.menu.CPUFreq.240.build.f_cpu=240000000L
+doubleoh.menu.CPUFreq.160=160MHz
+doubleoh.menu.CPUFreq.160.build.f_cpu=160000000L
+doubleoh.menu.CPUFreq.80=80MHz
+doubleoh.menu.CPUFreq.80.build.f_cpu=80000000L
+
+doubleoh.menu.UploadSpeed.921600=921600
+doubleoh.menu.UploadSpeed.921600.upload.speed=921600
+doubleoh.menu.UploadSpeed.115200=115200
+doubleoh.menu.UploadSpeed.115200.upload.speed=115200
+
+doubleoh.menu.FlashMode.dio=DIO
+doubleoh.menu.FlashMode.dio.build.flash_mode=dio
+doubleoh.menu.FlashMode.dio.build.boot=dio
+doubleoh.menu.FlashMode.qio=QIO
+doubleoh.menu.FlashMode.qio.build.flash_mode=dio
+doubleoh.menu.FlashMode.qio.build.boot=qio
+doubleoh.menu.FlashMode.dout=DOUT
+doubleoh.menu.FlashMode.dout.build.flash_mode=dout
+doubleoh.menu.FlashMode.dout.build.boot=dout
+doubleoh.menu.FlashMode.qout=QOUT
+doubleoh.menu.FlashMode.qout.build.flash_mode=dout
+doubleoh.menu.FlashMode.qout.build.boot=qout
+
+doubleoh.menu.FlashFreq.80=80MHz
+doubleoh.menu.FlashFreq.80.build.flash_freq=80m
+doubleoh.menu.FlashFreq.40=40MHz
+doubleoh.menu.FlashFreq.40.build.flash_freq=40m
+
+doubleoh.menu.PSRAM.disabled=Disabled
+doubleoh.menu.PSRAM.disabled.build.defines=
+doubleoh.menu.PSRAM.disabled.build.extra_libs=
+
+doubleoh.menu.DebugLevel.none=None
+doubleoh.menu.DebugLevel.none.build.code_debug=0
+doubleoh.menu.DebugLevel.error=Error
+doubleoh.menu.DebugLevel.error.build.code_debug=1
+doubleoh.menu.DebugLevel.warn=Warn
+doubleoh.menu.DebugLevel.warn.build.code_debug=2
+doubleoh.menu.DebugLevel.info=Info
+doubleoh.menu.DebugLevel.info.build.code_debug=3
+doubleoh.menu.DebugLevel.debug=Debug
+doubleoh.menu.DebugLevel.debug.build.code_debug=4
+doubleoh.menu.DebugLevel.verbose=Verbose
+doubleoh.menu.DebugLevel.verbose.build.code_debug=5
