@@ -1,6 +1,6 @@
 # Double-Oh Battery Assembly and Setup
 
-## Hardware version 2.7, Firmware version 0.7
+## Hardware version 2.7, Firmware version 1.0
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
