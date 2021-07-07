@@ -4,10 +4,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "double-oh"
+Date "2021-07-06"
+Rev "v2.7"
+Comp "Space Buck <heyspacebuck@gmail.com>"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -98,10 +98,10 @@ NoConn ~ 8775 2675
 Wire Wire Line
 	8975 2675 8975 2725
 $Comp
-L Device:C_Small C7
+L Device:C_Small C8
 U 1 1 5D51B789
 P 9075 3025
-F 0 "C7" H 9200 3050 50  0000 C CNN
+F 0 "C8" H 9200 3050 50  0000 C CNN
 F 1 "1.5pF" H 9250 2975 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 9075 3025 50  0001 C CNN
 F 3 "~" H 9075 3025 50  0001 C CNN
@@ -363,10 +363,10 @@ Text GLabel 4050 3375 2    50   Output ~ 0
 Text GLabel 4050 4025 2    50   Output ~ 0
 batt_out
 $Comp
-L Device:C_Small C11
+L Device:C_Small C5
 U 1 1 5E24C7B6
 P 1425 3925
-F 0 "C11" H 1325 3850 50  0000 R CNN
+F 0 "C5" H 1325 3850 50  0000 R CNN
 F 1 "10μF" H 1325 3950 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 1425 3925 50  0001 C CNN
 F 3 "~" H 1425 3925 50  0001 C CNN
@@ -374,10 +374,10 @@ F 3 "~" H 1425 3925 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C12
+L Device:C_Small C7
 U 1 1 5E24CE21
 P 3300 4125
-F 0 "C12" H 3200 4050 50  0000 R CNN
+F 0 "C7" H 3200 4050 50  0000 R CNN
 F 1 "33pF" H 3200 4150 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 3300 4125 50  0001 C CNN
 F 3 "~" H 3300 4125 50  0001 C CNN
@@ -391,10 +391,10 @@ Wire Wire Line
 Text GLabel 975  4450 0    50   Input ~ 0
 0V
 $Comp
-L Device:C_Small C10
+L Device:C_Small C4
 U 1 1 5E287200
 P 4000 3625
-F 0 "C10" H 3900 3550 50  0000 R CNN
+F 0 "C4" H 3900 3550 50  0000 R CNN
 F 1 "10μF" H 3900 3650 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 4000 3625 50  0001 C CNN
 F 3 "~" H 4000 3625 50  0001 C CNN
@@ -402,10 +402,10 @@ F 3 "~" H 4000 3625 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C_Small C13
+L Device:C_Small C6
 U 1 1 5E29EA4A
 P 4000 4225
-F 0 "C13" H 3900 4150 50  0000 R CNN
+F 0 "C6" H 3900 4150 50  0000 R CNN
 F 1 "10μF" H 3900 4250 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 4000 4225 50  0001 C CNN
 F 3 "~" H 4000 4225 50  0001 C CNN
@@ -781,13 +781,6 @@ Wire Wire Line
 Wire Wire Line
 	2950 4450 3525 4450
 Connection ~ 3300 4250
-Wire Wire Line
-	2600 4525 2675 4525
-Wire Wire Line
-	2675 4525 2675 4450
-Connection ~ 2675 4450
-Wire Wire Line
-	2675 4450 2950 4450
 NoConn ~ 8975 5850
 NoConn ~ 7375 4550
 NoConn ~ 7375 4650
@@ -885,11 +878,11 @@ Wire Wire Line
 Wire Wire Line
 	4725 725  4725 975 
 $Comp
-L Device:C_Small C5
+L Device:C_Small C3
 U 1 1 5E1EA531
 P 4525 975
-F 0 "C5" V 4625 1025 50  0000 R CNN
-F 1 "0.1μF" V 4400 1075 50  0000 R CNN
+F 0 "C3" V 4625 1025 50  0000 R CNN
+F 1 "4.7μF" V 4400 1075 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 4525 975 50  0001 C CNN
 F 3 "~" H 4525 975 50  0001 C CNN
 	1    4525 975 
@@ -1094,8 +1087,6 @@ Connection ~ 1425 4450
 Wire Wire Line
 	1425 4225 1850 4225
 Wire Wire Line
-	1425 4450 2675 4450
-Wire Wire Line
 	1425 4025 1425 4225
 Wire Wire Line
 	1425 3825 1425 3625
@@ -1115,4 +1106,6 @@ Wire Wire Line
 Connection ~ 2925 2600
 Wire Wire Line
 	2925 2600 2975 2600
+Wire Wire Line
+	1425 4450 2950 4450
 $EndSCHEMATC
