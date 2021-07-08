@@ -6,6 +6,18 @@ K Power Supervisor
 F https://d1d2qsbl8m0m72.cloudfront.net/en/products/databook/datasheet/ic/power/voltage_detector/bd48xxg-e.pdf
 $ENDCMP
 #
+$CMP ESP32-U4WDH
+D RF Module, ESP32 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 3.0-3.6V, external antenna, QFN-48
+K RF Radio BT ESP ESP32 Espressif external antenna
+F https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+$ENDCMP
+#
+$CMP MCP73831-2-MC
+D Single cell, Li-Ion/Li-Po charge management controller, 4.20V, Open-Drain Status Output, in SOT23-5 package
+K battery charger lithium
+F http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf
+$ENDCMP
+#
 $CMP MP2109
 F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2109/document_id/394
 $ENDCMP

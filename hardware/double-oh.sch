@@ -385,32 +385,12 @@ Wire Wire Line
 Connection ~ 3600 6400
 Wire Wire Line
 	3600 6400 3675 6400
-$Comp
-L RF_Module:ESP32-PICO-D4 U4
-U 1 1 5E2037A4
-P 8175 4550
-F 0 "U4" H 8300 2825 50  0000 C CNN
-F 1 "ESP32-PICO-D4" H 8175 2725 50  0000 C CNN
-F 2 "double-oh:QFN-48-1EP_7x7mm_P0.5mm_EP3.6x3.6mm" H 8175 2850 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-pico-d4_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
-	1    8175 4550
-	1    0    0    -1  
-$EndComp
 Text GLabel 7225 3150 0    50   Input ~ 0
 EN
 Wire Wire Line
 	7225 3150 7375 3150
 Wire Wire Line
-	8275 2950 8175 2950
-Wire Wire Line
-	8175 2950 8075 2950
-Connection ~ 8175 2950
-Wire Wire Line
-	8075 2950 7975 2950
-Connection ~ 8075 2950
-Wire Wire Line
 	7975 2950 7975 2725
-Connection ~ 7975 2950
 Text GLabel 7975 2725 0    50   Input ~ 0
 3.3V
 Text GLabel 9250 3025 2    50   Input ~ 0
@@ -422,8 +402,6 @@ RX_ESP
 NoConn ~ 8975 3550
 Text GLabel 8975 3350 2    50   Input ~ 0
 GPIO0
-Text GLabel 8975 5350 2    50   Input ~ 0
-EN
 Text GLabel 8175 6150 3    50   Input ~ 0
 0V
 Wire Wire Line
@@ -508,9 +486,9 @@ Connection ~ 7225 1500
 Wire Wire Line
 	7225 1500 7225 1550
 Text GLabel 7575 1500 2    50   Input ~ 0
-GPIO33
+ADC
 Text GLabel 9400 5450 2    50   Input ~ 0
-GPIO33
+ADC
 $Comp
 L Device:Q_PMOS_GSD Q3
 U 1 1 5E32DC15
@@ -564,8 +542,6 @@ Wire Wire Line
 	975  3100 1175 3100
 Connection ~ 1175 3100
 Wire Wire Line
-	9400 5450 8975 5450
-Wire Wire Line
 	1175 3500 1175 4450
 NoConn ~ 8975 5850
 NoConn ~ 7375 4550
@@ -580,7 +556,7 @@ U 1 1 5F27CDA3
 P 9225 3750
 F 0 "JP1" H 9225 3825 50  0000 C CNN
 F 1 "Jumper_NO_Small" H 9250 3875 50  0001 C CNN
-F 2 "Resistor_SMD:R_0201_0603Metric" H 9225 3750 50  0001 C CNN
+F 2 "double-oh:solder_bridge" H 9225 3750 50  0001 C CNN
 F 3 "~" H 9225 3750 50  0001 C CNN
 	1    9225 3750
 	-1   0    0    1   
@@ -803,17 +779,6 @@ F 2 "Capacitor_SMD:C_0402_1005Metric" H 1275 1250 50  0001 C CNN
 F 3 "~" H 1275 1250 50  0001 C CNN
 	1    1275 1250
 	-1   0    0    1   
-$EndComp
-$Comp
-L Battery_Management:MCP73831-2-OT U1
-U 1 1 5CDCF91B
-P 1900 1400
-F 0 "U1" H 1900 1925 50  0000 C CNN
-F 1 "MCP73831-2-OT" H 1900 1825 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5" H 1950 1150 50  0001 L CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 50  0001 C CNN
-	1    1900 1400
-	1    0    0    -1  
 $EndComp
 Connection ~ 2600 1300
 Wire Wire Line
@@ -1099,4 +1064,74 @@ Wire Wire Line
 	5300 4825 6025 4825
 Wire Wire Line
 	5300 4575 5300 4500
+$Comp
+L double-oh:ESP32-U4WDH U4
+U 1 1 60E84A17
+P 8175 4550
+F 0 "U4" H 8325 2925 50  0000 C CNN
+F 1 "ESP32-U4WDH" H 8175 2770 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm" H 8175 2850 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
+	1    8175 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8175 2725 8175 2950
+Wire Wire Line
+	8175 2725 8275 2725
+Wire Wire Line
+	8275 2725 8275 2950
+Connection ~ 8175 2725
+NoConn ~ 8975 3850
+NoConn ~ 8975 3950
+NoConn ~ 8975 4050
+NoConn ~ 8975 4150
+NoConn ~ 8975 4250
+NoConn ~ 8975 4350
+NoConn ~ 8975 4450
+NoConn ~ 8975 4550
+NoConn ~ 8975 4750
+NoConn ~ 8975 4950
+NoConn ~ 8975 5150
+NoConn ~ 8975 5250
+NoConn ~ 8975 5350
+NoConn ~ 8975 5550
+NoConn ~ 8975 5650
+NoConn ~ 7375 3350
+NoConn ~ 7375 3450
+NoConn ~ 7375 3550
+NoConn ~ 7375 3650
+Text GLabel 8975 4650 2    50   Input ~ 0
+3.3V
+Wire Wire Line
+	7975 2725 8075 2725
+$Comp
+L Device:Jumper_NO_Small JP3
+U 1 1 60FD0F79
+P 8075 2850
+F 0 "JP3" H 8075 2925 50  0000 C CNN
+F 1 "Jumper_NO_Small" H 8100 2975 50  0001 C CNN
+F 2 "double-oh:solder_bridge" H 8075 2850 50  0001 C CNN
+F 3 "~" H 8075 2850 50  0001 C CNN
+	1    8075 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8075 2750 8075 2725
+Connection ~ 8075 2725
+Wire Wire Line
+	8075 2725 8175 2725
+Wire Wire Line
+	8975 5450 9400 5450
+$Comp
+L Battery_Management:MCP73831-2-OT U1
+U 1 1 5CDCF91B
+P 1900 1400
+F 0 "U1" H 1900 1925 50  0000 C CNN
+F 1 "MCP73831-2-OT" H 1900 1825 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5" H 1950 1150 50  0001 L CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 50  0001 C CNN
+	1    1900 1400
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
