@@ -926,18 +926,7 @@ F 3 "~" H -1200 3975 50  0001 C CNN
 	1    -1200 3975
 	-1   0    0    1   
 $EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 60EA4C61
-P -825 3975
-F 0 "C?" H -925 3900 50  0000 R CNN
-F 1 "10μF" H -925 4000 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H -825 3975 50  0001 C CNN
-F 3 "~" H -825 3975 50  0001 C CNN
-	1    -825 3975
-	-1   0    0    1   
-$EndComp
-Text GLabel -450 3700 2    50   Output ~ 0
+Text GLabel -850 3700 2    50   Output ~ 0
 3.3V
 Connection ~ -1600 3700
 Wire Wire Line
@@ -956,21 +945,10 @@ Wire Wire Line
 Wire Wire Line
 	-1450 3700 -1200 3700
 Wire Wire Line
-	-825 4075 -825 4275
-Wire Wire Line
 	-1200 4075 -1200 4275
-Wire Wire Line
-	-1200 4275 -825 4275
 Wire Wire Line
 	-1200 3875 -1200 3700
 Connection ~ -1200 3700
-Wire Wire Line
-	-1200 3700 -825 3700
-Wire Wire Line
-	-825 3875 -825 3700
-Connection ~ -825 3700
-Wire Wire Line
-	-825 3700 -450 3700
 Connection ~ -3000 4275
 Wire Wire Line
 	-3000 4275 -2500 4275
@@ -985,7 +963,6 @@ Wire Wire Line
 Connection ~ -2500 4275
 Wire Wire Line
 	-2500 4275 -1200 4275
-Connection ~ -1200 4275
 Wire Wire Line
 	-3000 4075 -3000 4275
 $Comp
@@ -1118,42 +1095,23 @@ F 3 "~" H -1275 5175 50  0001 C CNN
 	1    -1275 5175
 	-1   0    0    1   
 $EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 6104B483
-P -900 5175
-F 0 "C?" H -1000 5100 50  0000 R CNN
-F 1 "10μF" H -1000 5200 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H -900 5175 50  0001 C CNN
-F 3 "~" H -900 5175 50  0001 C CNN
-	1    -900 5175
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	-1525 4900 -1275 4900
 Wire Wire Line
-	-900 5275 -900 5475
-Wire Wire Line
 	-1275 5275 -1275 5475
-Wire Wire Line
-	-1275 5475 -900 5475
 Wire Wire Line
 	-1275 5075 -1275 4900
 Connection ~ -1275 4900
-Wire Wire Line
-	-1275 4900 -900 4900
-Wire Wire Line
-	-900 5075 -900 4900
-Connection ~ -900 4900
-Wire Wire Line
-	-900 4900 -525 4900
-Connection ~ -1275 5475
 Connection ~ -2000 5475
 Wire Wire Line
 	-2000 5475 -1275 5475
 Connection ~ -1525 4900
 Wire Wire Line
 	-3200 5475 -2000 5475
-Text GLabel -525 4900 2    50   Output ~ 0
+Text GLabel -950 4900 2    50   Output ~ 0
 batt_out
+Wire Wire Line
+	-1275 4900 -950 4900
+Wire Wire Line
+	-1200 3700 -850 3700
 $EndSCHEMATC
