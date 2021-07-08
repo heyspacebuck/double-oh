@@ -303,115 +303,10 @@ Wire Wire Line
 Connection ~ 9475 4850
 Wire Wire Line
 	9475 4850 8975 4850
-$Comp
-L Device:R_Small_US R9
-U 1 1 5E1E25CE
-P 3350 3625
-F 0 "R9" V 3275 3625 50  0000 C CNN
-F 1 "470kΩ" V 3425 3625 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 3350 3625 50  0001 C CNN
-F 3 "~" H 3350 3625 50  0001 C CNN
-	1    3350 3625
-	0    -1   1    0   
-$EndComp
-$Comp
-L Device:R_Small_US R10
-U 1 1 5E1E38B8
-P 3600 3625
-F 0 "R10" V 3675 3625 50  0000 C CNN
-F 1 "120kΩ" V 3525 3625 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 3600 3625 50  0001 C CNN
-F 3 "~" H 3600 3625 50  0001 C CNN
-	1    3600 3625
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:L_Small L2
-U 1 1 5E1EF938
-P 3100 3725
-F 0 "L2" V 3150 3675 50  0000 L CNN
-F 1 "2.2μH" V 3050 3600 50  0000 L CNN
-F 2 "double-oh:L_0806_2016Metric" H 3100 3725 50  0001 C CNN
-F 3 "~" H 3100 3725 50  0001 C CNN
-	1    3100 3725
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R_Small_US R11
-U 1 1 5E20F539
-P 3525 4125
-F 0 "R11" H 3400 4150 50  0000 C CNN
-F 1 "330kΩ" H 3350 4075 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 3525 4125 50  0001 C CNN
-F 3 "~" H 3525 4125 50  0001 C CNN
-	1    3525 4125
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:L_Small L3
-U 1 1 5E223740
-P 3100 4025
-F 0 "L3" V 3250 4000 50  0000 L CNN
-F 1 "2.2μH" V 3175 3900 50  0000 L CNN
-F 2 "double-oh:L_0806_2016Metric" H 3100 4025 50  0001 C CNN
-F 3 "~" H 3100 4025 50  0001 C CNN
-	1    3100 4025
-	0    -1   -1   0   
-$EndComp
-Text GLabel 4050 3375 2    50   Output ~ 0
-3.3V
-Text GLabel 4050 4025 2    50   Output ~ 0
-batt_out
-$Comp
-L Device:C_Small C5
-U 1 1 5E24C7B6
-P 1425 3925
-F 0 "C5" H 1325 3850 50  0000 R CNN
-F 1 "10μF" H 1325 3950 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 1425 3925 50  0001 C CNN
-F 3 "~" H 1425 3925 50  0001 C CNN
-	1    1425 3925
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C7
-U 1 1 5E24CE21
-P 3300 4125
-F 0 "C7" H 3200 4050 50  0000 R CNN
-F 1 "33pF" H 3200 4150 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 3300 4125 50  0001 C CNN
-F 3 "~" H 3300 4125 50  0001 C CNN
-	1    3300 4125
-	1    0    0    -1  
-$EndComp
 Text GLabel 1625 2425 0    50   Input ~ 0
 LIPO_V
-Wire Wire Line
-	1850 3300 1850 3625
 Text GLabel 975  4450 0    50   Input ~ 0
 0V
-$Comp
-L Device:C_Small C4
-U 1 1 5E287200
-P 4000 3625
-F 0 "C4" H 3900 3550 50  0000 R CNN
-F 1 "10μF" H 3900 3650 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 4000 3625 50  0001 C CNN
-F 3 "~" H 4000 3625 50  0001 C CNN
-	1    4000 3625
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:C_Small C6
-U 1 1 5E29EA4A
-P 4000 4225
-F 0 "C6" H 3900 4150 50  0000 R CNN
-F 1 "10μF" H 3900 4250 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 4000 4225 50  0001 C CNN
-F 3 "~" H 4000 4225 50  0001 C CNN
-	1    4000 4225
-	-1   0    0    1   
-$EndComp
 Text Notes 1750 4675 0    50   ~ 0
 3.3VDC fixed power supply\n1.0-3.3VDC variable power supply
 Text Notes 1975 5375 0    50   ~ 0
@@ -539,17 +434,6 @@ Wire Wire Line
 	1475 6400 1825 6400
 Wire Wire Line
 	1425 6400 1475 6300
-$Comp
-L Device:R_Small_US R6
-U 1 1 5E2A3E0B
-P 3525 4350
-F 0 "R6" H 3425 4325 50  0000 C CNN
-F 1 "68kΩ" H 3375 4400 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 3525 4350 50  0001 C CNN
-F 3 "~" H 3525 4350 50  0001 C CNN
-	1    3525 4350
-	-1   0    0    -1  
-$EndComp
 Text GLabel 9400 5050 2    50   Input ~ 0
 DAC
 $Comp
@@ -681,106 +565,8 @@ Wire Wire Line
 Connection ~ 1175 3100
 Wire Wire Line
 	9400 5450 8975 5450
-$Comp
-L double-oh:TPS62400 U3
-U 1 1 5E5D3B1B
-P 2400 3925
-F 0 "U3" H 2425 4475 50  0000 C CNN
-F 1 "TPS62400" H 2425 4375 50  0000 C CNN
-F 2 "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm" H 2400 3925 50  0001 C CNN
-F 3 "" H 2400 3925 50  0001 C CNN
-	1    2400 3925
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2950 4450 2950 4225
 Wire Wire Line
 	1175 3500 1175 4450
-Wire Wire Line
-	1850 3975 1850 3875
-Connection ~ 1850 3625
-Connection ~ 1175 4450
-Wire Wire Line
-	3000 3725 2950 3725
-Wire Wire Line
-	3200 3725 3200 3625
-Wire Wire Line
-	3200 3625 2950 3625
-Wire Wire Line
-	3250 3625 3200 3625
-Connection ~ 3200 3625
-Wire Wire Line
-	3475 3625 3475 3825
-Wire Wire Line
-	3500 3625 3475 3625
-Connection ~ 3475 3625
-Wire Wire Line
-	3475 3625 3450 3625
-Wire Wire Line
-	2950 3825 3475 3825
-Wire Wire Line
-	4000 3825 4000 3725
-Wire Wire Line
-	4000 3525 4000 3375
-Wire Wire Line
-	3200 3375 3200 3625
-Wire Wire Line
-	3700 3625 3725 3625
-Wire Wire Line
-	3725 3625 3725 3825
-Text GLabel 4050 3825 2    50   Input ~ 0
-0V
-Wire Wire Line
-	3000 4025 2950 4025
-Wire Wire Line
-	4050 4025 4000 4025
-Connection ~ 4000 3375
-Wire Wire Line
-	4000 3375 4050 3375
-Connection ~ 4000 3825
-Wire Wire Line
-	4000 3825 4050 3825
-Wire Wire Line
-	3200 3375 4000 3375
-Wire Wire Line
-	3725 3825 4000 3825
-Wire Wire Line
-	4000 4125 4000 4025
-Connection ~ 4000 4025
-Wire Wire Line
-	4000 4325 4000 4450
-Connection ~ 2950 4450
-Connection ~ 3300 4025
-Wire Wire Line
-	3300 4025 3200 4025
-Wire Wire Line
-	2950 4125 3025 4125
-Wire Wire Line
-	3025 4125 3025 4250
-Wire Wire Line
-	3025 4250 3300 4250
-Wire Wire Line
-	3300 4250 3300 4225
-Wire Wire Line
-	3525 4250 3525 4225
-Wire Wire Line
-	3525 4250 3275 4350
-Text GLabel 3275 4350 0    50   Input ~ 0
-DAC
-Connection ~ 3525 4250
-Wire Wire Line
-	3300 4250 3525 4250
-Connection ~ 3525 4025
-Wire Wire Line
-	3525 4025 4000 4025
-Connection ~ 3525 4450
-Wire Wire Line
-	3525 4450 4000 4450
-Wire Wire Line
-	3300 4025 3525 4025
-Wire Wire Line
-	2950 4450 3525 4450
-Connection ~ 3300 4250
 NoConn ~ 8975 5850
 NoConn ~ 7375 4550
 NoConn ~ 7375 4650
@@ -1055,12 +841,6 @@ Wire Wire Line
 	1625 2425 1850 2425
 Text GLabel 3850 2600 2    50   Input ~ 0
 TPS_EN
-Text GLabel 1850 3875 0    50   Input ~ 0
-TPS_EN
-Wire Wire Line
-	1175 4450 1425 4450
-Wire Wire Line
-	1425 4450 1425 4225
 $Comp
 L Device:R_Small_US R5
 U 1 1 5F64339A
@@ -1081,16 +861,6 @@ TPS_VIN
 Wire Wire Line
 	2800 2600 2925 2600
 Wire Wire Line
-	1425 3625 1850 3625
-Connection ~ 1425 4225
-Connection ~ 1425 4450
-Wire Wire Line
-	1425 4225 1850 4225
-Wire Wire Line
-	1425 4025 1425 4225
-Wire Wire Line
-	1425 3825 1425 3625
-Wire Wire Line
 	3325 3025 3325 2950
 Wire Wire Line
 	3675 2600 3775 2600
@@ -1106,6 +876,284 @@ Wire Wire Line
 Connection ~ 2925 2600
 Wire Wire Line
 	2925 2600 2975 2600
+$Comp
+L double-oh:TPSM828x U?
+U 1 1 60E89966
+P -2050 3900
+F 0 "U?" H -2050 4340 50  0000 C CNN
+F 1 "TPSM828x" H -2050 4249 50  0000 C CNN
+F 2 "double-oh:microSiL-10" H -2050 3900 50  0001 C CNN
+F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H -2050 3900 50  0001 C CNN
+	1    -2050 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L double-oh:TPSM828x U?
+U 1 1 60E8AA52
+P -2750 5100
+F 0 "U?" H -2750 5540 50  0000 C CNN
+F 1 "TPSM828x" H -2750 5449 50  0000 C CNN
+F 2 "double-oh:microSiL-10" H -2750 5100 50  0001 C CNN
+F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H -2750 5100 50  0001 C CNN
+	1    -2750 5100
+	1    0    0    -1  
+$EndComp
+Text Notes -3225 5625 0    50   ~ 0
+TPSM82821SILR adjustable
+Text Notes -2475 3300 0    50   ~ 0
+TPSM828214SILR 3.3V fixed
 Wire Wire Line
-	1425 4450 2950 4450
+	-1600 3950 -1600 3700
+$Comp
+L Device:R_Small_US R?
+U 1 1 60EA3B89
+P -1450 3900
+F 0 "R?" V -1600 3900 50  0000 C CNN
+F 1 "68kΩ" V -1525 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H -1450 3900 50  0001 C CNN
+F 3 "~" H -1450 3900 50  0001 C CNN
+	1    -1450 3900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 60EA4649
+P -1200 3975
+F 0 "C?" H -1300 3900 50  0000 R CNN
+F 1 "10μF" H -1300 4000 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -1200 3975 50  0001 C CNN
+F 3 "~" H -1200 3975 50  0001 C CNN
+	1    -1200 3975
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 60EA4C61
+P -825 3975
+F 0 "C?" H -925 3900 50  0000 R CNN
+F 1 "10μF" H -925 4000 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -825 3975 50  0001 C CNN
+F 3 "~" H -825 3975 50  0001 C CNN
+	1    -825 3975
+	-1   0    0    1   
+$EndComp
+Text GLabel -450 3700 2    50   Output ~ 0
+3.3V
+Connection ~ -1600 3700
+Wire Wire Line
+	-1450 3800 -1450 3700
+Connection ~ -1450 3700
+Wire Wire Line
+	-1450 3700 -1600 3700
+Wire Wire Line
+	-1450 4000 -1450 4100
+Wire Wire Line
+	-1450 4100 -1600 4100
+Text GLabel -3100 4275 0    50   Input ~ 0
+0V
+Wire Wire Line
+	-3100 4275 -3000 4275
+Wire Wire Line
+	-1450 3700 -1200 3700
+Wire Wire Line
+	-825 4075 -825 4275
+Wire Wire Line
+	-1200 4075 -1200 4275
+Wire Wire Line
+	-1200 4275 -825 4275
+Wire Wire Line
+	-1200 3875 -1200 3700
+Connection ~ -1200 3700
+Wire Wire Line
+	-1200 3700 -825 3700
+Wire Wire Line
+	-825 3875 -825 3700
+Connection ~ -825 3700
+Wire Wire Line
+	-825 3700 -450 3700
+Connection ~ -3000 4275
+Wire Wire Line
+	-3000 4275 -2500 4275
+Text GLabel -2500 3850 0    50   Input ~ 0
+TPS_EN
+Wire Wire Line
+	-3000 3700 -3000 3875
+Wire Wire Line
+	-3000 3700 -2500 3700
+Wire Wire Line
+	-2500 4100 -2500 4275
+Connection ~ -2500 4275
+Wire Wire Line
+	-2500 4275 -1200 4275
+Connection ~ -1200 4275
+Wire Wire Line
+	-3000 4075 -3000 4275
+$Comp
+L Device:C_Small C?
+U 1 1 60F0DA0B
+P -3000 3975
+F 0 "C?" V -2900 4025 50  0000 R CNN
+F 1 "4.7μF" V -3125 4075 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -3000 3975 50  0001 C CNN
+F 3 "~" H -3000 3975 50  0001 C CNN
+	1    -3000 3975
+	1    0    0    -1  
+$EndComp
+Text GLabel -3000 3700 0    50   Input ~ 0
+TPS_VIN
+Text GLabel -3800 5475 0    50   Input ~ 0
+0V
+Wire Wire Line
+	-3800 5475 -3700 5475
+Connection ~ -3700 5475
+Wire Wire Line
+	-3700 5475 -3200 5475
+Text GLabel -3200 5050 0    50   Input ~ 0
+TPS_EN
+Wire Wire Line
+	-3700 4900 -3700 5075
+Wire Wire Line
+	-3700 4900 -3200 4900
+Wire Wire Line
+	-3700 5275 -3700 5475
+$Comp
+L Device:C_Small C?
+U 1 1 60F6B8FA
+P -3700 5175
+F 0 "C?" V -3600 5225 50  0000 R CNN
+F 1 "4.7μF" V -3825 5275 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -3700 5175 50  0001 C CNN
+F 3 "~" H -3700 5175 50  0001 C CNN
+	1    -3700 5175
+	1    0    0    -1  
+$EndComp
+Text GLabel -3700 4900 0    50   Input ~ 0
+TPS_VIN
+Wire Wire Line
+	-3200 5300 -3200 5475
+$Comp
+L Device:R_Small_US R?
+U 1 1 60F81C2A
+P -2000 5000
+F 0 "R?" H -2125 5025 50  0000 C CNN
+F 1 "330kΩ" H -2175 4950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H -2000 5000 50  0001 C CNN
+F 3 "~" H -2000 5000 50  0001 C CNN
+	1    -2000 5000
+	-1   0    0    -1  
+$EndComp
+Text GLabel -2125 5025 0    50   Input ~ 0
+DAC
+Wire Wire Line
+	-2000 5100 -2000 5150
+Wire Wire Line
+	-2125 5025 -2000 5150
+Connection ~ -2000 5150
+Wire Wire Line
+	-2000 4900 -2300 4900
+$Comp
+L Device:R_Small_US R?
+U 1 1 60FE7332
+P -2000 5250
+F 0 "R?" V -2150 5250 50  0000 C CNN
+F 1 "68kΩ" V -2075 5250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H -2000 5250 50  0001 C CNN
+F 3 "~" H -2000 5250 50  0001 C CNN
+	1    -2000 5250
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	-2000 5350 -2000 5475
+Connection ~ -3200 5475
+Wire Wire Line
+	-2300 5150 -2000 5150
+$Comp
+L Device:R_Small_US R?
+U 1 1 61015F55
+P -1525 5100
+F 0 "R?" V -1675 5100 50  0000 C CNN
+F 1 "68kΩ" V -1600 5100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H -1525 5100 50  0001 C CNN
+F 3 "~" H -1525 5100 50  0001 C CNN
+	1    -1525 5100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	-2300 5300 -1525 5300
+Wire Wire Line
+	-1525 5300 -1525 5200
+Wire Wire Line
+	-2000 4900 -1750 4900
+Wire Wire Line
+	-1525 4900 -1525 5000
+Connection ~ -2000 4900
+$Comp
+L Device:C_Small C?
+U 1 1 6102F82E
+P -1750 5025
+F 0 "C?" H -1850 4950 50  0000 R CNN
+F 1 "120pF" H -1850 5050 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -1750 5025 50  0001 C CNN
+F 3 "~" H -1750 5025 50  0001 C CNN
+	1    -1750 5025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	-1750 4925 -1750 4900
+Connection ~ -1750 4900
+Wire Wire Line
+	-1750 4900 -1525 4900
+Wire Wire Line
+	-1750 5125 -1750 5150
+Wire Wire Line
+	-1750 5150 -2000 5150
+$Comp
+L Device:C_Small C?
+U 1 1 6104AEA1
+P -1275 5175
+F 0 "C?" H -1375 5100 50  0000 R CNN
+F 1 "10μF" H -1375 5200 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -1275 5175 50  0001 C CNN
+F 3 "~" H -1275 5175 50  0001 C CNN
+	1    -1275 5175
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 6104B483
+P -900 5175
+F 0 "C?" H -1000 5100 50  0000 R CNN
+F 1 "10μF" H -1000 5200 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H -900 5175 50  0001 C CNN
+F 3 "~" H -900 5175 50  0001 C CNN
+	1    -900 5175
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-1525 4900 -1275 4900
+Wire Wire Line
+	-900 5275 -900 5475
+Wire Wire Line
+	-1275 5275 -1275 5475
+Wire Wire Line
+	-1275 5475 -900 5475
+Wire Wire Line
+	-1275 5075 -1275 4900
+Connection ~ -1275 4900
+Wire Wire Line
+	-1275 4900 -900 4900
+Wire Wire Line
+	-900 5075 -900 4900
+Connection ~ -900 4900
+Wire Wire Line
+	-900 4900 -525 4900
+Connection ~ -1275 5475
+Connection ~ -2000 5475
+Wire Wire Line
+	-2000 5475 -1275 5475
+Connection ~ -1525 4900
+Wire Wire Line
+	-3200 5475 -2000 5475
+Text GLabel -525 4900 2    50   Output ~ 0
+batt_out
 $EndSCHEMATC

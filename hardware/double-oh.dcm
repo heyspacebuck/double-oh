@@ -10,4 +10,9 @@ $CMP MP2109
 F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2109/document_id/394
 $ENDCMP
 #
+$CMP TPSM828x
+D High Efficiency Step-Down Converter MicroSiP™ PowerModule with Integrated Inductor
+F https://www.ti.com/lit/ds/symlink/tpsm82821.pdf
+$ENDCMP
+#
 #End Doc Library
