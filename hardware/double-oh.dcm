@@ -15,4 +15,9 @@ D High Efficiency Step-Down Converter MicroSiP™ PowerModule with Integrated In
 F https://www.ti.com/lit/ds/symlink/tpsm82821.pdf
 $ENDCMP
 #
+$CMP XC6120CxxxHR
+D Highly Accurate, Ultra Small, Low Power Consumption Voltage Detector, USP-3
+F https://www.torexsemi.com/file/xc6120/XC6120.pdf
+$ENDCMP
+#
 #End Doc Library
