@@ -1,5 +1,5 @@
 # Bill of Materials
-## Valid as of Hardware version 2.7
+## Valid as of Hardware version 3.0
 
 See also: [interactive HTML BOM](/hardware/bom/ibom.html)
 
