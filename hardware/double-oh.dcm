@@ -22,7 +22,13 @@ $CMP MP2109
 F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2109/document_id/394
 $ENDCMP
 #
-$CMP TPSM828x
+$CMP RCLAMP1624T
+D Low Capacitance TVS Diode Array, 3.3V Standoff, 8 Channels, UDFN-9
+K usb esd protection suppression transient
+F https://semtech.my.salesforce.com/sfc/p/#E0000000JelG/a/44000000MChh/8MoVECasdJU0K6K58HLazk2xPXNl.hax96nsZKmG2bM
+$ENDCMP
+#
+$CMP TPSM8282x
 D High Efficiency Step-Down Converter MicroSiP™ PowerModule with Integrated Inductor
 F https://www.ti.com/lit/ds/symlink/tpsm82821.pdf
 $ENDCMP

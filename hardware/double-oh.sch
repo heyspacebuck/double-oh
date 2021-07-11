@@ -409,7 +409,7 @@ Wire Wire Line
 Wire Wire Line
 	1425 6300 1475 6400
 Wire Wire Line
-	1475 6400 1825 6400
+	1475 6400 1525 6400
 Wire Wire Line
 	1425 6400 1475 6300
 Text GLabel 9400 5050 2    50   Input ~ 0
@@ -469,7 +469,7 @@ F 3 "~" H 7225 1650 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	1250 6100 1575 6100
+	1250 6100 1275 6100
 Text GLabel 7225 1050 1    50   Input ~ 0
 LIPO_V
 Wire Wire Line
@@ -802,22 +802,22 @@ TPS_VIN
 Wire Wire Line
 	1875 4225 1875 4150
 $Comp
-L double-oh:TPSM828x U3
+L double-oh:TPSM8282x U3
 U 1 1 60E89966
 P 4575 3425
 F 0 "U3" H 4825 3750 50  0000 C CNN
-F 1 "TPSM828x" H 4450 3750 50  0000 C CNN
+F 1 "TPSM8282x" H 4450 3750 50  0000 C CNN
 F 2 "double-oh:microSiL-10" H 4575 3425 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
 	1    4575 3425
 	1    0    0    -1  
 $EndComp
 $Comp
-L double-oh:TPSM828x U6
+L double-oh:TPSM8282x U6
 U 1 1 60E8AA52
 P 4550 4450
 F 0 "U6" H 4775 4775 50  0000 C CNN
-F 1 "TPSM828x" H 4400 4775 50  0000 C CNN
+F 1 "TPSM8282x" H 4400 4775 50  0000 C CNN
 F 2 "double-oh:microSiL-10" H 4550 4450 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4550 4450 50  0001 C CNN
 	1    4550 4450
@@ -1134,4 +1134,41 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 
 	1    1900 1400
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:Net-Tie_2 NT1
+U 1 1 60F0A83F
+P 1475 7175
+F 0 "NT1" H 1475 7356 50  0000 C CNN
+F 1 "Net-Tie_2" H 1475 7265 50  0000 C CNN
+F 2 "" H 1475 7175 50  0001 C CNN
+F 3 "~" H 1475 7175 50  0001 C CNN
+	1    1475 7175
+	1    0    0    -1  
+$EndComp
+Text GLabel 1375 7175 3    50   Input ~ 0
+0V
+$Comp
+L double-oh:RCLAMP1624T D4
+U 1 1 60F06E60
+P 1475 6875
+F 0 "D4" H 1075 6725 50  0000 L CNN
+F 1 "RCLAMP1624T" H 750 6575 50  0000 L CNN
+F 2 "double-oh:SLP1710P4T" H 1775 6825 50  0001 L CNN
+F 3 "https://semtech.my.salesforce.com/sfc/p/#E0000000JelG/a/44000000MChh/8MoVECasdJU0K6K58HLazk2xPXNl.hax96nsZKmG2bM" H 1800 6900 50  0001 C CNN
+	1    1475 6875
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1275 6575 1275 6100
+Connection ~ 1275 6100
+Wire Wire Line
+	1275 6100 1575 6100
+Wire Wire Line
+	1425 6575 1425 6400
+Connection ~ 1425 6400
+Wire Wire Line
+	1525 6575 1525 6400
+Connection ~ 1525 6400
+Wire Wire Line
+	1525 6400 1825 6400
 $EndSCHEMATC
