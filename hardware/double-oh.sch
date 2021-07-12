@@ -16,18 +16,18 @@ $EndDescr
 Text Notes 7175 2475 0    50   ~ 0
 ESP32 2.4GHz SiP
 Wire Wire Line
-	10300 4275 10300 4650
-Text GLabel 10300 5275 0    50   Input ~ 0
+	10300 4175 10300 4550
+Text GLabel 10300 5175 0    50   Input ~ 0
 batt_out
 $Comp
 L Device:R_Small_US R8
 U 1 1 5D570C7A
-P 9700 4850
-F 0 "R8" V 9625 4900 50  0000 R CNN
-F 1 "1kΩ" V 9775 4925 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4850 50  0001 C CNN
-F 3 "~" H 9700 4850 50  0001 C CNN
-	1    9700 4850
+P 9700 4750
+F 0 "R8" V 9625 4800 50  0000 R CNN
+F 1 "1kΩ" V 9775 4825 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4750 50  0001 C CNN
+F 3 "~" H 9700 4750 50  0001 C CNN
+	1    9700 4750
 	0    -1   1    0   
 $EndComp
 Text GLabel 3675 6300 2    50   Input ~ 0
@@ -63,7 +63,7 @@ NoConn ~ 1225 6500
 Wire Wire Line
 	1825 5800 1825 5500
 Wire Wire Line
-	1225 6100 1250 6100
+	1225 6100 1275 6100
 Wire Wire Line
 	1575 6100 1575 6000
 Wire Wire Line
@@ -82,7 +82,7 @@ Text GLabel 925  6700 3    50   Input ~ 0
 NoConn ~ 825  6700
 Text GLabel 1125 5500 0    50   Input ~ 0
 USB_VIN
-Connection ~ 1250 6100
+Connection ~ 1275 6100
 $Comp
 L Device:Antenna_Chip AE1
 U 1 1 5E0A67E0
@@ -263,46 +263,44 @@ F 3 "~" H 9700 2425 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	10300 5050 10300 5275
-Text GLabel 10300 4275 0    50   Input ~ 0
+	10300 4950 10300 5175
+Text GLabel 10300 4175 0    50   Input ~ 0
 to_top_cap
 Wire Wire Line
-	9600 4850 9475 4850
+	9600 4750 9475 4750
 $Comp
 L Device:Q_PMOS_GSD Q2
 U 1 1 5E0EBFFC
-P 10200 4850
-F 0 "Q2" H 10425 4925 50  0000 L CNN
-F 1 "Q_PMOS_GSD" H 10425 4825 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4950 50  0001 C CNN
-F 3 "~" H 10200 4850 50  0001 C CNN
-	1    10200 4850
+P 10200 4750
+F 0 "Q2" H 10425 4825 50  0000 L CNN
+F 1 "Q_PMOS_GSD" H 10425 4725 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4850 50  0001 C CNN
+F 3 "~" H 10200 4750 50  0001 C CNN
+	1    10200 4750
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R_Small_US R7
 U 1 1 5E0FEC54
-P 9475 4700
-F 0 "R7" V 9400 4750 50  0000 R CNN
-F 1 "68kΩ" V 9550 4775 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4700 50  0001 C CNN
-F 3 "~" H 9475 4700 50  0001 C CNN
-	1    9475 4700
+P 9475 4600
+F 0 "R7" V 9400 4650 50  0000 R CNN
+F 1 "68kΩ" V 9550 4675 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4600 50  0001 C CNN
+F 3 "~" H 9475 4600 50  0001 C CNN
+	1    9475 4600
 	-1   0    0    -1  
 $EndComp
-Text GLabel 9425 4550 0    50   Input ~ 0
+Text GLabel 9475 4375 1    50   Input ~ 0
 3.3V
 Wire Wire Line
-	9425 4550 9475 4550
+	9475 4450 9475 4500
 Wire Wire Line
-	9475 4550 9475 4600
+	9800 4750 10000 4750
 Wire Wire Line
-	9800 4850 10000 4850
+	9475 4700 9475 4750
+Connection ~ 9475 4750
 Wire Wire Line
-	9475 4800 9475 4850
-Connection ~ 9475 4850
-Wire Wire Line
-	9475 4850 8975 4850
+	9475 4750 8975 4750
 Text GLabel 1625 2425 0    50   Input ~ 0
 LIPO_V
 Text GLabel 975  4450 0    50   Input ~ 0
@@ -409,22 +407,9 @@ Wire Wire Line
 Wire Wire Line
 	1425 6300 1475 6400
 Wire Wire Line
-	1475 6400 1525 6400
-Wire Wire Line
 	1425 6400 1475 6300
 Text GLabel 9400 5050 2    50   Input ~ 0
 DAC
-$Comp
-L Device:R_Small_US R12
-U 1 1 5E2FE184
-P 9175 5050
-F 0 "R12" V 9325 5050 50  0000 C CNN
-F 1 "300kΩ" V 9250 5050 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9175 5050 50  0001 C CNN
-F 3 "~" H 9175 5050 50  0001 C CNN
-	1    9175 5050
-	0    1    -1   0   
-$EndComp
 Wire Wire Line
 	9075 5050 8975 5050
 Wire Wire Line
@@ -434,12 +419,12 @@ Wire Wire Line
 Wire Wire Line
 	1475 6300 1825 6300
 Wire Wire Line
-	1250 5500 1125 5500
+	1275 5500 1125 5500
 Wire Wire Line
-	1250 5500 1250 6100
+	1275 5500 1275 6100
 Wire Wire Line
-	1250 5500 1825 5500
-Connection ~ 1250 5500
+	1275 5500 1825 5500
+Connection ~ 1275 5500
 Wire Wire Line
 	2325 5500 2325 5425
 Wire Wire Line
@@ -468,8 +453,6 @@ F 3 "~" H 7225 1650 50  0001 C CNN
 	1    7225 1650
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	1250 6100 1275 6100
 Text GLabel 7225 1050 1    50   Input ~ 0
 LIPO_V
 Wire Wire Line
@@ -521,10 +504,10 @@ Wire Wire Line
 Wire Wire Line
 	975  4450 1175 4450
 $Comp
-L Device:R_Small_US R14
+L Device:R_Small_US R5
 U 1 1 5E363F6E
 P 1175 3400
-F 0 "R14" V 1025 3400 50  0000 C CNN
+F 0 "R5" V 1025 3400 50  0000 C CNN
 F 1 "68kΩ" V 1100 3400 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 1175 3400 50  0001 C CNN
 F 3 "~" H 1175 3400 50  0001 C CNN
@@ -550,23 +533,6 @@ NoConn ~ 7375 4750
 NoConn ~ 7375 4850
 NoConn ~ 7375 4950
 NoConn ~ 7375 5050
-$Comp
-L Device:Jumper_NO_Small JP1
-U 1 1 5F27CDA3
-P 9225 3750
-F 0 "JP1" H 9225 3825 50  0000 C CNN
-F 1 "Jumper_NO_Small" H 9250 3875 50  0001 C CNN
-F 2 "double-oh:solder_bridge" H 9225 3750 50  0001 C CNN
-F 3 "~" H 9225 3750 50  0001 C CNN
-	1    9225 3750
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	9125 3750 8975 3750
-Text GLabel 9425 3750 2    50   Input ~ 0
-0V
-Wire Wire Line
-	9425 3750 9325 3750
 $Comp
 L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
 U 1 1 5DFF9476
@@ -813,10 +779,10 @@ F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L double-oh:TPSM8282x U6
+L double-oh:TPSM8282x U4
 U 1 1 60E8AA52
 P 4550 4450
-F 0 "U6" H 4775 4775 50  0000 C CNN
+F 0 "U4" H 4775 4775 50  0000 C CNN
 F 1 "TPSM8282x" H 4400 4775 50  0000 C CNN
 F 2 "double-oh:microSiL-10" H 4550 4450 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4550 4450 50  0001 C CNN
@@ -983,10 +949,10 @@ Wire Wire Line
 Wire Wire Line
 	1350 3800 1525 3800
 $Comp
-L double-oh:XC6120CxxxHR U5
+L double-oh:XC6120CxxxHR U6
 U 1 1 6114014C
 P 1875 3850
-F 0 "U5" H 1875 4167 50  0000 C CNN
+F 0 "U6" H 1875 4167 50  0000 C CNN
 F 1 "XC6120CxxxHR" H 1875 4076 50  0000 C CNN
 F 2 "double-oh:USP-3" H 1875 3350 50  0001 C CNN
 F 3 "https://www.torexsemi.com/file/xc6120/XC6120.pdf" H 1875 3850 50  0001 C CNN
@@ -1065,10 +1031,10 @@ Wire Wire Line
 Wire Wire Line
 	5300 4575 5300 4500
 $Comp
-L double-oh:ESP32-U4WDH U4
+L double-oh:ESP32-U4WDH U1
 U 1 1 60E84A17
 P 8175 4550
-F 0 "U4" H 8325 2925 50  0000 C CNN
+F 0 "U1" H 8325 2925 50  0000 C CNN
 F 1 "ESP32-U4WDH" H 8175 2770 50  0000 C CNN
 F 2 "Package_DFN_QFN:QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm" H 8175 2850 50  0001 C CNN
 F 3 "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
@@ -1090,85 +1056,92 @@ NoConn ~ 8975 4250
 NoConn ~ 8975 4350
 NoConn ~ 8975 4450
 NoConn ~ 8975 4550
-NoConn ~ 8975 4750
 NoConn ~ 8975 4950
 NoConn ~ 8975 5150
 NoConn ~ 8975 5250
 NoConn ~ 8975 5350
 NoConn ~ 8975 5550
-NoConn ~ 8975 5650
 NoConn ~ 7375 3350
 NoConn ~ 7375 3450
 NoConn ~ 7375 3550
 NoConn ~ 7375 3650
-Text GLabel 8975 4650 2    50   Input ~ 0
-3.3V
 Wire Wire Line
 	7975 2725 8075 2725
-$Comp
-L Device:Jumper_NO_Small JP3
-U 1 1 60FD0F79
-P 8075 2850
-F 0 "JP3" H 8075 2925 50  0000 C CNN
-F 1 "Jumper_NO_Small" H 8100 2975 50  0001 C CNN
-F 2 "double-oh:solder_bridge" H 8075 2850 50  0001 C CNN
-F 3 "~" H 8075 2850 50  0001 C CNN
-	1    8075 2850
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	8075 2750 8075 2725
 Connection ~ 8075 2725
 Wire Wire Line
 	8075 2725 8175 2725
 Wire Wire Line
 	8975 5450 9400 5450
 $Comp
-L Battery_Management:MCP73831-2-OT U1
+L Battery_Management:MCP73831-2-OT U5
 U 1 1 5CDCF91B
 P 1900 1400
-F 0 "U1" H 1900 1925 50  0000 C CNN
+F 0 "U5" H 1900 1925 50  0000 C CNN
 F 1 "MCP73831-2-OT" H 1900 1825 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23-5" H 1950 1150 50  0001 L CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 50  0001 C CNN
 	1    1900 1400
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:Net-Tie_2 NT1
-U 1 1 60F0A83F
-P 1475 7175
-F 0 "NT1" H 1475 7356 50  0000 C CNN
-F 1 "Net-Tie_2" H 1475 7265 50  0000 C CNN
-F 2 "" H 1475 7175 50  0001 C CNN
-F 3 "~" H 1475 7175 50  0001 C CNN
-	1    1475 7175
-	1    0    0    -1  
-$EndComp
-Text GLabel 1375 7175 3    50   Input ~ 0
-0V
-$Comp
-L double-oh:RCLAMP1624T D4
-U 1 1 60F06E60
-P 1475 6875
-F 0 "D4" H 1075 6725 50  0000 L CNN
-F 1 "RCLAMP1624T" H 750 6575 50  0000 L CNN
-F 2 "double-oh:SLP1710P4T" H 1775 6825 50  0001 L CNN
-F 3 "https://semtech.my.salesforce.com/sfc/p/#E0000000JelG/a/44000000MChh/8MoVECasdJU0K6K58HLazk2xPXNl.hax96nsZKmG2bM" H 1800 6900 50  0001 C CNN
-	1    1475 6875
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1275 6575 1275 6100
-Connection ~ 1275 6100
 Wire Wire Line
 	1275 6100 1575 6100
 Wire Wire Line
-	1425 6575 1425 6400
-Connection ~ 1425 6400
+	9475 4375 9475 4450
+Connection ~ 9475 4450
 Wire Wire Line
-	1525 6575 1525 6400
-Connection ~ 1525 6400
+	9250 4450 9250 4650
 Wire Wire Line
-	1525 6400 1825 6400
+	9250 4650 8975 4650
+Wire Wire Line
+	9250 4450 9475 4450
+NoConn ~ 3225 7100
+NoConn ~ 3225 7000
+NoConn ~ 3225 6900
+NoConn ~ 3225 6700
+NoConn ~ 3225 6100
+NoConn ~ 3225 5900
+NoConn ~ 3225 5800
+NoConn ~ 2725 5500
+NoConn ~ 1825 6600
+NoConn ~ 1825 6700
+NoConn ~ 1825 6800
+NoConn ~ 1825 6900
+NoConn ~ 1825 7100
+Wire Wire Line
+	9425 3750 9325 3750
+Text GLabel 9425 3750 2    50   Input ~ 0
+0V
+Wire Wire Line
+	9125 3750 8975 3750
+$Comp
+L Device:Jumper_NO_Small JP1
+U 1 1 5F27CDA3
+P 9225 3750
+F 0 "JP1" H 9225 3825 50  0000 C CNN
+F 1 "Jumper_NO_Small" H 9250 3875 50  0001 C CNN
+F 2 "double-oh:solder_bridge" H 9225 3750 50  0001 C CNN
+F 3 "~" H 9225 3750 50  0001 C CNN
+	1    9225 3750
+	-1   0    0    1   
+$EndComp
+NoConn ~ 8975 4850
+$Comp
+L Device:R_Small_US R12
+U 1 1 5E2FE184
+P 9175 5050
+F 0 "R12" V 9325 5050 50  0000 C CNN
+F 1 "300kΩ" V 9250 5050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9175 5050 50  0001 C CNN
+F 3 "~" H 9175 5050 50  0001 C CNN
+	1    9175 5050
+	0    1    -1   0   
+$EndComp
+Text Notes 9200 4100 0    100  ~ 0
+notice the main IO changed between v2 and v3! It moved from IO22 to IO21!\nPIN 11 is grounded now!
+Wire Wire Line
+	1475 6400 1825 6400
+Text GLabel 8975 5650 2    50   Input ~ 0
+0V
+Wire Wire Line
+	8075 2725 8075 2950
 $EndSCHEMATC
