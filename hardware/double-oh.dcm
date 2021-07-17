@@ -33,6 +33,18 @@ D High Efficiency Step-Down Converter MicroSiP™ PowerModule with Integrated In
 F https://www.ti.com/lit/ds/symlink/tpsm82821.pdf
 $ENDCMP
 #
+$CMP USB_B_Micro_Unshielded
+D USB Micro Type B connector
+K connector USB micro
+F ~
+$ENDCMP
+#
+$CMP USB_B_Mini
+D USB Mini Type B connector
+K connector USB mini
+F ~
+$ENDCMP
+#
 $CMP XC6120CxxxHR
 D Highly Accurate, Ultra Small, Low Power Consumption Voltage Detector, USP-3
 F https://www.torexsemi.com/file/xc6120/XC6120.pdf

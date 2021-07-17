@@ -13,7 +13,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 7175 2475 0    50   ~ 0
+Text Notes 7225 2625 0    50   ~ 0
 ESP32 2.4GHz SiP
 Wire Wire Line
 	10300 4175 10300 4550
@@ -30,59 +30,37 @@ F 3 "~" H 9700 4750 50  0001 C CNN
 	1    9700 4750
 	0    -1   1    0   
 $EndComp
-Text GLabel 3675 6300 2    50   Input ~ 0
+Text GLabel 4275 6250 2    50   Input ~ 0
 TX_USB
-Text GLabel 3675 6400 2    50   Input ~ 0
+Text GLabel 4275 5950 2    50   Input ~ 0
 RX_USB
-Text GLabel 3675 6600 2    50   Input ~ 0
+Text GLabel 4275 5850 2    50   Input ~ 0
 RTS
-Text GLabel 3675 6000 2    50   Input ~ 0
+Text GLabel 4275 6350 2    50   Input ~ 0
 DTR
-Wire Wire Line
-	3225 6300 3600 6300
-Wire Wire Line
-	3225 6400 3600 6400
-Wire Wire Line
-	3225 6600 3675 6600
-Wire Wire Line
-	3225 6000 3675 6000
 $Comp
-L Connector:USB_B_Micro J1
+L double-oh:USB_B_Micro_Unshielded J1
 U 1 1 5E0056A1
-P 925 6300
-F 0 "J1" H 1000 6825 50  0000 C CNN
-F 1 "USB_B_Micro" H 1000 6725 50  0000 C CNN
-F 2 "double-oh:microusb_PCB_socket" H 1075 6250 50  0001 C CNN
-F 3 "~" H 1075 6250 50  0001 C CNN
-	1    925  6300
+P 1550 6750
+F 0 "J1" H 1425 6225 50  0000 C CNN
+F 1 "Unshielded USB Micro port" H 1550 6100 50  0000 C CNN
+F 2 "double-oh:microusb_PCB_socket" H 1700 6700 50  0001 C CNN
+F 3 "~" H 1700 6700 50  0001 C CNN
+	1    1550 6750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2625 7400 2575 7400
-NoConn ~ 1225 6500
+	3375 7250 3325 7250
+NoConn ~ 1850 6950
 Wire Wire Line
-	1825 5800 1825 5500
+	3325 7325 3325 7250
+Connection ~ 3325 7250
 Wire Wire Line
-	1225 6100 1275 6100
-Wire Wire Line
-	1575 6100 1575 6000
-Wire Wire Line
-	1575 6000 1825 6000
-Text GLabel 2325 7475 0    50   Input ~ 0
+	3325 7250 3275 7250
+Text GLabel 1550 7150 3    50   Input ~ 0
 0V
-Wire Wire Line
-	2325 7475 2575 7475
-Wire Wire Line
-	2575 7475 2575 7400
-Connection ~ 2575 7400
-Wire Wire Line
-	2575 7400 2525 7400
-Text GLabel 925  6700 3    50   Input ~ 0
-0V
-NoConn ~ 825  6700
-Text GLabel 1125 5500 0    50   Input ~ 0
+Text GLabel 2050 6350 0    50   Input ~ 0
 USB_VIN
-Connection ~ 1275 6100
 $Comp
 L Device:Antenna_Chip AE1
 U 1 1 5E0A67E0
@@ -301,14 +279,14 @@ Wire Wire Line
 Connection ~ 9475 4750
 Wire Wire Line
 	9475 4750 8975 4750
-Text GLabel 1625 2425 0    50   Input ~ 0
+Text GLabel 1625 2225 0    50   Input ~ 0
 LIPO_V
 Text GLabel 975  4450 0    50   Input ~ 0
 0V
 Text Notes 1525 4425 0    50   ~ 0
-3.2V voltage supervisor
-Text Notes 1975 5375 0    50   ~ 0
-CP2104 USB-to-UART bridge\n
+3.4V voltage supervisor
+Text Notes 2725 5325 0    50   ~ 0
+CP2102N USB-to-UART bridge\n
 Text GLabel 8575 875  0    50   Input ~ 0
 to_top_cap
 Text GLabel 8575 1175 0    50   Input ~ 0
@@ -318,8 +296,8 @@ L Device:D_ALT D2
 U 1 1 5E31A252
 P 8750 1025
 F 0 "D2" V 8800 900 50  0000 R CNN
-F 1 "D_ALT" V 8750 900 50  0000 R CNN
-F 2 "Diode_SMD:D_0402_1005Metric" H 8750 1025 50  0001 C CNN
+F 1 "‎PMEG6010AESBYL‎" V 8750 900 50  0000 R CNN
+F 2 "double-oh:SOD-993" H 8750 1025 50  0001 C CNN
 F 3 "~" H 8750 1025 50  0001 C CNN
 	1    8750 1025
 	0    1    1    0   
@@ -354,35 +332,10 @@ F 3 "~" H 9700 1875 50  0001 C CNN
 $EndComp
 NoConn ~ 9900 1200
 NoConn ~ 9900 1875
-$Comp
-L Interface_USB:CP2104 U2
-U 1 1 5E1C43B6
-P 2525 6400
-F 0 "U2" H 2525 5275 50  0000 C CNN
-F 1 "CP2104" H 2525 5175 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2675 5450 50  0001 L CNN
-F 3 "https://www.silabs.com/documents/public/data-sheets/cp2104.pdf" H 1975 7650 50  0001 C CNN
-	1    2525 6400
-	1    0    0    -1  
-$EndComp
-Text GLabel 3675 6200 2    50   Input ~ 0
+Text GLabel 4275 6150 2    50   Input ~ 0
 RX_ESP
-Wire Wire Line
-	3675 6200 3600 6200
-Wire Wire Line
-	3600 6200 3600 6300
-Connection ~ 3600 6300
-Wire Wire Line
-	3600 6300 3675 6300
-Text GLabel 3675 6500 2    50   Input ~ 0
+Text GLabel 4275 6050 2    50   Input ~ 0
 TX_ESP
-Wire Wire Line
-	3675 6500 3600 6500
-Wire Wire Line
-	3600 6500 3600 6400
-Connection ~ 3600 6400
-Wire Wire Line
-	3600 6400 3675 6400
 Text GLabel 7225 3150 0    50   Input ~ 0
 EN
 Wire Wire Line
@@ -402,12 +355,6 @@ Text GLabel 8975 3350 2    50   Input ~ 0
 GPIO0
 Text GLabel 8175 6150 3    50   Input ~ 0
 0V
-Wire Wire Line
-	1225 6300 1425 6300
-Wire Wire Line
-	1425 6300 1475 6400
-Wire Wire Line
-	1425 6400 1475 6300
 Text GLabel 9400 5050 2    50   Input ~ 0
 DAC
 Wire Wire Line
@@ -415,22 +362,11 @@ Wire Wire Line
 Wire Wire Line
 	9275 5050 9400 5050
 Wire Wire Line
-	1225 6400 1425 6400
+	3175 5450 3175 5375
 Wire Wire Line
-	1475 6300 1825 6300
+	3175 5375 3275 5375
 Wire Wire Line
-	1275 5500 1125 5500
-Wire Wire Line
-	1275 5500 1275 6100
-Wire Wire Line
-	1275 5500 1825 5500
-Connection ~ 1275 5500
-Wire Wire Line
-	2325 5500 2325 5425
-Wire Wire Line
-	2325 5425 2525 5425
-Wire Wire Line
-	2525 5425 2525 5500
+	3275 5375 3275 5450
 $Comp
 L Device:R_Small_US R1
 U 1 1 5E03CE80
@@ -475,12 +411,12 @@ ADC
 $Comp
 L Device:Q_PMOS_GSD Q3
 U 1 1 5E32DC15
-P 1750 3100
-F 0 "Q3" H 1955 3146 50  0000 L CNN
-F 1 "Q_PMOS_GSD" H 1955 3055 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 1950 3200 50  0001 C CNN
-F 3 "~" H 1750 3100 50  0001 C CNN
-	1    1750 3100
+P 1750 2900
+F 0 "Q3" H 1955 2946 50  0000 L CNN
+F 1 "Q_PMOS_GSD" H 1955 2855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 1950 3000 50  0001 C CNN
+F 3 "~" H 1750 2900 50  0001 C CNN
+	1    1750 2900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -488,8 +424,8 @@ L Device:D_Schottky D3
 U 1 1 5E32F864
 P 1700 3300
 F 0 "D3" H 1700 3084 50  0000 C CNN
-F 1 "D_Schottky" H 1700 3175 50  0000 C CNN
-F 2 "Diode_SMD:D_0402_1005Metric" H 1700 3300 50  0001 C CNN
+F 1 "‎PMEG6010AESBYL‎" H 1700 3175 50  0000 C CNN
+F 2 "double-oh:SOD-993" H 1700 3300 50  0001 C CNN
 F 3 "~" H 1700 3300 50  0001 C CNN
 	1    1700 3300
 	-1   0    0    1   
@@ -498,34 +434,30 @@ Connection ~ 1850 3300
 Wire Wire Line
 	1550 3300 1475 3300
 Wire Wire Line
-	1475 3300 1475 3100
-Wire Wire Line
-	1475 3100 1550 3100
+	1475 2900 1550 2900
 Wire Wire Line
 	975  4450 1175 4450
 $Comp
 L Device:R_Small_US R5
 U 1 1 5E363F6E
-P 1175 3400
-F 0 "R5" V 1025 3400 50  0000 C CNN
-F 1 "68kΩ" V 1100 3400 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 1175 3400 50  0001 C CNN
-F 3 "~" H 1175 3400 50  0001 C CNN
-	1    1175 3400
+P 1175 3725
+F 0 "R5" H 1075 3700 50  0000 C CNN
+F 1 "68kΩ" H 1025 3775 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 1175 3725 50  0001 C CNN
+F 3 "~" H 1175 3725 50  0001 C CNN
+	1    1175 3725
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	1175 3300 1175 3100
-Wire Wire Line
-	1175 3100 1475 3100
-Connection ~ 1475 3100
-Text GLabel 975  3100 0    50   Input ~ 0
+	1175 2900 1475 2900
+Connection ~ 1475 2900
+Text GLabel 975  2900 0    50   Input ~ 0
 USB_VIN
 Wire Wire Line
-	975  3100 1175 3100
-Connection ~ 1175 3100
+	975  2900 1175 2900
+Connection ~ 1175 2900
 Wire Wire Line
-	1175 3500 1175 4450
+	1175 3825 1175 4450
 NoConn ~ 8975 5850
 NoConn ~ 7375 4550
 NoConn ~ 7375 4650
@@ -533,28 +465,6 @@ NoConn ~ 7375 4750
 NoConn ~ 7375 4850
 NoConn ~ 7375 4950
 NoConn ~ 7375 5050
-$Comp
-L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
-U 1 1 5DFF9476
-P 4625 1225
-F 0 "Q1" H 4825 1275 50  0000 L CNN
-F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 4825 1225 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4825 1325 50  0001 C CNN
-F 3 "~" H 4625 1225 50  0001 C CNN
-	1    4625 1225
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_DUAL_NPN_NPN_E1B1C2E2B2C1 Q1
-U 2 1 5DFF9AE1
-P 4625 1925
-F 0 "Q1" H 4825 1850 50  0000 L CNN
-F 1 "Q_DUAL_NPN_NPN_E1B1C2E2B2C1" H 4825 1950 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4825 2025 50  0001 C CNN
-F 3 "~" H 4625 1925 50  0001 C CNN
-	2    4625 1925
-	1    0    0    1   
-$EndComp
 Text GLabel 4725 2350 3    50   Input ~ 0
 GPIO0
 Text GLabel 4725 725  1    50   Input ~ 0
@@ -564,23 +474,9 @@ RTS
 Text GLabel 4150 1225 0    50   Input ~ 0
 DTR
 Wire Wire Line
-	4150 1225 4325 1225
-Wire Wire Line
-	4425 1925 4325 1925
-Wire Wire Line
-	4725 1725 4325 1225
-Connection ~ 4325 1225
-Wire Wire Line
-	4325 1225 4425 1225
-Wire Wire Line
-	4725 1425 4325 1925
-Connection ~ 4325 1925
-Wire Wire Line
-	4325 1925 4150 1925
-Wire Wire Line
 	4725 2125 4725 2350
 Text Notes 4925 2225 0    50   ~ 0
-ON Semi FFB2222A\n(or equivalent)
+ON Semi MUN5213DW1\n(or equivalent)
 $Comp
 L Device:R_Small_US R13
 U 1 1 5E2690F2
@@ -628,8 +524,8 @@ $Comp
 L Device:R_Small_US R4
 U 1 1 5CDD7328
 P 2200 1050
-F 0 "R4" V 1975 1050 50  0000 C CNN
-F 1 "2kΩ" V 2075 1050 50  0000 C CNN
+F 0 "R4" V 2050 1050 50  0000 C CNN
+F 1 "2kΩ" V 2125 1050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 2200 1050 50  0001 C CNN
 F 3 "~" H 2200 1050 50  0001 C CNN
 	1    2200 1050
@@ -681,8 +577,8 @@ $Comp
 L Device:LED_Small_ALT D1
 U 1 1 5CDD6D74
 P 2425 1150
-F 0 "D1" V 2475 1050 50  0000 R CNN
-F 1 "LED_Small_ALT" V 2425 1050 50  0000 R CNN
+F 0 "D1" V 2500 1050 50  0000 R CNN
+F 1 "Blue LED" V 2425 1050 50  0000 R CNN
 F 2 "LED_SMD:LED_0402_1005Metric" V 2425 1150 50  0001 C CNN
 F 3 "~" V 2425 1150 50  0001 C CNN
 	1    2425 1150
@@ -728,23 +624,12 @@ $Comp
 L Device:R_Small_US R2
 U 1 1 5CDD2A78
 P 1450 1625
-F 0 "R2" H 1350 1550 50  0000 R CNN
-F 1 "3kΩ" H 1350 1650 50  0000 R CNN
+F 0 "R2" H 1400 1525 50  0000 R CNN
+F 1 "3kΩ" H 1400 1625 50  0000 R CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 1450 1625 50  0001 C CNN
 F 3 "~" H 1450 1625 50  0001 C CNN
 	1    1450 1625
 	1    0    0    1   
-$EndComp
-$Comp
-L Device:C_Small C1
-U 1 1 5CDD07D2
-P 1275 1250
-F 0 "C1" H 1150 1175 50  0000 R CNN
-F 1 "4.7μF" H 1150 1275 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 1275 1250 50  0001 C CNN
-F 3 "~" H 1275 1250 50  0001 C CNN
-	1    1275 1250
-	-1   0    0    1   
 $EndComp
 Connection ~ 2600 1300
 Wire Wire Line
@@ -754,45 +639,30 @@ Wire Wire Line
 Text GLabel 3100 1100 1    50   Input ~ 0
 LIPO_V
 Wire Wire Line
-	1850 2425 1850 2900
-Text GLabel 1875 4225 0    50   Input ~ 0
-0V
+	1850 2225 1850 2700
 Wire Wire Line
-	1625 2425 1850 2425
+	1625 2225 1850 2225
 Text GLabel 2400 3800 2    50   Input ~ 0
 TPS_EN
-Wire Wire Line
-	1850 3300 2050 3300
-Text GLabel 2050 3300 2    50   Input ~ 0
+Text GLabel 2400 3300 2    50   Input ~ 0
 TPS_VIN
 Wire Wire Line
 	1875 4225 1875 4150
-$Comp
-L double-oh:TPSM8282x U3
-U 1 1 60E89966
-P 4575 3425
-F 0 "U3" H 4825 3750 50  0000 C CNN
-F 1 "TPSM8282x" H 4450 3750 50  0000 C CNN
-F 2 "double-oh:microSiL-10" H 4575 3425 50  0001 C CNN
-F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
-	1    4575 3425
-	1    0    0    -1  
-$EndComp
 $Comp
 L double-oh:TPSM8282x U4
 U 1 1 60E8AA52
 P 4550 4450
 F 0 "U4" H 4775 4775 50  0000 C CNN
-F 1 "TPSM8282x" H 4400 4775 50  0000 C CNN
+F 1 "TPSM82821SILR" H 4400 4775 50  0000 C CNN
 F 2 "double-oh:microSiL-10" H 4550 4450 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4550 4450 50  0001 C CNN
 	1    4550 4450
 	1    0    0    -1  
 $EndComp
 Text Notes 4050 4050 0    50   ~ 0
-TPSM82821SILR 1.0-3.3 V adjustable power supply
+1.0-3.3 V adjustable power supply
 Text Notes 3925 3025 0    50   ~ 0
-TPSM828214SILR 3.3V fixed power supply
+3.3V fixed power supply
 Wire Wire Line
 	5025 3475 5025 3225
 $Comp
@@ -867,7 +737,7 @@ F 3 "~" H 3625 3500 50  0001 C CNN
 	1    3625 3500
 	1    0    0    -1  
 $EndComp
-Text GLabel 3625 3225 0    50   Input ~ 0
+Text GLabel 3525 3225 0    50   Input ~ 0
 TPS_VIN
 Text GLabel 4100 4400 0    50   Input ~ 0
 TPS_EN
@@ -945,7 +815,7 @@ Wire Wire Line
 Wire Wire Line
 	5425 3225 5775 3225
 Wire Wire Line
-	2225 3800 2400 3800
+	2225 3800 2325 3800
 Wire Wire Line
 	1350 3800 1525 3800
 $Comp
@@ -953,7 +823,7 @@ L double-oh:XC6120CxxxHR U6
 U 1 1 6114014C
 P 1875 3850
 F 0 "U6" H 1875 4167 50  0000 C CNN
-F 1 "XC6120CxxxHR" H 1875 4076 50  0000 C CNN
+F 1 "XC6120C342HR-G" H 1875 4076 50  0000 C CNN
 F 2 "double-oh:USP-3" H 1875 3350 50  0001 C CNN
 F 3 "https://www.torexsemi.com/file/xc6120/XC6120.pdf" H 1875 3850 50  0001 C CNN
 	1    1875 3850
@@ -1076,15 +946,13 @@ $Comp
 L Battery_Management:MCP73831-2-OT U5
 U 1 1 5CDCF91B
 P 1900 1400
-F 0 "U5" H 1900 1925 50  0000 C CNN
-F 1 "MCP73831-2-OT" H 1900 1825 50  0000 C CNN
+F 0 "U5" H 1750 1900 50  0000 C CNN
+F 1 "MCP73831-2-OT" H 1725 1825 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23-5" H 1950 1150 50  0001 L CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 50  0001 C CNN
 	1    1900 1400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1275 6100 1575 6100
 Wire Wire Line
 	9475 4375 9475 4450
 Connection ~ 9475 4450
@@ -1094,19 +962,12 @@ Wire Wire Line
 	9250 4650 8975 4650
 Wire Wire Line
 	9250 4450 9475 4450
-NoConn ~ 3225 7100
-NoConn ~ 3225 7000
-NoConn ~ 3225 6900
-NoConn ~ 3225 6700
-NoConn ~ 3225 6100
-NoConn ~ 3225 5900
-NoConn ~ 3225 5800
-NoConn ~ 2725 5500
-NoConn ~ 1825 6600
-NoConn ~ 1825 6700
-NoConn ~ 1825 6800
-NoConn ~ 1825 6900
-NoConn ~ 1825 7100
+NoConn ~ 3875 6950
+NoConn ~ 3875 6850
+NoConn ~ 3875 6750
+NoConn ~ 3875 6250
+NoConn ~ 3875 5850
+NoConn ~ 3875 5750
 Wire Wire Line
 	9425 3750 9325 3750
 Text GLabel 9425 3750 2    50   Input ~ 0
@@ -1138,10 +999,226 @@ F 3 "~" H 9175 5050 50  0001 C CNN
 $EndComp
 Text Notes 9200 4100 0    100  ~ 0
 notice the main IO changed between v2 and v3! It moved from IO22 to IO21!\nPIN 11 is grounded now!
-Wire Wire Line
-	1475 6400 1825 6400
 Text GLabel 8975 5650 2    50   Input ~ 0
 0V
 Wire Wire Line
 	8075 2725 8075 2950
+Connection ~ 4325 1225
+Wire Wire Line
+	4325 1925 4150 1925
+Wire Wire Line
+	4150 1225 4325 1225
+Wire Wire Line
+	4725 1425 4325 1925
+Wire Wire Line
+	4725 1725 4325 1225
+Connection ~ 4325 1925
+$Comp
+L Device:Q_DUAL_NPN_NPN_BRT_E1B1C2E2B2C1 Q1
+U 1 1 5DFF9476
+P 4675 1225
+F 0 "Q1" H 4875 1275 50  0000 L CNN
+F 1 "MUN5213DW1" H 4875 1200 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4875 1325 50  0001 C CNN
+F 3 "~" H 4675 1225 50  0001 C CNN
+	1    4675 1225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_DUAL_NPN_NPN_BRT_E1B1C2E2B2C1 Q1
+U 2 1 5DFF9AE1
+P 4675 1925
+F 0 "Q1" H 4875 1850 50  0000 L CNN
+F 1 "MUN5213DW1" H 4875 1950 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4875 2025 50  0001 C CNN
+F 3 "~" H 4675 1925 50  0001 C CNN
+	2    4675 1925
+	1    0    0    1   
+$EndComp
+$Comp
+L double-oh:TPSM8282x U3
+U 1 1 60E89966
+P 4575 3425
+F 0 "U3" H 4825 3750 50  0000 C CNN
+F 1 "TPSM828214SILR" H 4350 3750 50  0000 C CNN
+F 2 "double-oh:microSiL-10" H 4575 3425 50  0001 C CNN
+F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
+	1    4575 3425
+	1    0    0    -1  
+$EndComp
+NoConn ~ 2675 5750
+NoConn ~ 2675 6050
+NoConn ~ 2675 6150
+Wire Wire Line
+	3875 6050 4175 6050
+Wire Wire Line
+	4275 5950 4175 5950
+Wire Wire Line
+	4175 5950 4175 6050
+Connection ~ 4175 6050
+Wire Wire Line
+	4175 6050 4275 6050
+Wire Wire Line
+	4275 5850 4075 5850
+Wire Wire Line
+	4075 5850 4075 5950
+Wire Wire Line
+	4075 5950 3875 5950
+Wire Wire Line
+	4275 6150 4175 6150
+Wire Wire Line
+	4275 6250 4175 6250
+Wire Wire Line
+	4175 6250 4175 6150
+Connection ~ 4175 6150
+Wire Wire Line
+	4175 6150 3875 6150
+Wire Wire Line
+	4275 6350 3875 6350
+NoConn ~ 3875 6450
+Text Label 2000 6750 0    10   ~ 0
+D+
+Text Label 2000 6850 0    10   ~ 0
+D-
+Wire Wire Line
+	1850 6750 2675 6750
+Wire Wire Line
+	1850 6850 2675 6850
+Wire Wire Line
+	2050 6350 2150 6350
+Wire Wire Line
+	1850 6550 2150 6550
+Wire Wire Line
+	2150 6550 2150 6350
+Connection ~ 2150 6350
+Wire Wire Line
+	2150 6350 2675 6350
+$Comp
+L Device:R_Small_US R14
+U 1 1 610ED45C
+P 2350 6550
+F 0 "R14" V 2275 6550 50  0000 C CNN
+F 1 "24kΩ" V 2425 6550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 2350 6550 50  0001 C CNN
+F 3 "~" H 2350 6550 50  0001 C CNN
+	1    2350 6550
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:R_Small_US R15
+U 1 1 610EDE54
+P 2575 7075
+F 0 "R15" H 2475 7050 50  0000 C CNN
+F 1 "47kΩ" H 2425 7125 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 2575 7075 50  0001 C CNN
+F 3 "~" H 2575 7075 50  0001 C CNN
+	1    2575 7075
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	2250 6550 2150 6550
+Connection ~ 2150 6550
+Wire Wire Line
+	2450 6550 2575 6550
+Wire Wire Line
+	2575 6550 2575 6650
+Wire Wire Line
+	2675 6650 2575 6650
+Connection ~ 2575 6650
+Wire Wire Line
+	2575 6650 2575 6975
+Text GLabel 3325 7325 3    50   Input ~ 0
+0V
+Text GLabel 2575 7325 3    50   Input ~ 0
+0V
+Wire Wire Line
+	2575 7325 2575 7175
+Text GLabel 4075 6650 2    50   Input ~ 0
+0V
+$Comp
+L Interface_USB:CP2102N-A01-GQFN24 U2
+U 1 1 5E1C43B6
+P 3275 6350
+F 0 "U2" H 3025 5525 50  0000 C CNN
+F 1 "CP2102N" H 3025 5450 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 3425 5400 50  0001 L CNN
+F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2725 7600 50  0001 C CNN
+	1    3275 6350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3875 6650 4075 6650
+Wire Notes Line
+	2225 6425 2725 6425
+Wire Notes Line
+	2725 6425 2725 7250
+Wire Notes Line
+	2725 7250 2225 7250
+Wire Notes Line
+	2225 7650 2650 7650
+Wire Notes Line
+	2225 6425 2225 7650
+Text Notes 2675 7725 0    50   ~ 0
+Only populate these resistors if using CP2102N!\nIf using CP2104, short R14 and leave R15 open.
+Text Label 2575 6550 0    10   ~ 0
+Vbus
+Wire Wire Line
+	1850 3300 2325 3300
+$Comp
+L Device:R_Small_US R16
+U 1 1 60F2AEB9
+P 2325 3550
+F 0 "R16" H 2200 3575 50  0000 C CNN
+F 1 "68kΩ" H 2175 3500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 2325 3550 50  0001 C CNN
+F 3 "~" H 2325 3550 50  0001 C CNN
+	1    2325 3550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2325 3450 2325 3300
+Connection ~ 2325 3300
+Wire Wire Line
+	2325 3300 2400 3300
+Wire Wire Line
+	2325 3650 2325 3800
+Connection ~ 2325 3800
+Wire Wire Line
+	2325 3800 2400 3800
+Wire Notes Line
+	2250 3425 2600 3425
+Wire Notes Line
+	2600 3425 2600 3675
+Wire Notes Line
+	2250 3675 2250 3425
+Wire Notes Line
+	2900 3675 2900 3025
+Wire Notes Line
+	2250 3675 2900 3675
+Text Notes 2475 3000 0    50   ~ 0
+Do not populate if using\nCMOS voltage supervisor
+Wire Wire Line
+	3525 3225 3625 3225
+Connection ~ 3625 3225
+Wire Wire Line
+	1800 4225 1875 4225
+Text GLabel 1800 4225 0    50   Input ~ 0
+0V
+$Comp
+L Device:C_Small C1
+U 1 1 5CDD07D2
+P 1275 1250
+F 0 "C1" H 1150 1175 50  0000 R CNN
+F 1 "4.7μF" H 1150 1275 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1275 1250 50  0001 C CNN
+F 3 "~" H 1275 1250 50  0001 C CNN
+	1    1275 1250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1850 3100 1850 3300
+Wire Wire Line
+	1475 2900 1475 3300
+Wire Wire Line
+	1175 2900 1175 3625
 $EndSCHEMATC
