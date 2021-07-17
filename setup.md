@@ -1,13 +1,13 @@
 # Double-Oh Battery Assembly and Setup
 
-## Hardware version 2.7, Firmware version 1.0
+## Hardware version 3.0, Firmware version 1.1
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 ## Main PCB: Top side assembly
 
 Parts used:
-- 35 SMD components (see the [BOM](bom.md))
+- Components stated in the [BOM](bom.md))
 - Main PCB
 
 All but one of the Double-Oh components are placed on the top side of the PCB. When this side is assembled, we can run the device off USB power and install the Double-Oh firmware. The [interactive BOM](/hardware/bom/ibom.html) makes placing the components a lot easier.

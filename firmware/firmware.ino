@@ -39,6 +39,7 @@ void setup(void) {
   }
 
   // Set DAC voltage test for GPIO 25 (DAC channel 1)
+  // TODO: recalibrate for the new buck converter
   // Approx 12.126 mV per bit
   dac_output_enable(DAC_CHANNEL_1);
   setBatteryLevel(1.50);
@@ -125,4 +126,5 @@ void loop(void) {
     Serial.println(motorIntensity);
     prevTime = currTime;
   }
+  // TODO: reintroduce software voltage supervisor?
 }
