@@ -3,7 +3,13 @@ EESchema-DOCLIB  Version 2.0
 $CMP BD48KxxG
 D Undervoltage Sensing Circuit, SOT-23
 K Power Supervisor
-F https://d1d2qsbl8m0m72.cloudfront.net/en/products/databook/datasheet/ic/power/voltage_detector/bd48xxg-e.pdf
+F https://fscdn.rohm.com/en/products/databook/datasheet/ic/power/voltage_detector/bd48xxg-e.pdf
+$ENDCMP
+#
+$CMP ESP32-PICO-V3
+D RF Module, ESP32 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, external antenna, QFN-48
+K RF Radio BT ESP ESP32 Espressif external antenna
+F https://www.espressif.com/sites/default/files/documentation/esp32-pico-d4_datasheet_en.pdf
 $ENDCMP
 #
 $CMP ESP32-U4WDH

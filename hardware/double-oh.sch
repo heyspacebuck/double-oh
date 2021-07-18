@@ -15,21 +15,6 @@ Comment4 ""
 $EndDescr
 Text Notes 7225 2625 0    50   ~ 0
 ESP32 2.4GHz SiP
-Wire Wire Line
-	10300 4175 10300 4550
-Text GLabel 10300 5175 0    50   Input ~ 0
-batt_out
-$Comp
-L Device:R_Small_US R8
-U 1 1 5D570C7A
-P 9700 4750
-F 0 "R8" V 9625 4800 50  0000 R CNN
-F 1 "1kΩ" V 9775 4825 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4750 50  0001 C CNN
-F 3 "~" H 9700 4750 50  0001 C CNN
-	1    9700 4750
-	0    -1   1    0   
-$EndComp
 Text GLabel 4275 6250 2    50   Input ~ 0
 TX_USB
 Text GLabel 4275 5950 2    50   Input ~ 0
@@ -240,45 +225,6 @@ F 3 "~" H 9700 2425 50  0001 C CNN
 	1    9700 2425
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	10300 4950 10300 5175
-Text GLabel 10300 4175 0    50   Input ~ 0
-to_top_cap
-Wire Wire Line
-	9600 4750 9475 4750
-$Comp
-L Device:Q_PMOS_GSD Q2
-U 1 1 5E0EBFFC
-P 10200 4750
-F 0 "Q2" H 10425 4825 50  0000 L CNN
-F 1 "Q_PMOS_GSD" H 10425 4725 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4850 50  0001 C CNN
-F 3 "~" H 10200 4750 50  0001 C CNN
-	1    10200 4750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small_US R7
-U 1 1 5E0FEC54
-P 9475 4600
-F 0 "R7" V 9400 4650 50  0000 R CNN
-F 1 "68kΩ" V 9550 4675 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4600 50  0001 C CNN
-F 3 "~" H 9475 4600 50  0001 C CNN
-	1    9475 4600
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9475 4375 1    50   Input ~ 0
-3.3V
-Wire Wire Line
-	9475 4450 9475 4500
-Wire Wire Line
-	9800 4750 10000 4750
-Wire Wire Line
-	9475 4700 9475 4750
-Connection ~ 9475 4750
-Wire Wire Line
-	9475 4750 8975 4750
 Text GLabel 1625 2225 0    50   Input ~ 0
 LIPO_V
 Text GLabel 975  4450 0    50   Input ~ 0
@@ -459,7 +405,6 @@ Connection ~ 1175 2900
 Wire Wire Line
 	1175 3825 1175 4450
 NoConn ~ 8975 5850
-NoConn ~ 7375 4550
 NoConn ~ 7375 4650
 NoConn ~ 7375 4750
 NoConn ~ 7375 4850
@@ -818,17 +763,6 @@ Wire Wire Line
 	2225 3800 2325 3800
 Wire Wire Line
 	1350 3800 1525 3800
-$Comp
-L double-oh:XC6120CxxxHR U6
-U 1 1 6114014C
-P 1875 3850
-F 0 "U6" H 1875 4167 50  0000 C CNN
-F 1 "XC6120C342HR-G" H 1875 4076 50  0000 C CNN
-F 2 "double-oh:USP-3" H 1875 3350 50  0001 C CNN
-F 3 "https://www.torexsemi.com/file/xc6120/XC6120.pdf" H 1875 3850 50  0001 C CNN
-	1    1875 3850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1350 3800 1350 3425
 Wire Wire Line
@@ -900,17 +834,6 @@ Wire Wire Line
 	5300 4825 6025 4825
 Wire Wire Line
 	5300 4575 5300 4500
-$Comp
-L double-oh:ESP32-U4WDH U1
-U 1 1 60E84A17
-P 8175 4550
-F 0 "U1" H 8325 2925 50  0000 C CNN
-F 1 "ESP32-U4WDH" H 8175 2770 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm" H 8175 2850 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
-	1    8175 4550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8175 2725 8175 2950
 Wire Wire Line
@@ -925,11 +848,8 @@ NoConn ~ 8975 4150
 NoConn ~ 8975 4250
 NoConn ~ 8975 4350
 NoConn ~ 8975 4450
-NoConn ~ 8975 4550
-NoConn ~ 8975 4950
-NoConn ~ 8975 5150
-NoConn ~ 8975 5250
 NoConn ~ 8975 5350
+NoConn ~ 8975 5250
 NoConn ~ 8975 5550
 NoConn ~ 7375 3350
 NoConn ~ 7375 3450
@@ -953,15 +873,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 
 	1    1900 1400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9475 4375 9475 4450
-Connection ~ 9475 4450
-Wire Wire Line
-	9250 4450 9250 4650
-Wire Wire Line
-	9250 4650 8975 4650
-Wire Wire Line
-	9250 4450 9475 4450
 NoConn ~ 3875 6950
 NoConn ~ 3875 6850
 NoConn ~ 3875 6750
@@ -985,7 +896,6 @@ F 3 "~" H 9225 3750 50  0001 C CNN
 	1    9225 3750
 	-1   0    0    1   
 $EndComp
-NoConn ~ 8975 4850
 $Comp
 L Device:R_Small_US R12
 U 1 1 5E2FE184
@@ -997,10 +907,6 @@ F 3 "~" H 9175 5050 50  0001 C CNN
 	1    9175 5050
 	0    1    -1   0   
 $EndComp
-Text Notes 9200 4100 0    100  ~ 0
-notice the main IO changed between v2 and v3! It moved from IO22 to IO21!\nPIN 11 is grounded now!
-Text GLabel 8975 5650 2    50   Input ~ 0
-0V
 Wire Wire Line
 	8075 2725 8075 2950
 Connection ~ 4325 1225
@@ -1221,4 +1127,85 @@ Wire Wire Line
 	1475 2900 1475 3300
 Wire Wire Line
 	1175 2900 1175 3625
+$Comp
+L double-oh:ESP32-PICO-V3 U1
+U 1 1 6107B768
+P 8175 4550
+F 0 "U1" H 7950 2950 50  0000 C CNN
+F 1 "ESP32-PICO-V3" H 8175 2770 50  0000 C CNN
+F 2 "double-oh:QFN-48-1EP_7x7mm_P0.5mm_EP4.5x4.5mm" H 8175 2850 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-pico-d4_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
+	1    8175 4550
+	1    0    0    -1  
+$EndComp
+NoConn ~ 8975 5650
+Text GLabel 8975 5150 2    50   Input ~ 0
+EN
+Wire Wire Line
+	10300 4275 10300 4650
+Text GLabel 10300 5275 0    50   Input ~ 0
+batt_out
+$Comp
+L Device:R_Small_US R8
+U 1 1 5D570C7A
+P 9700 4850
+F 0 "R8" V 9625 4900 50  0000 R CNN
+F 1 "1kΩ" V 9775 4925 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4850 50  0001 C CNN
+F 3 "~" H 9700 4850 50  0001 C CNN
+	1    9700 4850
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	10300 5050 10300 5275
+Text GLabel 10300 4275 0    50   Input ~ 0
+to_top_cap
+Wire Wire Line
+	9600 4850 9475 4850
+$Comp
+L Device:Q_PMOS_GSD Q2
+U 1 1 5E0EBFFC
+P 10200 4850
+F 0 "Q2" H 10425 4925 50  0000 L CNN
+F 1 "Q_PMOS_GSD" H 10425 4825 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4950 50  0001 C CNN
+F 3 "~" H 10200 4850 50  0001 C CNN
+	1    10200 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R7
+U 1 1 5E0FEC54
+P 9475 4700
+F 0 "R7" V 9400 4750 50  0000 R CNN
+F 1 "68kΩ" V 9550 4775 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4700 50  0001 C CNN
+F 3 "~" H 9475 4700 50  0001 C CNN
+	1    9475 4700
+	-1   0    0    -1  
+$EndComp
+Text GLabel 9475 4475 1    50   Input ~ 0
+3.3V
+Wire Wire Line
+	9800 4850 10000 4850
+Wire Wire Line
+	9475 4800 9475 4850
+Connection ~ 9475 4850
+Wire Wire Line
+	9475 4850 8975 4850
+Wire Wire Line
+	9475 4475 9475 4600
+NoConn ~ 8975 4750
+NoConn ~ 8975 4650
+$Comp
+L double-oh:BD48KxxG U6
+U 1 1 6121DBD2
+P 1875 3850
+F 0 "U6" H 1875 4167 50  0000 C CNN
+F 1 "BD48KxxG" H 1875 4076 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 1875 3350 50  0001 C CNN
+F 3 "https://fscdn.rohm.com/en/products/databook/datasheet/ic/power/voltage_detector/bd48xxg-e.pdf" H 1875 3850 50  0001 C CNN
+	1    1875 3850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
