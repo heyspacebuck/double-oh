@@ -28,6 +28,12 @@ $CMP MP2109
 F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2109/document_id/394
 $ENDCMP
 #
+$CMP MYRGP
+D 1.0A Inductor Built-in Step-Down DC/DC Converters
+K Step-Down Buck DC-DC Regulator Fixed
+F https://www.murata.com/products/productdata/8807036026910/MYRGP-b-w.pdf
+$ENDCMP
+#
 $CMP RCLAMP1624T
 D Low Capacitance TVS Diode Array, 3.3V Standoff, 8 Channels, UDFN-9
 K usb esd protection suppression transient

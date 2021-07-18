@@ -608,82 +608,28 @@ Text Notes 4050 4050 0    50   ~ 0
 1.0-3.3 V adjustable power supply
 Text Notes 3925 3025 0    50   ~ 0
 3.3V fixed power supply
-Wire Wire Line
-	5025 3475 5025 3225
-$Comp
-L Device:R_Small_US R6
-U 1 1 60EA3B89
-P 5175 3425
-F 0 "R6" V 5025 3425 50  0000 C CNN
-F 1 "68kΩ" V 5100 3425 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 5175 3425 50  0001 C CNN
-F 3 "~" H 5175 3425 50  0001 C CNN
-	1    5175 3425
-	-1   0    0    -1  
-$EndComp
 $Comp
 L Device:C_Small C5
 U 1 1 60EA4649
-P 5425 3500
-F 0 "C5" H 5325 3425 50  0000 R CNN
-F 1 "10μF" H 5325 3525 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 5425 3500 50  0001 C CNN
-F 3 "~" H 5425 3500 50  0001 C CNN
-	1    5425 3500
-	-1   0    0    1   
+P 4625 3550
+F 0 "C5" H 4525 3475 50  0000 R CNN
+F 1 "10μF" H 4525 3575 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4625 3550 50  0001 C CNN
+F 3 "~" H 4625 3550 50  0001 C CNN
+	1    4625 3550
+	1    0    0    -1  
 $EndComp
-Text GLabel 5775 3225 2    50   Output ~ 0
-3.3V
-Connection ~ 5025 3225
-Wire Wire Line
-	5175 3325 5175 3225
-Connection ~ 5175 3225
-Wire Wire Line
-	5175 3225 5025 3225
-Wire Wire Line
-	5175 3525 5175 3625
-Wire Wire Line
-	5175 3625 5025 3625
-Text GLabel 3525 3800 0    50   Input ~ 0
-0V
-Wire Wire Line
-	3525 3800 3625 3800
-Wire Wire Line
-	5175 3225 5425 3225
-Wire Wire Line
-	5425 3600 5425 3800
-Wire Wire Line
-	5425 3400 5425 3225
-Connection ~ 5425 3225
-Connection ~ 3625 3800
-Wire Wire Line
-	3625 3800 4125 3800
-Text GLabel 4125 3375 0    50   Input ~ 0
-TPS_EN
-Wire Wire Line
-	3625 3225 3625 3400
-Wire Wire Line
-	3625 3225 4125 3225
-Wire Wire Line
-	4125 3625 4125 3800
-Connection ~ 4125 3800
-Wire Wire Line
-	4125 3800 5425 3800
-Wire Wire Line
-	3625 3600 3625 3800
 $Comp
 L Device:C_Small C4
 U 1 1 60F0DA0B
-P 3625 3500
-F 0 "C4" V 3725 3550 50  0000 R CNN
-F 1 "4.7μF" V 3500 3600 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 3625 3500 50  0001 C CNN
-F 3 "~" H 3625 3500 50  0001 C CNN
-	1    3625 3500
+P 5750 3300
+F 0 "C4" H 5950 3250 50  0000 R CNN
+F 1 "4.7μF" H 6075 3350 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 5750 3300 50  0001 C CNN
+F 3 "~" H 5750 3300 50  0001 C CNN
+	1    5750 3300
 	1    0    0    -1  
 $EndComp
-Text GLabel 3525 3225 0    50   Input ~ 0
-TPS_VIN
 Text GLabel 4100 4400 0    50   Input ~ 0
 TPS_EN
 Wire Wire Line
@@ -757,8 +703,6 @@ Text GLabel 6350 4250 2    50   Output ~ 0
 batt_out
 Wire Wire Line
 	6025 4250 6350 4250
-Wire Wire Line
-	5425 3225 5775 3225
 Wire Wire Line
 	2225 3800 2325 3800
 Wire Wire Line
@@ -941,17 +885,6 @@ F 3 "~" H 4675 1925 50  0001 C CNN
 	2    4675 1925
 	1    0    0    1   
 $EndComp
-$Comp
-L double-oh:TPSM8282x U3
-U 1 1 60E89966
-P 4575 3425
-F 0 "U3" H 4825 3750 50  0000 C CNN
-F 1 "TPSM828214SILR" H 4350 3750 50  0000 C CNN
-F 2 "double-oh:microSiL-10" H 4575 3425 50  0001 C CNN
-F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
-	1    4575 3425
-	1    0    0    -1  
-$EndComp
 NoConn ~ 2675 5750
 NoConn ~ 2675 6050
 NoConn ~ 2675 6150
@@ -1039,8 +972,6 @@ Text GLabel 2575 7325 3    50   Input ~ 0
 0V
 Wire Wire Line
 	2575 7325 2575 7175
-Text GLabel 4075 6650 2    50   Input ~ 0
-0V
 $Comp
 L Interface_USB:CP2102N-A01-GQFN24 U2
 U 1 1 5E1C43B6
@@ -1052,8 +983,6 @@ F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" 
 	1    3275 6350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3875 6650 4075 6650
 Wire Notes Line
 	2225 6425 2725 6425
 Wire Notes Line
@@ -1071,10 +1000,10 @@ Vbus
 Wire Wire Line
 	1850 3300 2325 3300
 $Comp
-L Device:R_Small_US R16
+L Device:R_Small_US R6
 U 1 1 60F2AEB9
 P 2325 3550
-F 0 "R16" H 2200 3575 50  0000 C CNN
+F 0 "R6" H 2200 3575 50  0000 C CNN
 F 1 "68kΩ" H 2175 3500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 2325 3550 50  0001 C CNN
 F 3 "~" H 2325 3550 50  0001 C CNN
@@ -1103,9 +1032,6 @@ Wire Notes Line
 	2250 3675 2900 3675
 Text Notes 2475 3000 0    50   ~ 0
 Do not populate if using\nCMOS voltage supervisor
-Wire Wire Line
-	3525 3225 3625 3225
-Connection ~ 3625 3225
 Wire Wire Line
 	1800 4225 1875 4225
 Text GLabel 1800 4225 0    50   Input ~ 0
@@ -1208,4 +1134,65 @@ F 3 "https://fscdn.rohm.com/en/products/databook/datasheet/ic/power/voltage_dete
 	1    1875 3850
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4900 3325 4800 3325
+Wire Wire Line
+	4800 3325 4800 3225
+Wire Wire Line
+	4800 3225 4900 3225
+Wire Wire Line
+	4900 3625 4800 3625
+Wire Wire Line
+	4800 3625 4800 3525
+Wire Wire Line
+	4800 3525 4900 3525
+Text GLabel 5500 3525 2    50   Input ~ 0
+TPS_EN
+Text GLabel 5825 3150 2    50   Input ~ 0
+TPS_VIN
+Wire Wire Line
+	5750 3425 5750 3400
+Wire Wire Line
+	5825 3150 5750 3150
+Wire Wire Line
+	5750 3150 5750 3200
+Wire Wire Line
+	5750 3150 5500 3150
+Wire Wire Line
+	5500 3150 5500 3325
+Connection ~ 5750 3150
+Wire Wire Line
+	4900 3425 4625 3425
+Wire Wire Line
+	4625 3425 4625 3450
+Wire Wire Line
+	4625 3650 4625 3775
+Wire Wire Line
+	4625 3775 4800 3775
+Wire Wire Line
+	4800 3775 4800 3625
+Connection ~ 4800 3625
+Text GLabel 4925 3775 2    50   Output ~ 0
+3.3V
+Wire Wire Line
+	4800 3775 4925 3775
+Connection ~ 4800 3775
+Text GLabel 4625 3425 1    50   Input ~ 0
+0V
+Text GLabel 5625 3425 1    50   Input ~ 0
+0V
+Wire Wire Line
+	5500 3425 5750 3425
+$Comp
+L double-oh:MYRGP U3
+U 1 1 6133C3F8
+P 5200 3425
+F 0 "U3" H 5200 3850 50  0000 C CNN
+F 1 "MYRGP330100B21RA" H 5200 3759 50  0000 C CNN
+F 2 "double-oh:MYRGP" H 5250 3175 50  0001 L CIN
+F 3 "https://www.murata.com/products/productdata/8807036026910/MYRGP-b-w.pdf" H 4950 3875 50  0001 C CNN
+	1    5200 3425
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3875 6650
 $EndSCHEMATC
