@@ -115,6 +115,15 @@ void setup(void) {
 }
 
 void loop(void) {
+  // Check battery level and shut down if it's too low
+  float battLevel = getBatteryLevel();
+  if (battLevel < 3.4) {
+    sigmaDeltaWrite(0, 255);
+    ESP.deepSleep(0);
+    delay(10000);
+  }
+
+  // Get whatever DNS requests have piled up
   dnsServer.processNextRequest();
   server.handleClient();
   // If more than 50 milliseconds have elapsed, update the PWM value
