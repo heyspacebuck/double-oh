@@ -15,36 +15,36 @@ Comment4 ""
 $EndDescr
 Text Notes 7225 2625 0    50   ~ 0
 ESP32 2.4GHz SiP
-Text GLabel 4275 6250 2    50   Input ~ 0
+Text GLabel 3825 6200 2    50   Input ~ 0
 TX_USB
-Text GLabel 4275 5950 2    50   Input ~ 0
+Text GLabel 3825 5900 2    50   Input ~ 0
 RX_USB
-Text GLabel 4275 5850 2    50   Input ~ 0
+Text GLabel 3825 5800 2    50   Input ~ 0
 RTS
-Text GLabel 4275 6350 2    50   Input ~ 0
+Text GLabel 3825 6300 2    50   Input ~ 0
 DTR
 $Comp
 L double-oh:USB_B_Micro_Unshielded J1
 U 1 1 5E0056A1
-P 1550 6750
-F 0 "J1" H 1425 6225 50  0000 C CNN
-F 1 "Unshielded USB Micro port" H 1550 6100 50  0000 C CNN
-F 2 "double-oh:microusb_PCB_socket" H 1700 6700 50  0001 C CNN
-F 3 "~" H 1700 6700 50  0001 C CNN
-	1    1550 6750
+P 1100 6700
+F 0 "J1" H 975 6175 50  0000 C CNN
+F 1 "Unshielded USB Micro port" H 1100 6050 50  0000 C CNN
+F 2 "double-oh:microusb_PCB_socket" H 1250 6650 50  0001 C CNN
+F 3 "~" H 1250 6650 50  0001 C CNN
+	1    1100 6700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3375 7250 3325 7250
-NoConn ~ 1850 6950
+	2925 7200 2875 7200
+NoConn ~ 1400 6900
 Wire Wire Line
-	3325 7325 3325 7250
-Connection ~ 3325 7250
+	2875 7275 2875 7200
+Connection ~ 2875 7200
 Wire Wire Line
-	3325 7250 3275 7250
-Text GLabel 1550 7150 3    50   Input ~ 0
+	2875 7200 2825 7200
+Text GLabel 1100 7100 3    50   Input ~ 0
 0V
-Text GLabel 2050 6350 0    50   Input ~ 0
+Text GLabel 1600 6300 0    50   Input ~ 0
 USB_VIN
 $Comp
 L Device:Antenna_Chip AE1
@@ -231,7 +231,7 @@ Text GLabel 975  4450 0    50   Input ~ 0
 0V
 Text Notes 1525 4425 0    50   ~ 0
 3.4V voltage supervisor
-Text Notes 2725 5325 0    50   ~ 0
+Text Notes 2275 5275 0    50   ~ 0
 CP2102N USB-to-UART bridge\n
 Text GLabel 8575 875  0    50   Input ~ 0
 to_top_cap
@@ -278,9 +278,9 @@ F 3 "~" H 9700 1875 50  0001 C CNN
 $EndComp
 NoConn ~ 9900 1200
 NoConn ~ 9900 1875
-Text GLabel 4275 6150 2    50   Input ~ 0
+Text GLabel 3825 6100 2    50   Input ~ 0
 RX_ESP
-Text GLabel 4275 6050 2    50   Input ~ 0
+Text GLabel 3825 6000 2    50   Input ~ 0
 TX_ESP
 Text GLabel 7225 3150 0    50   Input ~ 0
 EN
@@ -308,17 +308,17 @@ Wire Wire Line
 Wire Wire Line
 	9275 5050 9400 5050
 Wire Wire Line
-	3175 5450 3175 5375
+	2725 5400 2725 5325
 Wire Wire Line
-	3175 5375 3275 5375
+	2725 5325 2825 5325
 Wire Wire Line
-	3275 5375 3275 5450
+	2825 5325 2825 5400
 $Comp
 L Device:R_Small_US R1
 U 1 1 5E03CE80
 P 7225 1300
 F 0 "R1" V 7150 1300 50  0000 C CNN
-F 1 "68kΩ" V 7075 1300 50  0000 C CNN
+F 1 "100kΩ" V 7075 1300 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 7225 1300 50  0001 C CNN
 F 3 "~" H 7225 1300 50  0001 C CNN
 	1    7225 1300
@@ -329,7 +329,7 @@ L Device:R_Small_US R3
 U 1 1 5E03EDAD
 P 7225 1650
 F 0 "R3" H 7150 1650 50  0000 C CNN
-F 1 "68kΩ" V 7075 1650 50  0000 C CNN
+F 1 "100kΩ" V 7075 1650 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 7225 1650 50  0001 C CNN
 F 3 "~" H 7225 1650 50  0001 C CNN
 	1    7225 1650
@@ -388,7 +388,7 @@ L Device:R_Small_US R5
 U 1 1 5E363F6E
 P 1175 3725
 F 0 "R5" H 1075 3700 50  0000 C CNN
-F 1 "68kΩ" H 1025 3775 50  0000 C CNN
+F 1 "100kΩ" H 1025 3775 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 1175 3725 50  0001 C CNN
 F 3 "~" H 1175 3725 50  0001 C CNN
 	1    1175 3725
@@ -427,7 +427,7 @@ L Device:R_Small_US R13
 U 1 1 5E2690F2
 P 4950 975
 F 0 "R13" V 4875 1025 50  0000 R CNN
-F 1 "68kΩ" V 5025 1050 50  0000 R CNN
+F 1 "100kΩ" V 5025 1050 50  0000 R CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 4950 975 50  0001 C CNN
 F 3 "~" H 4950 975 50  0001 C CNN
 	1    4950 975 
@@ -615,7 +615,7 @@ L Device:R_Small_US R6
 U 1 1 60EA3B89
 P 5175 3425
 F 0 "R6" V 5025 3425 50  0000 C CNN
-F 1 "68kΩ" V 5100 3425 50  0000 C CNN
+F 1 "100kΩ" V 5100 3425 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 5175 3425 50  0001 C CNN
 F 3 "~" H 5175 3425 50  0001 C CNN
 	1    5175 3425
@@ -710,7 +710,7 @@ L Device:R_Small_US R10
 U 1 1 61015F55
 P 5775 4600
 F 0 "R10" H 5650 4650 50  0000 C CNN
-F 1 "68kΩ" H 5625 4575 50  0000 C CNN
+F 1 "100kΩ" H 5625 4575 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 5775 4600 50  0001 C CNN
 F 3 "~" H 5775 4600 50  0001 C CNN
 	1    5775 4600
@@ -779,7 +779,7 @@ L Device:R_Small_US R9
 U 1 1 60F81C2A
 P 5300 4350
 F 0 "R9" H 5300 4575 50  0000 C CNN
-F 1 "330kΩ" H 5300 4500 50  0000 C CNN
+F 1 "300kΩ" H 5300 4500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 5300 4350 50  0001 C CNN
 F 3 "~" H 5300 4350 50  0001 C CNN
 	1    5300 4350
@@ -799,7 +799,7 @@ L Device:R_Small_US R11
 U 1 1 60FE7332
 P 5300 4675
 F 0 "R11" H 5175 4725 50  0000 C CNN
-F 1 "68kΩ" H 5150 4650 50  0000 C CNN
+F 1 "100kΩ" H 5150 4650 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 5300 4675 50  0001 C CNN
 F 3 "~" H 5300 4675 50  0001 C CNN
 	1    5300 4675
@@ -873,12 +873,12 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" H 1750 1350 
 	1    1900 1400
 	1    0    0    -1  
 $EndComp
-NoConn ~ 3875 6950
-NoConn ~ 3875 6850
-NoConn ~ 3875 6750
-NoConn ~ 3875 6250
-NoConn ~ 3875 5850
-NoConn ~ 3875 5750
+NoConn ~ 3425 6900
+NoConn ~ 3425 6800
+NoConn ~ 3425 6700
+NoConn ~ 3425 6200
+NoConn ~ 3425 5800
+NoConn ~ 3425 5700
 Wire Wire Line
 	9425 3750 9325 3750
 Text GLabel 9425 3750 2    50   Input ~ 0
@@ -901,7 +901,7 @@ L Device:R_Small_US R12
 U 1 1 5E2FE184
 P 9175 5050
 F 0 "R12" V 9325 5050 50  0000 C CNN
-F 1 "300kΩ" V 9250 5050 50  0000 C CNN
+F 1 "330kΩ" V 9250 5050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 9175 5050 50  0001 C CNN
 F 3 "~" H 9175 5050 50  0001 C CNN
 	1    9175 5050
@@ -952,121 +952,121 @@ F 3 "https://www.ti.com/lit/ds/symlink/tpsm82821.pdf" H 4575 3425 50  0001 C CNN
 	1    4575 3425
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2675 5750
-NoConn ~ 2675 6050
-NoConn ~ 2675 6150
+NoConn ~ 2225 5700
+NoConn ~ 2225 6000
+NoConn ~ 2225 6100
 Wire Wire Line
-	3875 6050 4175 6050
+	3425 6000 3725 6000
 Wire Wire Line
-	4275 5950 4175 5950
+	3825 5900 3725 5900
 Wire Wire Line
-	4175 5950 4175 6050
-Connection ~ 4175 6050
+	3725 5900 3725 6000
+Connection ~ 3725 6000
 Wire Wire Line
-	4175 6050 4275 6050
+	3725 6000 3825 6000
 Wire Wire Line
-	4275 5850 4075 5850
+	3825 5800 3625 5800
 Wire Wire Line
-	4075 5850 4075 5950
+	3625 5800 3625 5900
 Wire Wire Line
-	4075 5950 3875 5950
+	3625 5900 3425 5900
 Wire Wire Line
-	4275 6150 4175 6150
+	3825 6100 3725 6100
 Wire Wire Line
-	4275 6250 4175 6250
+	3825 6200 3725 6200
 Wire Wire Line
-	4175 6250 4175 6150
-Connection ~ 4175 6150
+	3725 6200 3725 6100
+Connection ~ 3725 6100
 Wire Wire Line
-	4175 6150 3875 6150
+	3725 6100 3425 6100
 Wire Wire Line
-	4275 6350 3875 6350
-NoConn ~ 3875 6450
-Text Label 2000 6750 0    10   ~ 0
+	3825 6300 3425 6300
+NoConn ~ 3425 6400
+Text Label 1550 6700 0    10   ~ 0
 D+
-Text Label 2000 6850 0    10   ~ 0
+Text Label 1550 6800 0    10   ~ 0
 D-
 Wire Wire Line
-	1850 6750 2675 6750
+	1400 6700 2225 6700
 Wire Wire Line
-	1850 6850 2675 6850
+	1400 6800 2225 6800
 Wire Wire Line
-	2050 6350 2150 6350
+	1600 6300 1700 6300
 Wire Wire Line
-	1850 6550 2150 6550
+	1400 6500 1700 6500
 Wire Wire Line
-	2150 6550 2150 6350
-Connection ~ 2150 6350
+	1700 6500 1700 6300
+Connection ~ 1700 6300
 Wire Wire Line
-	2150 6350 2675 6350
+	1700 6300 2225 6300
 $Comp
 L Device:R_Small_US R14
 U 1 1 610ED45C
-P 2350 6550
-F 0 "R14" V 2275 6550 50  0000 C CNN
-F 1 "24kΩ" V 2425 6550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 2350 6550 50  0001 C CNN
-F 3 "~" H 2350 6550 50  0001 C CNN
-	1    2350 6550
+P 1900 6500
+F 0 "R14" V 1825 6500 50  0000 C CNN
+F 1 "24kΩ" V 1975 6500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 1900 6500 50  0001 C CNN
+F 3 "~" H 1900 6500 50  0001 C CNN
+	1    1900 6500
 	0    -1   1    0   
 $EndComp
 $Comp
 L Device:R_Small_US R15
 U 1 1 610EDE54
-P 2575 7075
-F 0 "R15" H 2475 7050 50  0000 C CNN
-F 1 "47kΩ" H 2425 7125 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 2575 7075 50  0001 C CNN
-F 3 "~" H 2575 7075 50  0001 C CNN
-	1    2575 7075
+P 2125 7025
+F 0 "R15" H 2025 7000 50  0000 C CNN
+F 1 "47kΩ" H 1975 7075 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 2125 7025 50  0001 C CNN
+F 3 "~" H 2125 7025 50  0001 C CNN
+	1    2125 7025
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	2250 6550 2150 6550
-Connection ~ 2150 6550
+	1800 6500 1700 6500
+Connection ~ 1700 6500
 Wire Wire Line
-	2450 6550 2575 6550
+	2000 6500 2125 6500
 Wire Wire Line
-	2575 6550 2575 6650
+	2125 6500 2125 6600
 Wire Wire Line
-	2675 6650 2575 6650
-Connection ~ 2575 6650
+	2225 6600 2125 6600
+Connection ~ 2125 6600
 Wire Wire Line
-	2575 6650 2575 6975
-Text GLabel 3325 7325 3    50   Input ~ 0
+	2125 6600 2125 6925
+Text GLabel 2875 7275 3    50   Input ~ 0
 0V
-Text GLabel 2575 7325 3    50   Input ~ 0
+Text GLabel 2125 7275 3    50   Input ~ 0
 0V
 Wire Wire Line
-	2575 7325 2575 7175
-Text GLabel 4075 6650 2    50   Input ~ 0
+	2125 7275 2125 7125
+Text GLabel 3625 6600 2    50   Input ~ 0
 0V
 $Comp
 L Interface_USB:CP2102N-A01-GQFN24 U2
 U 1 1 5E1C43B6
-P 3275 6350
-F 0 "U2" H 3025 5525 50  0000 C CNN
-F 1 "CP2102N" H 3025 5450 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 3425 5400 50  0001 L CNN
-F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2725 7600 50  0001 C CNN
-	1    3275 6350
+P 2825 6300
+F 0 "U2" H 2575 5475 50  0000 C CNN
+F 1 "CP2102N" H 2575 5400 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2975 5350 50  0001 L CNN
+F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2275 7550 50  0001 C CNN
+	1    2825 6300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3875 6650 4075 6650
+	3425 6600 3625 6600
 Wire Notes Line
-	2225 6425 2725 6425
+	1775 6375 2275 6375
 Wire Notes Line
-	2725 6425 2725 7250
+	2275 6375 2275 7200
 Wire Notes Line
-	2725 7250 2225 7250
+	2275 7200 1775 7200
 Wire Notes Line
-	2225 7650 2650 7650
+	1775 7600 2200 7600
 Wire Notes Line
-	2225 6425 2225 7650
-Text Notes 2675 7725 0    50   ~ 0
+	1775 6375 1775 7600
+Text Notes 2225 7675 0    50   ~ 0
 Only populate these resistors if using CP2102N!\nIf using CP2104, short R14 and leave R15 open.
-Text Label 2575 6550 0    10   ~ 0
+Text Label 2125 6500 0    10   ~ 0
 Vbus
 Wire Wire Line
 	1850 3300 2325 3300
@@ -1075,7 +1075,7 @@ L Device:R_Small_US R16
 U 1 1 60F2AEB9
 P 2325 3550
 F 0 "R16" H 2200 3575 50  0000 C CNN
-F 1 "68kΩ" H 2175 3500 50  0000 C CNN
+F 1 "100kΩ" H 2175 3500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 2325 3550 50  0001 C CNN
 F 3 "~" H 2325 3550 50  0001 C CNN
 	1    2325 3550
@@ -1176,7 +1176,7 @@ L Device:R_Small_US R7
 U 1 1 5E0FEC54
 P 9475 4700
 F 0 "R7" V 9400 4750 50  0000 R CNN
-F 1 "68kΩ" V 9550 4775 50  0000 R CNN
+F 1 "100kΩ" V 9550 4825 50  0000 R CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4700 50  0001 C CNN
 F 3 "~" H 9475 4700 50  0001 C CNN
 	1    9475 4700
@@ -1208,4 +1208,6 @@ F 3 "https://fscdn.rohm.com/en/products/databook/datasheet/ic/power/voltage_dete
 $EndComp
 Wire Notes Line
 	2900 3425 2900 3900
+Text Notes 3900 5225 0    50   ~ 0
+Resistor values calculated with SLVC780 and verified experimentally\nhttps://www.ti.com/lit/zip/slvc780
 $EndSCHEMATC
