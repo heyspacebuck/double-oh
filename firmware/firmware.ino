@@ -39,19 +39,14 @@ void setup(void) {
   }
 
   // Set DAC voltage test for GPIO 25 (DAC channel 1)
-  // TODO: recalibrate for the new buck converter
-  // Approx 12.126 mV per bit
+  // For the TPSM82821 adjustable buck converter and the resistor network in the schematic:
+  // For DAC value 0 <= x <= 200:
+  // V(x) = -0.011x + 2.87
+  // For DAC value x > 200: V(x) = 0
+  // Max voltage output: 2.87 V
+  // Min voltage output: 0.67 V
   dac_output_enable(DAC_CHANNEL_1);
   setBatteryLevel(1.50);
-//  dac_output_voltage(DAC_CHANNEL_1, 128); // 2.60 V
-//  dac_output_voltage(DAC_CHANNEL_1, 160); // 2.21 V
-//  dac_output_voltage(DAC_CHANNEL_1, 180); // 1.97 V
-//  dac_output_voltage(DAC_CHANNEL_1, 200); // 1.73 V
-//  dac_output_voltage(DAC_CHANNEL_1, 210); // 1.60 V
-//  dac_output_voltage(DAC_CHANNEL_1, 220); // 1.49 V
-//  dac_output_voltage(DAC_CHANNEL_1, 230); // 1.36 V
-//  dac_output_voltage(DAC_CHANNEL_1, 240); // 1.24 V
-//  dac_output_voltage(DAC_CHANNEL_1, 255); // 1.06 V
 
   // Turn on file system
   SPIFFS.begin();

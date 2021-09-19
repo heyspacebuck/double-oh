@@ -136,15 +136,14 @@
       <fieldset>
         <legend>Danger Zone</legend>
         <p>
-          In normal operation, the Double-Oh is limited to a max output of 1.5
-          VDC. In this section you can change the max output voltage.
+          In normal operation, the Double-Oh output is a PWM signal with an amplitude of 1.5 V. In this section you can change that amplitude to anything between 0.67 V and 2.87 V. Please ensure whatever devices you have connected can tolerate these voltages.
         </p>
         <input
           type="number"
           id="desiredVoltage"
           name="desiredVoltage"
-          min="1.06"
-          max="2.60"
+          min="0.67"
+          max="2.87"
           step="0.01"
         />
         <button>Change voltage</button>

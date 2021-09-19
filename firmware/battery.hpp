@@ -6,11 +6,14 @@
 int DAC_value;
 float DAC_voltage;
 
+// This may need tweaking
+// Current battery level reading claims 3.88 V when multimeter claims 4.06
 float getBatteryLevel(void) {
   // Read from ADC_PIN
   int batt_raw = analogRead(ADC_PIN);
-  // A battery reading of ~2400 equals approx 4.15 V
-  float batt_V = float(batt_raw)*4.15/float(2400);
+  // Battery reading is approximately 1/552 = 1.811 mV per ADC value
+  // E.g. an ADC reading of 2208 equals approx. 4 V
+  float batt_V = float(batt_raw)/float(552);
   return batt_V;
 }
 
@@ -30,14 +33,18 @@ void battFile(void) {
   file.close();
 }
 
+// For the TPSM82821 adjustable buck converter and the resistor network in the schematic:
+// For DAC value 0 <= x <= 200:
+// V(x) = -0.011x + 2.87
+// For DAC value x > 200: V(x) = 0
 void setBatteryLevel(float voltage) {
   // Convert voltage to bit value
-  int bitVolt = 255 - round((voltage - 1.06)/0.012126);
-  if (bitVolt > 255) { bitVolt = 255; }
-  if (bitVolt < 128) { bitVolt = 128; }
+  int bitVolt = round((2.87 - voltage)/(0.011));
+  if (bitVolt > 200) { bitVolt = 200; } // Upper level capped at 200 (0.67 V)
+  if (bitVolt < 0) { bitVolt = 0; } // Lower level capped at 0 (2.87 V)
   dac_output_voltage(DAC_CHANNEL_1, bitVolt);
   DAC_value = bitVolt;
-  DAC_voltage = (255 - float(bitVolt))*.012126 + 1.06;
+  DAC_voltage = float(bitVolt)*(-0.011) + 2.87;
   battFile();
 }
 
