@@ -6,14 +6,15 @@
 int DAC_value;
 float DAC_voltage;
 
-// This may need tweaking
-// Current battery level reading claims 3.88 V when multimeter claims 4.06
 float getBatteryLevel(void) {
   // Read from ADC_PIN
+  // Battery reading is approximately 1/554 = 1.805 mV per ADC value
+  // E.g. an ADC reading of 2216 equals approx. 4 V
+  // When plugged in, ADC reading uncertainty is big: +/- 0.1 V
+  // On battery power, uncertainty is much more manageable: +/- 0.02 V roughly
+  // I should have made a "detect when plugged in" feature, hmm...
   int batt_raw = analogRead(ADC_PIN);
-  // Battery reading is approximately 1/552 = 1.811 mV per ADC value
-  // E.g. an ADC reading of 2208 equals approx. 4 V
-  float batt_V = float(batt_raw)/float(552);
+  float batt_V = float(batt_raw)/float(554);
   return batt_V;
 }
 

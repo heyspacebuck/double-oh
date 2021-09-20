@@ -120,6 +120,16 @@ void loop(void) {
     ledcWrite(0, motorIntensity);
     Serial.println(motorIntensity);
     prevTime = currTime;
+
+    // Software voltage supervision:
+    if (getBatteryLevel() < LOW_BATT_THRESHOLD) {
+      lowBatteryReading++;
+      if (lowBatteryReading > 3) {
+        Serial.println("Low battery detected, shutting down");
+        esp_deep_sleep_start();
+      }
+    } else {
+      lowBatteryReading = 0;
+    }
   }
-  // TODO: reintroduce software voltage supervisor?
 }

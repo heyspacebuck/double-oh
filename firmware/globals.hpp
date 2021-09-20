@@ -22,4 +22,8 @@ int connectionAttempts = 0;
 // EEPROM constants and variables
 eepromStruct eeprom;
 
+// Battery monitoring values
+int lowBatteryReading = 0;  // How many times in a row has the ADC detected a low battery reading?
+#define LOW_BATT_THRESHOLD 3.5
+
 #endif
