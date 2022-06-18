@@ -40,7 +40,7 @@ void battFile(void) {
 // For DAC value x > 200: V(x) = 0
 void setBatteryLevel(float voltage) {
   // Convert voltage to bit value
-  int bitVolt = round((2.87 - voltage)/(0.011));
+  unsigned int bitVolt = round((2.87 - voltage)/(0.011));
   if (bitVolt > 200) { bitVolt = 200; } // Upper level capped at 200 (0.67 V)
   if (bitVolt < 0) { bitVolt = 0; } // Lower level capped at 0 (2.87 V)
   dac_output_voltage(DAC_CHANNEL_1, bitVolt);
