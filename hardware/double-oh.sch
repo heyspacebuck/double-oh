@@ -292,19 +292,19 @@ Text GLabel 7975 2725 0    50   Input ~ 0
 3.3V
 Text GLabel 9250 3025 2    50   Input ~ 0
 0V
-Text GLabel 8975 3450 2    50   Input ~ 0
+Text GLabel 9150 3450 2    50   Input ~ 0
 TX_ESP
-Text GLabel 8975 3650 2    50   Input ~ 0
+Text GLabel 9150 3650 2    50   Input ~ 0
 RX_ESP
 NoConn ~ 8975 3550
-Text GLabel 8975 3350 2    50   Input ~ 0
+Text GLabel 9150 3350 2    50   Input ~ 0
 GPIO0
 Text GLabel 8175 6150 3    50   Input ~ 0
 0V
 Text GLabel 9400 5050 2    50   Input ~ 0
 DAC
 Wire Wire Line
-	9075 5050 8975 5050
+	9075 5050 9025 5050
 Wire Wire Line
 	9275 5050 9400 5050
 Wire Wire Line
@@ -352,7 +352,7 @@ Wire Wire Line
 	7225 1500 7225 1550
 Text GLabel 7575 1500 2    50   Input ~ 0
 ADC
-Text GLabel 9400 5450 2    50   Input ~ 0
+Text GLabel 9400 5650 2    50   Input ~ 0
 ADC
 $Comp
 L Device:Q_PMOS_GSD Q3
@@ -841,16 +841,13 @@ Wire Wire Line
 Wire Wire Line
 	8275 2725 8275 2950
 Connection ~ 8175 2725
-NoConn ~ 8975 3850
+NoConn ~ 8975 4450
 NoConn ~ 8975 3950
 NoConn ~ 8975 4050
 NoConn ~ 8975 4150
 NoConn ~ 8975 4250
 NoConn ~ 8975 4350
-NoConn ~ 8975 4450
-NoConn ~ 8975 5350
 NoConn ~ 8975 5250
-NoConn ~ 8975 5550
 NoConn ~ 7375 3350
 NoConn ~ 7375 3450
 NoConn ~ 7375 3550
@@ -861,7 +858,7 @@ Connection ~ 8075 2725
 Wire Wire Line
 	8075 2725 8175 2725
 Wire Wire Line
-	8975 5450 9400 5450
+	8975 5650 9400 5650
 $Comp
 L Battery_Management:MCP73831-2-OT U5
 U 1 1 5CDCF91B
@@ -880,20 +877,20 @@ NoConn ~ 3425 6200
 NoConn ~ 3425 5800
 NoConn ~ 3425 5700
 Wire Wire Line
-	9425 3750 9325 3750
-Text GLabel 9425 3750 2    50   Input ~ 0
+	9425 4750 9325 4750
+Text GLabel 9425 4750 2    50   Input ~ 0
 0V
 Wire Wire Line
-	9125 3750 8975 3750
+	9125 4750 8975 4750
 $Comp
 L Device:Jumper_NO_Small JP1
 U 1 1 5F27CDA3
-P 9225 3750
-F 0 "JP1" H 9225 3825 50  0000 C CNN
-F 1 "Jumper_NO_Small" H 9250 3875 50  0001 C CNN
-F 2 "double-oh:solder_bridge" H 9225 3750 50  0001 C CNN
-F 3 "~" H 9225 3750 50  0001 C CNN
-	1    9225 3750
+P 9225 4750
+F 0 "JP1" H 9225 4825 50  0000 C CNN
+F 1 "Jumper_NO_Small" H 9250 4875 50  0001 C CNN
+F 2 "double-oh:solder_bridge" H 9225 4750 50  0001 C CNN
+F 3 "~" H 9225 4750 50  0001 C CNN
+	1    9225 4750
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -905,7 +902,7 @@ F 1 "330kΩ" V 9250 5050 50  0000 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 9175 5050 50  0001 C CNN
 F 3 "~" H 9175 5050 50  0001 C CNN
 	1    9175 5050
-	0    1    -1   0   
+	0    1    1    0   
 $EndComp
 Wire Wire Line
 	8075 2725 8075 2950
@@ -1126,76 +1123,6 @@ Wire Wire Line
 Wire Wire Line
 	1175 2900 1175 3625
 $Comp
-L double-oh:ESP32-PICO-V3 U1
-U 1 1 6107B768
-P 8175 4550
-F 0 "U1" H 7950 2950 50  0000 C CNN
-F 1 "ESP32-PICO-V3" H 8175 2770 50  0000 C CNN
-F 2 "double-oh:QFN-48-1EP_7x7mm_P0.5mm_EP4.5x4.5mm" H 8175 2850 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-pico-d4_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
-	1    8175 4550
-	1    0    0    -1  
-$EndComp
-NoConn ~ 8975 5650
-Text GLabel 8975 5150 2    50   Input ~ 0
-EN
-Wire Wire Line
-	10300 4275 10300 4650
-Text GLabel 10300 5275 0    50   Input ~ 0
-batt_out
-$Comp
-L Device:R_Small_US R8
-U 1 1 5D570C7A
-P 9700 4850
-F 0 "R8" V 9625 4900 50  0000 R CNN
-F 1 "1kΩ" V 9775 4925 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4850 50  0001 C CNN
-F 3 "~" H 9700 4850 50  0001 C CNN
-	1    9700 4850
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	10300 5050 10300 5275
-Text GLabel 10300 4275 0    50   Input ~ 0
-to_top_cap
-Wire Wire Line
-	9600 4850 9475 4850
-$Comp
-L Device:Q_PMOS_GSD Q2
-U 1 1 5E0EBFFC
-P 10200 4850
-F 0 "Q2" H 10425 4925 50  0000 L CNN
-F 1 "SI1317DL-T1-BE3" H 10425 4825 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4950 50  0001 C CNN
-F 3 "~" H 10200 4850 50  0001 C CNN
-	1    10200 4850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small_US R7
-U 1 1 5E0FEC54
-P 9475 4700
-F 0 "R7" V 9400 4750 50  0000 R CNN
-F 1 "100kΩ" V 9550 4825 50  0000 R CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4700 50  0001 C CNN
-F 3 "~" H 9475 4700 50  0001 C CNN
-	1    9475 4700
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9475 4475 1    50   Input ~ 0
-3.3V
-Wire Wire Line
-	9800 4850 10000 4850
-Wire Wire Line
-	9475 4800 9475 4850
-Connection ~ 9475 4850
-Wire Wire Line
-	9475 4850 8975 4850
-Wire Wire Line
-	9475 4475 9475 4600
-NoConn ~ 8975 4750
-NoConn ~ 8975 4650
-$Comp
 L double-oh:BD48KxxG U6
 U 1 1 6121DBD2
 P 1875 3850
@@ -1210,4 +1137,102 @@ Wire Notes Line
 	2900 3425 2900 3900
 Text Notes 3900 5225 0    50   ~ 0
 Resistor values calculated with SLVC780 and verified experimentally\nhttps://www.ti.com/lit/zip/slvc780
+Wire Wire Line
+	9025 5050 9025 5350
+Wire Wire Line
+	9025 5450 8975 5450
+Connection ~ 9025 5050
+Wire Wire Line
+	9025 5050 8975 5050
+Wire Wire Line
+	9475 4275 9475 4400
+Wire Wire Line
+	9475 4650 8975 4650
+Connection ~ 9475 4650
+Wire Wire Line
+	9475 4600 9475 4650
+Wire Wire Line
+	9800 4650 10000 4650
+Text GLabel 9475 4275 1    50   Input ~ 0
+3.3V
+$Comp
+L Device:R_Small_US R7
+U 1 1 5E0FEC54
+P 9475 4500
+F 0 "R7" V 9400 4550 50  0000 R CNN
+F 1 "100kΩ" V 9550 4625 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9475 4500 50  0001 C CNN
+F 3 "~" H 9475 4500 50  0001 C CNN
+	1    9475 4500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:Q_PMOS_GSD Q2
+U 1 1 5E0EBFFC
+P 10200 4650
+F 0 "Q2" H 10425 4725 50  0000 L CNN
+F 1 "SI1317DL-T1-BE3" H 10425 4625 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 10400 4750 50  0001 C CNN
+F 3 "~" H 10200 4650 50  0001 C CNN
+	1    10200 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 4650 9475 4650
+Text GLabel 10300 4075 0    50   Input ~ 0
+to_top_cap
+Wire Wire Line
+	10300 4850 10300 5075
+$Comp
+L Device:R_Small_US R8
+U 1 1 5D570C7A
+P 9700 4650
+F 0 "R8" V 9625 4700 50  0000 R CNN
+F 1 "1kΩ" V 9775 4725 50  0000 R CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" H 9700 4650 50  0001 C CNN
+F 3 "~" H 9700 4650 50  0001 C CNN
+	1    9700 4650
+	0    -1   1    0   
+$EndComp
+Text GLabel 10300 5075 0    50   Input ~ 0
+batt_out
+Wire Wire Line
+	10300 4075 10300 4450
+Wire Wire Line
+	9150 3350 9025 3350
+Wire Wire Line
+	8975 3450 9150 3450
+Wire Wire Line
+	9025 3350 9025 3750
+Wire Wire Line
+	9025 3750 8975 3750
+Connection ~ 9025 3350
+Wire Wire Line
+	9025 3350 8975 3350
+$Comp
+L double-oh:ESP32-PICO-V3 U1
+U 1 1 6107B768
+P 8175 4550
+F 0 "U1" H 7950 2950 50  0000 C CNN
+F 1 "ESP32-PICO-V3" H 8175 2770 50  0000 C CNN
+F 2 "double-oh:QFN-48-1EP_7x7mm_P0.5mm_EP4.5x4.5mm" H 8175 2850 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-pico-d4_datasheet_en.pdf" H 8425 3550 50  0001 C CNN
+	1    8175 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9025 5350 8975 5350
+Connection ~ 9025 5350
+Wire Wire Line
+	9025 5350 9025 5450
+Wire Wire Line
+	8975 3650 9150 3650
+Text GLabel 9150 3850 2    50   Input ~ 0
+3.3V
+Wire Wire Line
+	9150 3850 8975 3850
+Text GLabel 9175 5550 2    50   Input ~ 0
+0V
+Wire Wire Line
+	9175 5550 8975 5550
 $EndSCHEMATC
