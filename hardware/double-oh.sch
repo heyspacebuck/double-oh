@@ -46,49 +46,6 @@ Text GLabel 1100 7100 3    50   Input ~ 0
 0V
 Text GLabel 1600 6300 0    50   Input ~ 0
 USB_VIN
-$Comp
-L Device:Antenna_Chip AE1
-U 1 1 5E0A67E0
-P 8875 2575
-F 0 "AE1" H 9100 2750 50  0000 L CNN
-F 1 "AMCA31-2R450G-S1F-T3" H 9100 2650 50  0000 L CNN
-F 2 "double-oh:AMCA31" H 8775 2750 50  0001 C CNN
-F 3 "~" H 8775 2750 50  0001 C CNN
-	1    8875 2575
-	-1   0    0    -1  
-$EndComp
-NoConn ~ 8775 2675
-Wire Wire Line
-	8975 2675 8975 2725
-$Comp
-L Device:C_Small C8
-U 1 1 5D51B789
-P 9075 3025
-F 0 "C8" H 9200 3050 50  0000 C CNN
-F 1 "1.5pF" H 9250 2975 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 9075 3025 50  0001 C CNN
-F 3 "~" H 9075 3025 50  0001 C CNN
-	1    9075 3025
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:L_Small L1
-U 1 1 5E0AF63A
-P 8975 2825
-F 0 "L1" H 9050 2900 50  0000 L CNN
-F 1 "3.9nH" H 9050 2800 50  0000 L CNN
-F 2 "Inductor_SMD:L_0603_1608Metric" H 8975 2825 50  0001 C CNN
-F 3 "~" H 8975 2825 50  0001 C CNN
-	1    8975 2825
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	8975 2925 8975 3025
-Wire Wire Line
-	8975 3025 8975 3150
-Connection ~ 8975 3025
-Wire Wire Line
-	9250 3025 9175 3025
 Text GLabel 9900 1625 2    50   Input ~ 0
 LIPO_ANODE
 Text GLabel 9900 1500 2    50   Input ~ 0
@@ -290,8 +247,6 @@ Wire Wire Line
 	7975 2950 7975 2725
 Text GLabel 7975 2725 0    50   Input ~ 0
 3.3V
-Text GLabel 9250 3025 2    50   Input ~ 0
-0V
 Text GLabel 9150 3450 2    50   Input ~ 0
 TX_ESP
 Text GLabel 9150 3650 2    50   Input ~ 0
@@ -1231,8 +1186,20 @@ Text GLabel 9150 3850 2    50   Input ~ 0
 3.3V
 Wire Wire Line
 	9150 3850 8975 3850
-Text GLabel 9175 5550 2    50   Input ~ 0
-0V
+NoConn ~ 8975 2875
 Wire Wire Line
-	9175 5550 8975 5550
+	9175 3150 8975 3150
+Wire Wire Line
+	9175 2875 9175 3150
+$Comp
+L Device:Antenna_Chip AE1
+U 1 1 5E0A67E0
+P 9075 2775
+F 0 "AE1" H 9300 2950 50  0000 L CNN
+F 1 "NN01-102" H 9300 2850 50  0000 L CNN
+F 2 "double-oh:NN01-102" H 8975 2950 50  0001 C CNN
+F 3 "https://www.ignion.io/files/UM_NN01-102.pdf" H 8975 2950 50  0001 C CNN
+	1    9075 2775
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC

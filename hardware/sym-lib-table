@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name double-oh)(type Legacy)(uri ${KIPRJMOD}/double-oh.lib)(options "")(descr ""))
+  (lib (name double-oh-rescue)(type Legacy)(uri ${KIPRJMOD}/double-oh-rescue.lib)(options "")(descr ""))
 )

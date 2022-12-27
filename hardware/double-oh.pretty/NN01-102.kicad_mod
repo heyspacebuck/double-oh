@@ -1,0 +1,28 @@
+(module NN01-102 (layer F.Cu) (tedit 62AD7872)
+  (attr smd)
+  (fp_text reference AE1 (at 0 3.175 180) (layer F.SilkS) hide
+    (effects (font (size 0.7 0.7) (thickness 0.1)))
+  )
+  (fp_text value Antenna_Chip (at 0 -0.5) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_poly (pts (xy 1.3 3.3) (xy -1.3 3.3) (xy -1.3 1.8) (xy 1.3 1.8)) (layer F.Mask) (width 0))
+  (fp_poly (pts (xy 1.3 3.3) (xy -1.3 3.3) (xy -1.3 1.8) (xy 1.3 1.8)) (layer F.Paste) (width 0))
+  (pad 2 smd rect (at 0 -2.55) (size 2.6 1.5) (layers F.Cu F.Paste F.Mask))
+  (pad 1 smd custom (at 0 2.55) (size 2.6 1.5) (layers F.Cu)
+    (zone_connect 0)
+    (options (clearance outline) (anchor rect))
+    (primitives
+      (gr_poly (pts
+         (xy 0.2 2.45) (xy -0.3 2.45) (xy -0.3 0.95) (xy 0.2 0.95)) (width 0))
+      (gr_poly (pts
+         (xy 0.2 0.95) (xy -0.3 0.95) (xy -0.3 0.75) (xy 0.2 0.75)) (width 0))
+      (gr_poly (pts
+         (xy 0.2 1.95) (xy 0.2 2.45) (xy -4.5 2.45) (xy -4.5 1.95)) (width 0))
+    ))
+  (model ${KIPRJMOD}/double-oh.pretty/AMCA31.stp
+    (at (xyz 0 0 0))
+    (scale (xyz 1.3 1.6 1.3))
+    (rotate (xyz 0 0 0))
+  )
+)
